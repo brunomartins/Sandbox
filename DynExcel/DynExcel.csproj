@@ -78,7 +78,7 @@
   <Target Name="AfterBuild">
     <PropertyGroup>
       <PackageName>DynExcel</PackageName>
-      <PackageFolder>$(ProjectDir)dist\$(PackageName)\</PackageFolder>
+      <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
       <BinFolder>$(PackageFolder)bin\</BinFolder>
       <ExtraFolder>$(PackageFolder)extra\</ExtraFolder>
       <DyfFolder>$(PackageFolder)dyf\</DyfFolder>

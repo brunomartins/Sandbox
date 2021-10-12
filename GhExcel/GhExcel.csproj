@@ -38,7 +38,7 @@
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
-        <OutputPath>$(ProjectDir)dist</OutputPath>
+        <OutputPath>$(SolutionDir)library/GhExcel</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
@@ -52,7 +52,7 @@
 		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*"/>
 	  </ItemGroup>
 	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high"/>
-	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(ProjectDir)dist"/>
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/GhExcel"/>
 	  <Message Text="Files copied" Importance="high"/>
   </Target>
 
