@@ -36,9 +36,10 @@ The tool is composed of 3 nodes:
 * **Contact Details for Current Repository Owner(s)** mirco.bianchini@mottmac.com
 
 ## Installation Instructions
-Inside the library folder:
-Copy the GhExcel folder into the local folder: ``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
-Copy the DynExcel folder into the local folder: ``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
+![image](https://user-images.githubusercontent.com/57708659/136916906-179b1497-ef9d-42f9-9406-96d5dbda7352.png)
+Inside the library folder: <br/>
+* Copy the GhExcel folder into the local folder: ``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``<br/>
+* Copy the DynExcel folder into the local folder: ``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
 
 ## Tested on
 * **Rhino version**: 7
