@@ -345,4 +345,4 @@ healthchecksdb
 
 # Custom folder
 /Utilities
-dist/
+**/dist/
