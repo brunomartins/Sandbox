@@ -344,4 +344,4 @@ ASALocalRun/
 healthchecksdb
 
 # Custom folder
-**/[Uu]tilities/*
+Utilities/
