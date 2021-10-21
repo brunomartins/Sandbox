@@ -3,7 +3,6 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,9 +27,10 @@ namespace GhExcel
         {
             pManager.AddTextParameter("FilePath", "FP", "The directory of the file.", GH_ParamAccess.item);
             pManager.AddGenericParameter("Sheets", "SH", "Sheets to read, you can pass the name of sheet as a string or integer as the order. This is not need for csv file.", GH_ParamAccess.list);
-            pManager.AddIntervalParameter("RowRangeSelection", "RS", "Intervals defining the number of rows will be read.", GH_ParamAccess.list, new List<Interval>());
-            pManager.AddIntervalParameter("ColumnRangeSelection", "CS", "Intervals defining the number of columns will be read.", GH_ParamAccess.list, new List<Interval>());
-            pManager[2].Optional = pManager[3].Optional = true;
+            pManager.AddTextParameter("CellRange", "CR", 
+                "Intervals defining the number of rows and columns will be read. /n/" +
+                "A standard area ref (e.g. B1:D8)", GH_ParamAccess.list, new List<string> { String.Empty });
+            pManager[2].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -42,30 +42,22 @@ namespace GhExcel
         {
             string path = String.Empty;
             List<object> sheets = new List<object>();
-            List<Interval> rowRanges = new List<Interval>();
-            List<Interval> columnRanges = new List<Interval>();
+            List<string> cellRanges = new List<string>();
 
             if (!DA.GetData(0, ref path)) return;
             if (!DA.GetDataList<object>(1, sheets)) return;
-            DA.GetDataList(2, rowRanges);
-            DA.GetDataList(3, columnRanges);
+            DA.GetDataList(2, cellRanges);
 
             DataTree<object> data = new DataTree<object>();
 
             for (int i = 0; i < sheets.Count; i++)
             {
-                int r = (i >= rowRanges.Count) ? rowRanges.Count - 1 : i;
-                int c = (i >= columnRanges.Count) ? columnRanges.Count - 1 : i;
-
-                int[] rr = (rowRanges.Count == 0) ? Array.Empty<int>() : new[] { (int)rowRanges[r].T0, (int)rowRanges[r].T1 };
-                int[] cr = (columnRanges.Count == 0) ? Array.Empty<int>() : new[] { (int)columnRanges[c].T0, (int)columnRanges[c].T1 };
-
                 string fileExtension = Path.GetExtension(path);
                 object sheetValue = (sheets[i] is GH_Number val) ? (object)val.QC_Int() : sheets[i].ToString();
 
                 var result = (fileExtension == ".csv")
-                    ? SpreadSheetReader.Csv(path, rr, cr)
-                    : SpreadSheetReader.Excel(path, sheetValue, rr, cr);
+                    ? SpreadSheetReader.Csv(path, cellRanges[i])
+                    : SpreadSheetReader.Excel(path, sheetValue, cellRanges[i]);
 
                 int count = 0;
                 int[] dataPath = new int[2];

@@ -6,12 +6,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using NPOI.SS.UserModel;
+using NPOI.SS.Util;
 
 namespace Core
 {
     public static class SpreadSheetReader
     {
-        public static IEnumerable<object[]> Csv(string filePath, int[] rowRange, int[] columnRange)
+        public static IEnumerable<object[]> Csv(string filePath, string range)
         {
             if (!File.Exists(filePath))
             {
@@ -19,8 +20,6 @@ namespace Core
             }
 
             List<object[]> data = new List<object[]>();
-            int[] setRowRange = new[] { 0, 0 };
-            int[] setColumnRange = new[] { 0, 0 };
 
             // https://stackoverflow.com/questions/897796/how-do-i-open-an-already-opened-file-with-a-net-streamreader/898017#898017
             using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -31,36 +30,28 @@ namespace Core
                     DetectColumnCountChanges = false,
                 };
 
-                if (rowRange.Length != 0)
-                {
-                    AssignRowDimension(rowRange, ref setRowRange);
-                }
-
-                if (columnRange.Length != 0)
-                {
-                    AssignColumnsDimension(columnRange, ref setColumnRange);
-                }
+                (int firstRow, int lastRow, int firstColumn, int lastColumn) sheetRange = string.IsNullOrEmpty(range) ? (0, 0, 0, 0) : DefineSheetRange(range);
 
                 var csv = new CsvParser(new StreamReader(fileStream, true), csvOptions);
                 int rowCount = 0;
                 while (csv.Read())
                 {
-                    if (rowCount < setRowRange[0]) continue;
+                    if (rowCount < sheetRange.firstRow) continue;
 
-                    var row = (setColumnRange[0] > 0 || setColumnRange[1] > 0)
-                        ? csv.Record.Take(setColumnRange[1]).Skip(setColumnRange[0])
+                    var row = (sheetRange.firstColumn > 0 || sheetRange.lastColumn > 0)
+                        ? csv.Record.Take(sheetRange.lastColumn).Skip(sheetRange.firstColumn)
                         : csv.Record;
 
                     data.Add(row.ToArray());
                     rowCount++;
-                    if (rowCount > setRowRange[1] && setRowRange[1] != 0) break;
+                    if (rowCount > sheetRange.lastRow && sheetRange.lastRow != 0) break;
                 }
 
                 return data;
             }
         }
 
-        public static IEnumerable<object[]> Excel(string filePath, object sheet, int[] rowRange, int[] columnRange)
+        public static IEnumerable<object[]> Excel(string filePath, object sheet, string range)
         {
             if (!File.Exists(filePath))
             {
@@ -68,8 +59,6 @@ namespace Core
             }
 
             List<object[]> data = new List<object[]>();
-            int[] setRowRange = new[] { 0, 0 };
-            int[] setColumnRange = new[] { 0, 0 };
 
             using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
@@ -82,37 +71,38 @@ namespace Core
                     throw new ArgumentNullException($"The sheet {sheet} is not in the workbook.");
                 }
 
-                setRowRange[1] = sheetObj.LastRowNum;
-                int d = 0;
-                bool flag = true;
-                while (flag)
+                (int firstRow, int lastRow, int firstColumn, int lastColumn) sheetRange;
+                if (string.IsNullOrEmpty(range))
                 {
-                    if (sheetObj.GetRow(d) != null) flag = false;
-                    setColumnRange[1] = sheetObj.GetRow(d).LastCellNum;
-                    d++;
+                    int lastColumn = 0;
+                    int d = 0;
+                    bool flag = true;
+                    while (flag)
+                    {
+                        if (sheetObj.GetRow(d) != null) flag = false;
+                        lastColumn = sheetObj.GetRow(d).LastCellNum;
+                        d++;
+                    }
+
+                    sheetRange = (sheetObj.FirstRowNum, sheetObj.LastRowNum, 0, lastColumn);
                 }
-                if (rowRange.Length != 0)
+                else
                 {
-                    AssignRowDimension(rowRange, ref setRowRange);
+                    sheetRange = DefineSheetRange(range);
                 }
 
-                if (columnRange.Length != 0)
-                {
-                    AssignColumnsDimension(columnRange, ref setColumnRange);
-                }
-
-                for (int j = setRowRange[0]; j < setRowRange[1]; j++)
+                for (int j = sheetRange.firstRow; j < sheetRange.lastRow; j++)
                 {
                     IRow row = sheetObj.GetRow(j);
 
                     if (row == null)
                     {
-                        data.Add(Enumerable.Repeat("null", setColumnRange[1] - setColumnRange[0]).ToArray());
+                        data.Add(Enumerable.Repeat("null", sheetRange.lastColumn - sheetRange.firstColumn).ToArray());
                         continue;
                     }
 
-                    object[] tempValues = new object[setColumnRange[1]];
-                    for (int k = setColumnRange[0]; k < setColumnRange[1]; k++)
+                    object[] tempValues = new object[sheetRange.lastColumn];
+                    for (int k = sheetRange.firstColumn; k < sheetRange.lastColumn; k++)
                     {
                         tempValues[k] = row.GetCellValue(k);
                     }
@@ -153,16 +143,10 @@ namespace Core
             }
         }
 
-        private static void AssignRowDimension(int[] rowInterval, ref int[] rowRange)
+        private static (int firstRow, int lastRow, int firstColumn, int lastColumn) DefineSheetRange(string sheetRange)
         {
-            rowRange[0] = (int)rowInterval[0];
-            rowRange[1] = (int)rowInterval[1];
-        }
-
-        private static void AssignColumnsDimension(int[] columnInterval, ref int[] columnRange)
-        {
-            columnRange[0] = (int)columnInterval[0];
-            columnRange[1] = (int)columnInterval[1];
+            var rangeAddress = CellRangeAddress.ValueOf(sheetRange);
+            return (rangeAddress.FirstRow, rangeAddress.LastRow + 1, rangeAddress.FirstColumn, rangeAddress.LastColumn + 1);
         }
     }
 }
