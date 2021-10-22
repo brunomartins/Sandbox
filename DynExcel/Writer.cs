@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace DynExcel
 {
+    /// <summary>Excel workbook creation.</summary>
     public static class Writer
     {
         /// <summary>

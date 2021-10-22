@@ -1,12 +1,12 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using NPOI.SS.UserModel;
+using NPOI.SS.Util;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using NPOI.SS.UserModel;
-using NPOI.SS.Util;
 
 namespace Core
 {
@@ -30,21 +30,21 @@ namespace Core
                     DetectColumnCountChanges = false,
                 };
 
-                (int firstRow, int lastRow, int firstColumn, int lastColumn) sheetRange = string.IsNullOrEmpty(range) ? (0, 0, 0, 0) : DefineSheetRange(range);
+                var (firstRow, lastRow, firstColumn, lastColumn) = string.IsNullOrEmpty(range) ? (0, 0, 0, 0) : DefineSheetRange(range);
 
                 var csv = new CsvParser(new StreamReader(fileStream, true), csvOptions);
                 int rowCount = 0;
                 while (csv.Read())
                 {
-                    if (rowCount < sheetRange.firstRow) continue;
+                    if (rowCount < firstRow) continue;
 
-                    var row = (sheetRange.firstColumn > 0 || sheetRange.lastColumn > 0)
-                        ? csv.Record.Take(sheetRange.lastColumn).Skip(sheetRange.firstColumn)
+                    var row = (firstColumn > 0 || lastColumn > 0)
+                        ? csv.Record.Take(lastColumn).Skip(firstColumn)
                         : csv.Record;
 
                     data.Add(row.ToArray());
                     rowCount++;
-                    if (rowCount > sheetRange.lastRow && sheetRange.lastRow != 0) break;
+                    if (rowCount > lastRow && lastRow != 0) break;
                 }
 
                 return data;
@@ -75,15 +75,10 @@ namespace Core
                 if (string.IsNullOrEmpty(range))
                 {
                     int lastColumn = 0;
-                    int d = 0;
-                    bool flag = true;
-                    while (flag)
+                    for (int i = 0; i <= sheetObj.LastRowNum; i++)
                     {
-                        if (sheetObj.GetRow(d) != null) flag = false;
-                        lastColumn = sheetObj.GetRow(d).LastCellNum;
-                        d++;
+                        lastColumn = Math.Max(lastColumn, sheetObj.GetRow(i).LastCellNum);
                     }
-
                     sheetRange = (sheetObj.FirstRowNum, sheetObj.LastRowNum, 0, lastColumn);
                 }
                 else
@@ -91,7 +86,7 @@ namespace Core
                     sheetRange = DefineSheetRange(range);
                 }
 
-                for (int j = sheetRange.firstRow; j < sheetRange.lastRow; j++)
+                for (int j = sheetRange.firstRow; j <= sheetRange.lastRow; j++)
                 {
                     IRow row = sheetObj.GetRow(j);
 
@@ -146,7 +141,7 @@ namespace Core
         private static (int firstRow, int lastRow, int firstColumn, int lastColumn) DefineSheetRange(string sheetRange)
         {
             var rangeAddress = CellRangeAddress.ValueOf(sheetRange);
-            return (rangeAddress.FirstRow, rangeAddress.LastRow + 1, rangeAddress.FirstColumn, rangeAddress.LastColumn + 1);
+            return (rangeAddress.FirstRow, rangeAddress.LastRow, rangeAddress.FirstColumn, rangeAddress.LastColumn + 1);
         }
     }
 }

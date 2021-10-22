@@ -4,6 +4,7 @@ using System.IO;
 
 namespace DynExcel
 {
+    /// <summary>Excel workbook entry point.</summary>
     public static class Reader
     {
         /// <summary>
