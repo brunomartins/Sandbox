@@ -40,11 +40,14 @@ The tool is composed of 3 nodes:
 ### If you download the project [unblock](https://winaero.com/how-to-unblock-files-downloaded-from-internet-in-windows-10/) it!!
 Inside the library folder: <br/>
 ### For Grasshopper
-* Copy the GhExcel folder into the local folder: ``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
+* Copy the GhExcel folder into the local folder:<br/> 
+``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
 ### For Dynamo in Revit
-* Copy the DynExcel folder into the local folder: ``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
+* Copy the DynExcel folder into the local folder:<br/>
+``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
 ### For Dynamo in Civil3D
-* Copy the DynExcel folder into the local folder: ``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
+* Copy the DynExcel folder into the local folder:<br/>
+``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
 
 ## Tested on
 * **Rhino version**: 7
