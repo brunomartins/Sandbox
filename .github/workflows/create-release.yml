@@ -1,20 +1,63 @@
-name: Create release
+name: Create release and artifact
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
-
+  push:
+    branches: main
+    
 env:
+  PROJECT_PATH: './MMLibrary.sln'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
-  TAG_NAME: ${{ github.event.release.tag_name }}
+  TAG_NAME: ${{ github.event.release.tag_name }}   
 
 jobs:
-  build:
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
-    runs-on: windows-latest
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+          
+      - name: ⚙️ Get previous tag.
+        id: version
+        run: |
+          lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
+          echo "::set-output name=tag::$lastTag"
+      - name: ⚙️ Bump if alpha.
+        id: bump-with-alpha
+        uses: actions/github-script@v3
+        with:
+          result-encoding: string
+          script: |
+                const incoming = "${{steps.version.outputs.tag}}"
+                console.log("Incoming Tag: " + incoming)
+                if(incoming.includes('alpha')) {
+                  const oldNum = incoming.match(/alpha[.]*(\d+)/)[1]
+                  const newNum = parseInt(oldNum)+1
+                  const newTag = incoming.replace(/alpha.*\d+/, `alpha.${newNum}`)
+                  console.log("New Tag: " + newTag)
+                  return newTag
+                }
+                else {
+                  const newTag =incoming +'-alpha.0'
+                  console.log("New Tag: " + newTag)
+                  return newTag
+                }
+                
+      - name: Storing data
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: my-event
+          client-payload: '{"revision": ${{ steps.bump-with-alpha.outputs.result }}}'          
+                
+                
+  build:
+    name: build
+    needs: setup
+    runs-on: windows-latest
     steps:
       - name: 🛎 Checkout repo
         uses: actions/checkout@v2
@@ -25,11 +68,11 @@ jobs:
         uses: microsoft/setup-msbuild@v1
         
       - name: 🔧 Restore nuget with dotnet
-        run: nuget restore ./MMLibrary.sln
+        run: dotnet restore ${{ env.PROJECT_PATH }}
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release"
+          msbuild.exe ${{ env.PROJECT_PATH }} /p:platform="Any CPU" /p:configuration="Release" /p:Version=${{ github.event.client_payload.revision }}
         
       - name: 📘 Create Release
         id: create_release
@@ -37,8 +80,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: '0.0.1'
-          release_name: '0.0.1'
+          tag_name: ${{ github.event.client_payload.revision }}
+          release_name: ${{ github.event.client_payload.revision }}
           body: |
             ## Title
             ${{ github.event.pull_request.title }}
@@ -49,12 +92,14 @@ jobs:
           prerelease: false
       
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z ./library
+        run: |
+          cd ./library
+          7z a -t7z -mx=9 artifact.7z DynTools\GhTools\
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: '0.0.1'
-          file: MMLibrary.7z
-          asset_name: MMLibrary
+          tag: ${{ github.event.client_payload.revision }}
+          file: artifact.7z
+          asset_name: artifact.7z
