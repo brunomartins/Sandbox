@@ -7,7 +7,6 @@ on:
 env:
   PROJECT_PATH: './MMLibrary.sln'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
-  TAG_NAME: ${{ github.event.release.tag_name }}   
 
 jobs:
   setup:
