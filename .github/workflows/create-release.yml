@@ -7,7 +7,9 @@ on:
       - develop
 
 env:
-  PROJECT_PATH: 'Pipeline.csproj'
+  PROJECT_CORE_PATH: 'Core/Core.csproj'
+  PROJECT_GH_PATH: 'GhTools/GhTools.csproj'
+  PROJECT_DYN_PATH: 'DynTools/DynTools.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
   TAG_NAME: ${{ github.event.release.tag_name }}
 
@@ -57,14 +59,11 @@ jobs:
                 }
       
       - name: 🔧 Restore nuget with dotnet
-        run: dotnet restore ${{ env.PROJECT_PATH }}
+        run: nuget restore .\MMLibrary.sln
       
       - name: 🧱 Build project
-        run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release -p:Version=${{ steps.bump-with-alpha.outputs.result }}
+        run: dotnet build --no-restore --configuration Release -p:Version=${{ steps.bump-with-alpha.outputs.result }}
         
-      - name: 📦 Create the package
-        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release -p:PackageVersion=${{ steps.bump-with-alpha.outputs.result }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
-
       - name: 📘 Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -83,7 +82,7 @@ jobs:
           prerelease: false
       
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z ./bin/Debug/net5.0
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
