@@ -12,11 +12,8 @@ env:
 
 jobs:
   build:
-    environment:
-      name: 'NuGet'
-      url: https://www.nuget.org/packages/PipelineBasic
     if: github.event.action == 'closed' && github.event.pull_request.merged == true
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
 
     steps:
       - name: 🛎 Checkout repo
