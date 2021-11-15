@@ -6,7 +6,6 @@ on:
     
 env:
   PROJECT_PATH: './MMLibrary.sln'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
 
 jobs:
   setup:
@@ -71,7 +70,7 @@ jobs:
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ${{ env.PROJECT_PATH }} /p:platform="Any CPU" /p:configuration="Release" /p:Version=${{ github.event.client_payload.revision }}
+          msbuild.exe ${{ env.PROJECT_PATH }} /p:platform="Any CPU" /p:configuration="Release" /p:Version="${{ github.event.client_payload.revision }}"
         
       - name: 📘 Create Release
         id: create_release
