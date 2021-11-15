@@ -4,6 +4,9 @@ on:
   push:
     branches: main
     
+env:
+  PROJECT_PATH: "./MMLibrary.sln"
+    
 jobs:
   setup:
     name: setup
@@ -67,7 +70,7 @@ jobs:
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:Version="${{ github.event.client_payload.revision }}"
+          msbuild.exe ${{ env.PROJECT_PATH }} /p:platform="Any CPU" /p:configuration="Release"
         
       - name: 📘 Create Release
         id: create_release
