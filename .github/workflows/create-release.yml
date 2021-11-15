@@ -24,38 +24,12 @@ jobs:
       - name: 🚧 Setup MSBuild
         uses: microsoft/setup-msbuild@v1
         
-      - name: ⚙️ Get previous tag.
-        id: version
-        run: |
-          lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
-          echo "::set-output name=tag::$lastTag"
-      - name: ⚙️ Bump if alpha.
-        id: bump-with-alpha
-        uses: actions/github-script@v3
-        with:
-          result-encoding: string
-          script: |
-                const incoming = "${{steps.version.outputs.tag}}"
-                console.log("Incoming Tag: " + incoming)
-                if(incoming.includes('alpha')) {
-                  const oldNum = incoming.match(/alpha[.]*(\d+)/)[1]
-                  const newNum = parseInt(oldNum)+1
-                  const newTag = incoming.replace(/alpha.*\d+/, `alpha.${newNum}`)
-                  console.log("New Tag: " + newTag)
-                  return newTag
-                }
-                else {
-                  const newTag =incoming +'-alpha.0'
-                  console.log("New Tag: " + newTag)
-                  return newTag
-                }
-      
       - name: 🔧 Restore nuget with dotnet
         run: nuget restore ./MMLibrary.sln
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:Version=${{ steps.bump-with-alpha.outputs.result }}
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release"
         
       - name: 📘 Create Release
         id: create_release
@@ -63,8 +37,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.bump-with-alpha.outputs.result }}
-          release_name: ${{ steps.bump-with-alpha.outputs.result }}
+          tag_name: '0.0.1'
+          release_name: '0.0.1'
           body: |
             ## Title
             ${{ github.event.pull_request.title }}
@@ -81,6 +55,6 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.bump-with-alpha.outputs.result }}
+          tag: '0.0.1'
           file: MMLibrary.7z
           asset_name: MMLibrary
