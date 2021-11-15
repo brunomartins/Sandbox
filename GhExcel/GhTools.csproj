@@ -38,7 +38,7 @@
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
-        <OutputPath>$(SolutionDir)library/GhExcel</OutputPath>
+        <OutputPath>$(SolutionDir)library/GhTools</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
@@ -49,11 +49,11 @@
   <!--https://docs.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2019-->
   <Target Name="CopyGhFiles" AfterTargets="Build">
 	  <ItemGroup>
-		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*"/>
+		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
 	  </ItemGroup>
-	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high"/>
-	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/GhExcel"/>
-	  <Message Text="Files copied" Importance="high"/>
+	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/GhTools" />
+	  <Message Text="Files copied" Importance="high" />
   </Target>
 
 </Project>

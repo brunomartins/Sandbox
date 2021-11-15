@@ -1,8 +1,8 @@
-﻿using Core;
-using System;
+﻿using System;
 using System.Linq;
+using Core;
 
-namespace DynExcel
+namespace DynExcel.ExcelTool
 {
     /// <summary>Excel workbook creation.</summary>
     public static class Writer

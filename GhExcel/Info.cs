@@ -1,9 +1,9 @@
-﻿using Core;
-using Grasshopper.Kernel;
-using System;
+﻿using System;
 using System.Drawing;
+using Core;
+using Grasshopper.Kernel;
 
-namespace GhExcel
+namespace GhTools
 {
     public class Info : GH_AssemblyInfo
     {
