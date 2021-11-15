@@ -1,0 +1,93 @@
+name: Create release
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+
+env:
+  PROJECT_CORE_PATH: 'Core/Core.csproj'
+  PROJECT_GH_PATH: 'GhTools/GhTools.csproj'
+  PROJECT_DYN_PATH: 'DynTools/DynTools.csproj'
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  TAG_NAME: ${{ github.event.release.tag_name }}
+
+jobs:
+  build:
+    environment:
+      name: 'NuGet'
+      url: https://www.nuget.org/packages/PipelineBasic
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+
+      - name: 🚧 Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      - name: ⚙️ Get previous tag.
+        id: version
+        run: |
+          lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
+          echo "::set-output name=tag::$lastTag"
+      - name: ⚙️ Bump if alpha.
+        id: bump-with-alpha
+        uses: actions/github-script@v3
+        with:
+          result-encoding: string
+          script: |
+                const incoming = "${{steps.version.outputs.tag}}"
+                console.log("Incoming Tag: " + incoming)
+                if(incoming.includes('alpha')) {
+                  const oldNum = incoming.match(/alpha[.]*(\d+)/)[1]
+                  const newNum = parseInt(oldNum)+1
+                  const newTag = incoming.replace(/alpha.*\d+/, `alpha.${newNum}`)
+                  console.log("New Tag: " + newTag)
+                  return newTag
+                }
+                else {
+                  const newTag =incoming +'-alpha.0'
+                  console.log("New Tag: " + newTag)
+                  return newTag
+                }
+      
+      - name: 🔧 Restore nuget with dotnet
+        run: nuget restore .\MMLibrary.sln
+      
+      - name: 🧱 Build project
+        run: dotnet build --no-restore --configuration Release -p:Version=${{ steps.bump-with-alpha.outputs.result }}
+        
+      - name: 📘 Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.bump-with-alpha.outputs.result }}
+          release_name: ${{ steps.bump-with-alpha.outputs.result }}
+          body: |
+            ## Title
+            ${{ github.event.pull_request.title }}
+            
+            ## Body
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+      
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library
+
+      - name: 📤 Upload library to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.bump-with-alpha.outputs.result }}
+          file: MMLibrary.7z
+          asset_name: MMLibrary

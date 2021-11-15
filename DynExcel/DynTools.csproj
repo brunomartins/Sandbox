@@ -57,9 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reader.cs" />
+    <Compile Include="ExcelTool\Reader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Writer.cs" />
+    <Compile Include="ExcelTool\Writer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="manifests\DynExcel_DynamoCustomization.xml" />
@@ -78,7 +78,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <PropertyGroup>
-      <PackageName>DynExcel</PackageName>
+      <PackageName>DynTools</PackageName>
       <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
       <BinFolder>$(PackageFolder)bin\</BinFolder>
       <ExtraFolder>$(PackageFolder)extra\</ExtraFolder>

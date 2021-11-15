@@ -4,10 +4,10 @@
         <name>DynExcel</name>
     </assembly>
     <members>
-        <member name="T:DynExcel.Reader">
+        <member name="T:DynExcel.ExcelTool.Reader">
             <summary>Excel workbook entry point.</summary>
         </member>
-        <member name="M:DynExcel.Reader.SheetNames(System.String)">
+        <member name="M:DynExcel.ExcelTool.Reader.SheetNames(System.String)">
             <summary>
             Gets all the sheet names stored in the excel file.
             </summary>
@@ -15,7 +15,7 @@
             <returns>The sheet names.</returns>
             <search>excel, read, sheet</search>
         </member>
-        <member name="M:DynExcel.Reader.SheetData(System.String,System.Object,System.String)">
+        <member name="M:DynExcel.ExcelTool.Reader.SheetData(System.String,System.Object,System.String)">
             <summary>
             Gets the data into the selected sheet.
             </summary>
@@ -25,10 +25,10 @@
             <returns name="data">The excel sheet content.</returns>
             <search>excel read</search>
         </member>
-        <member name="T:DynExcel.Writer">
+        <member name="T:DynExcel.ExcelTool.Writer">
             <summary>Excel workbook creation.</summary>
         </member>
-        <member name="M:DynExcel.Writer.Excel(System.String,System.String,System.String,System.String[],System.Object[][],System.Boolean)">
+        <member name="M:DynExcel.ExcelTool.Writer.Excel(System.String,System.String,System.String,System.String[],System.Object[][],System.Boolean)">
             <summary>
             Saves an excel file at the given path.
             </summary>

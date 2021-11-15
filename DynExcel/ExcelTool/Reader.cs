@@ -1,8 +1,8 @@
-﻿using Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using Core;
 
-namespace DynExcel
+namespace DynExcel.ExcelTool
 {
     /// <summary>Excel workbook entry point.</summary>
     public static class Reader
