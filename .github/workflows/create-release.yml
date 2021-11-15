@@ -24,11 +24,9 @@ jobs:
         with: 
           fetch-depth: 0
 
-      - name: 🚧 Setup .NET Framework
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 4.8
-
+      - name: 🚧 Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        
       - name: ⚙️ Get previous tag.
         id: version
         run: |
@@ -59,7 +57,8 @@ jobs:
         run: nuget restore ./MMLibrary.sln
       
       - name: 🧱 Build project
-        run: dotnet build --no-restore --configuration Release -p:Version=${{ steps.bump-with-alpha.outputs.result }}
+        run: |
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:Version=${{ steps.bump-with-alpha.outputs.result }}
         
       - name: 📘 Create Release
         id: create_release
