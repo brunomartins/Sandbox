@@ -7,9 +7,6 @@ on:
       - main
 
 env:
-  PROJECT_CORE_PATH: 'Core/Core.csproj'
-  PROJECT_GH_PATH: 'GhTools/GhTools.csproj'
-  PROJECT_DYN_PATH: 'DynTools/DynTools.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
   TAG_NAME: ${{ github.event.release.tag_name }}
 
@@ -27,10 +24,10 @@ jobs:
         with: 
           fetch-depth: 0
 
-      - name: 🚧 Setup .NET Core
+      - name: 🚧 Setup .NET Framework
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 4.8
 
       - name: ⚙️ Get previous tag.
         id: version
