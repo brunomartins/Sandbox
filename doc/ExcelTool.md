@@ -1,4 +1,4 @@
-# MMLib, a library of custom nodes for Grasshopper and Dynamo.
+# Excel Tool
 ![image](https://user-images.githubusercontent.com/57708659/136891496-44aaa703-f6be-491b-9530-a9dfc9f72236.png)
 
 I know what are you thinking! Another Excel tool! There are tons already! And you are correct, but here is why those tons of tools and more could be a problem:
@@ -11,13 +11,6 @@ I know what are you thinking! Another Excel tool! There are tons already! And yo
 * You can say, ok but Revit has a reader node out of the box, yep true, but if you need other functions what do you do? And also if you are one of the unlucky like me you have to re-install office 360 every time windows make an update, from dynamo [forum](https://forum.dynamobim.com/t/excel-data-importexcel-operation-failed/62197/19) ![image](https://user-images.githubusercontent.com/57708659/136896633-a69c93a9-b615-4f64-93d9-5c69d170d07e.png)
 * Grasshoper hasn't a vanilla node to read an excel file, so you will end up with the same problems described above.
 
-Having our own library of tools allow us:
-* We can implement all the functions we need to make everyone's everyday job easier and more integrated with our workflows.
-* You don't need to install multiple libraries creating problems of usabilities across teams.
-* We maintain and improve it.
-
-This is why I made it, and I hope we can expand with more tools, excel tool is just a little thing!
-
 ## Description 
 The tool is composed of 3 nodes:
 * Reader
@@ -29,32 +22,5 @@ The tool is composed of 3 nodes:
 * Writer
   1. writes an excel file.
 
-## Repository Ownership
-* **Practice**: Digital Delivery
-* **Sector**: Built Environment
-* **Original Author(s)** [Mirco Bianchini](https://github.com/sonomirco)
-* **Contact Details for Current Repository Owner(s)** mirco.bianchini@mottmac.com
-
-## Installation Instructions
-![image](https://user-images.githubusercontent.com/57708659/136916906-179b1497-ef9d-42f9-9406-96d5dbda7352.png)
-### If you download the project [unblock](https://winaero.com/how-to-unblock-files-downloaded-from-internet-in-windows-10/) it!!
-Inside the library folder: <br/>
-### For Grasshopper
-* Copy the GhExcel folder into the local folder:<br/> 
-``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
-### For Dynamo in Revit
-* Copy the DynExcel folder into the local folder:<br/>
-``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
-### For Dynamo in Civil3D
-* Copy the DynExcel folder into the local folder:<br/>
-``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
-
-## Tested on
-* **Rhino version**: 7
-* **DynamoSandbox version**: 2.12
-
-## Running the Code
-Example files are provided into the GhExcel and DynExcel folders.
-
 ### Tags 
-Grasshopper, Dynamo, MMLibrary, Excel
+Grasshopper, Dynamo, Excel
