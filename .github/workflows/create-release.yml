@@ -59,7 +59,7 @@ jobs:
                 }
       
       - name: 🔧 Restore nuget with dotnet
-        run: nuget restore .\MMLibrary.sln
+        run: nuget restore ./MMLibrary.sln
       
       - name: 🧱 Build project
         run: dotnet build --no-restore --configuration Release -p:Version=${{ steps.bump-with-alpha.outputs.result }}
