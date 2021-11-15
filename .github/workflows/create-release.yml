@@ -50,7 +50,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: my-event
-          client-payload: '{"revision": ${{ steps.bump-with-alpha.outputs.result }}}'          
+          client-payload: '{"revision": "${{ steps.bump-with-alpha.outputs.result }}"}'          
                 
                 
   build:
