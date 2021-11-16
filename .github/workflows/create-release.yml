@@ -62,8 +62,8 @@ jobs:
       - name: ⚙️ Read the file.
         id: read-file
         run: |
-          value =`cat revision.txt`
-          echo '::set-ouput name=TAG::$value'
+          const value =`cat revision.txt`
+          echo '::set-ouput name=TAG::value'
           
       - name: 📘 Create Release
         id: create_release
