@@ -16,7 +16,7 @@ jobs:
           
       - name: 💾 7Zip library
         #working-directory: ./library
-        run: 7z a -t7z -mx=9 MMLibrary.7z .\library\* -x!*.gitignore
+        run: 7z a -t7z -mx=9 MMLibrary.7z .\library -x!*.gitignore
         
       - name: Upload revision
         uses: actions/upload-artifact@v2
