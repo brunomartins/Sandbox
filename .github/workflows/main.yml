@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools .doc/ExcelTool.md
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools ./doc/ExcelTool.md
         
       - name: Upload revision
         uses: actions/upload-artifact@v2
