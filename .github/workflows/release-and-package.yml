@@ -15,5 +15,5 @@ jobs:
           fetch-depth: 0
           
       - name: 💾 7Zip library
-        run: cd ./library
-             7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
+        working-directory: ./library
+        run: 7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
