@@ -60,10 +60,13 @@ jobs:
           name: revision
           
       - shell: bash
+        name: export
         id: read-file
         run: |
           value=`cat revision.txt`
+          export VAL=$value
           echo "::set-ouput name=TAG::$value"
+          echo "::set-env name=FOO::$VAL"
           
       - run: echo "${{steps.read-file.outputs.TAG}}"
-             echo "${{steps.read-file.outputs}}"
+             echo "${{env.FOO}}"
