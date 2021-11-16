@@ -1,16 +1,19 @@
 name: Repository Dispatch
 on:
-  repository_dispatch:
-    types: [my-event]
+  push:
+    branches: main
   
 jobs:
   build:
     #if: github.event.action == 'closed' && github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: 🛎 Checkout repo
         uses: actions/checkout@v2
         with: 
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.revision }}
+          fetch-depth: 0
+          
+      - name: 💾 7Zip library
+        run: cd ./library
+             7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
