@@ -32,8 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.client_payload.version }}
-          release_name: ${{ github.event.client_payload.version }}
+          tag_name: ${{ github.event.client_payload.revision }}
+          release_name: ${{ github.event.client_payload.revision }}
           body: |
             ## Title
             ${{ github.event.pull_request.title }}
@@ -50,6 +50,6 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.event.client_payload.version }}
+          tag: ${{ github.event.client_payload.revision }}
           file: MMLibrary.7z
           asset_name: MMLibrary
