@@ -100,7 +100,7 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z .\library\* -x!*.gitignore
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/* -x!*.gitignore
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
@@ -108,6 +108,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.version_state }}
           file: MMLibrary.7z
-          asset_name: MMLibrary
+          asset_name: MMLibrary.7z
           overwrite: true
           
