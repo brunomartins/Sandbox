@@ -50,7 +50,7 @@ jobs:
   upload:
     name: upload
     needs: setup
-    if: github.event_name == 'repository_dispatch'
+    if: github.event == 'repository_dispatch'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
