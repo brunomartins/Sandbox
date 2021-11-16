@@ -6,7 +6,7 @@ Having our own library means:
 
 I hope we can expand with more tools!
 
-## Tools 
+## 🧰 Tools 
 [Excel tools](https://github.com/mottmacdonaldglobal/MMLib/blob/main/doc/ExcelTool.md)
 
 ## 💿 Installation Instructions
