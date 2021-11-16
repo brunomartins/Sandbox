@@ -44,5 +44,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          repository: mottmacdonaldglobal/MMLib
           event-type: my-event
           client-payload: '{"ref": "${{ github.ref }}", "revision": "${{ steps.bump-with-alpha.outputs.result }}"}'
