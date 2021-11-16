@@ -1,10 +1,10 @@
 # MMLib, a library of custom nodes for Grasshopper and Dynamo.
-Having our own library of tools allow us:
+Having our own library means:
 * We can implement all the functions we need to make everyone's everyday job easier and more integrated with our workflows.
 * You don't need to install multiple libraries creating problems of usabilities across teams.
 * We maintain and improve it.
 
-This is why I made it, and I hope we can expand with more tools!
+I hope we can expand with more tools!
 
 ## Tools 
 [Excel tools](https://github.com/mottmacdonaldglobal/MMLib/blob/main/doc/ExcelTool.md)
@@ -27,6 +27,10 @@ Inside the MMLibrary folder: <br/>
 ### For Dynamo in Civil3D
 * Copy the DynExcel folder into the local folder:<br/>
 ``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
+
+## Feedback
+Please use **GitHub issues** for your feedback, reporting bugs or suggesting new tools.
+Follow these steps on how to create an [issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue)
 
 ## Repository Ownership
 * **Practice**: Digital Delivery
