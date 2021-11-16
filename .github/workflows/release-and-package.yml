@@ -8,13 +8,11 @@ on:
 jobs:
   build:
     #if: github.event.action == 'closed' && github.event.pull_request.merged == true
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: 🛎 Checkout repo
         uses: actions/checkout@v2
         with: 
           ref: ${{ github.event.client_payload.ref }}
-          fetch-depth: 0
-        
       - run: echo ${{ github.event.client_payload.revision }}
