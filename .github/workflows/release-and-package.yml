@@ -1,7 +1,5 @@
 name: Repository Dispatch
 on:
-  push:
-    branches: [main]
   repository_dispatch:
     types: [my-event]
   
