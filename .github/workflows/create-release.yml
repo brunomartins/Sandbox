@@ -50,7 +50,7 @@ jobs:
   upload:
     name: upload
     needs: setup
-    if: github.event_type == 'my-event'
+    if: github.event_name == 'push'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
