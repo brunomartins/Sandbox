@@ -59,7 +59,7 @@ jobs:
         with:
           name: revision
           
-      - name: ⚙️ Read the file.
+      - shell: bash
         id: read-file
         run: |
           value=`cat revision.txt`
