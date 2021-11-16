@@ -62,3 +62,20 @@ jobs:
         run: |
           value=`cat revision.txt`
           echo $value
+          
+      - name: 📘 Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: $value
+          release_name: $value
+          body: |
+            ## Title
+            ${{ github.event.pull_request.title }}
+            
+            ## Body
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
