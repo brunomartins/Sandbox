@@ -54,18 +54,33 @@ jobs:
     needs: setup
     runs-on: windows-latest
     steps:
-      - name: Download math result for job 1
+      - name: 📥 Download artifact
         uses: actions/download-artifact@v2
         with:
           name: revision
           
       - shell: bash
-        name: export
-        id: read-file
+        name: 📄 read file
         run: |
           value=`cat revision.txt`
-          echo "action_state=$value" >> $GITHUB_ENV
-          echo "::set-ouput name=TAG::$value"
+          echo "version_state=$value" >> $GITHUB_ENV
+          echo "${{ env.version_state }}"
           
-      - run: echo "${{ steps.read-file.outputs.TAG }}"
-             echo "${{ env.action_state }}"
+      - name: 📘 Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.version_state }}
+          release_name: ${{ env.version_state }}
+          body: |
+            ## Title
+            ${{ github.event.pull_request.title }}
+            
+            ## Body
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+          
+          
