@@ -1,0 +1,38 @@
+name: Upload library to the release
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: ⚙️ Get previous last tag.
+        id: version
+        run: |
+          lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
+          echo "::set-output name=tag::$lastTag"
+          
+      - name: ⚙️ Get revision.
+      - id : get_release
+        uses: cardinalby/git-get-release-action@v1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{steps.version.outputs.tag}}
+    
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+          
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools ./library/installation.txt
+      
+      - name: 📜 Display
+        run: |
+          echo ${{ steps.get_release.outputs.tag_name }}
+          echo ${{ steps.get_release.outputs.upload_url }}
+          echo ${{ steps.get_release.outputs.published_at }}
