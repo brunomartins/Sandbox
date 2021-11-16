@@ -41,7 +41,7 @@ jobs:
                   return newTag
                 }
                 
-      - name: Storing data
+      - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
