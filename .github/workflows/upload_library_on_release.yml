@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
+    
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+          
       - name: ⚙️ Get previous last tag.
         id: version
         run: |
@@ -22,11 +28,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag: ${{steps.version.outputs.tag}}
-    
-      - name: 🛎 Checkout repo
-        uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
           
       - name: 💾 7Zip library
         run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools ./library/installation.txt
