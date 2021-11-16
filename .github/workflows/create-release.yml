@@ -63,7 +63,7 @@ jobs:
         id: read-file
         run: |
           value=`cat revision.txt`
-          echo '::set-ouput name=TAG::value'
+          echo "::set-ouput name=TAG::$value"
           
       - name: 📘 Create Release
         id: create_release
