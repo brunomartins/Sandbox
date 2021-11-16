@@ -8,7 +8,6 @@ jobs:
   setup:
     name: setup
     runs-on: ubuntu-latest
-
     steps:
       - name: 🛎 Checkout repo
         uses: actions/checkout@v2
@@ -47,3 +46,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: my-event
           client-payload: '{"revision": "${{ steps.bump-with-alpha.outputs.result }}"}'
+
+  upload:
+    name: upload
+    needs: setup
+    if: github.event_name == 'push'
+    runs-on: windows-latest
+    steps:
+      - name: Check
+        shell: bash
+        run: |
+          echo ${{ github.event.client_payload.revision }} 
