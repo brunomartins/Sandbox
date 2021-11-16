@@ -58,9 +58,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: revision
+      - name: ⚙️ Read the file.
+        id: read-file
       - shell: bash
         run: |
-          value=`cat revision.txt`
+          const tag =`cat revision.txt`
           echo $value
           
       - name: 📘 Create Release
@@ -69,8 +71,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{value}}
-          release_name: ${{value}}
+          tag_name: ${{steps.read-file.outputs.tag}}
+          release_name: ${{steps.read-file.outputs.tag}}
           body: |
             ## Title
             ${{ github.event.pull_request.title }}
