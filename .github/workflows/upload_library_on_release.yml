@@ -1,8 +1,9 @@
 name: Upload library to the release
 
 on:
-  push:
-    branches: main
+  release:
+    types:
+      - published
 
 jobs:
   build:
@@ -21,19 +22,14 @@ jobs:
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
           echo "::set-output name=tag::$lastTag"
           
-      - name: ⚙️ Get revision.
-        id : get_release
-        uses: cardinalby/git-get-release-action@v1.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{steps.version.outputs.tag}}
-          
       - name: 💾 7Zip library
         run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools ./library/installation.txt
       
-      - name: 📜 Display
-        run: |
-          echo ${{ steps.get_release.outputs.tag_name }}
-          echo ${{ steps.get_release.outputs.upload_url }}
-          echo ${{ steps.get_release.outputs.published_at }}
+      - name: 📤 Upload library to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.get_release.outputs.tag_name }}
+          file: MMLibrary.7z
+          asset_name: MMLibrary.7z
+          overwrite: false
