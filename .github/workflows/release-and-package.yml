@@ -1,8 +1,7 @@
-name: Create release and upload the library package
-
+name: Repository Dispatch
 on:
   repository_dispatch:
-    types: my-event
+    types: [my-event]
   
 jobs:
   build:
