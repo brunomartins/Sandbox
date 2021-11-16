@@ -6,7 +6,7 @@ on:
   
 jobs:
   setup:
-    name: setup
+    name: bump-revision
     runs-on: ubuntu-latest
     steps:
       - name: 🛎 Checkout repo
@@ -40,10 +40,25 @@ jobs:
                   return newTag
                 }
                 
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v1
+      - shell: bash
+        run: |
+          expr "${{steps.bump-with-alpha.outputs.result}}" > revision.txt
+      - name: Upload revision
+        uses: actions/upload-artifact@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: mottmacdonaldglobal/MMLib
-          event-type: my-event
-          client-payload: '{"ref": "${{ github.ref }}", "revision": "${{ steps.bump-with-alpha.outputs.result }}"}'
+          name: revision
+          path: revision.txt
+
+  create-release:
+    name: release
+    needs: setup
+    runs-on: windows-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: revision
+      - shell: bash
+        run: |
+          value=`cat revision.txt`
+          echo $value
