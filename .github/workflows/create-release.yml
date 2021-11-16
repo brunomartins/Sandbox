@@ -54,6 +54,17 @@ jobs:
     needs: setup
     runs-on: windows-latest
     steps:
+    
+      - name: 🚧 Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        
+      - name: 🔧 Restore nuget with dotnet
+        run: nuget restore ./MMLibrary.sln
+      
+      - name: 🧱 Build project
+        run: |
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release"
+          
       - name: 📥 Download artifact
         uses: actions/download-artifact@v2
         with:
@@ -83,4 +94,15 @@ jobs:
           draft: false
           prerelease: false
           
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
+
+      - name: 📤 Upload library to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version_state }}
+          file: MMLibrary.7z
+          asset_name: MMLibrary
+          overwrite: true
           
