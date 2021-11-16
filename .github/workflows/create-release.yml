@@ -1,7 +1,7 @@
 name: Create release tag
 
 on:
-  push:
+  pull_request:
     branches: main
   
 jobs:
