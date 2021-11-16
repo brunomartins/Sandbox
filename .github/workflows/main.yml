@@ -1,0 +1,25 @@
+name: Test actions
+
+on:
+  push:
+    branches: main
+  
+jobs:
+  setup:
+    name: bump-revision
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+          
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools
+        
+      - name: Upload revision
+        uses: actions/upload-artifact@v2
+        with:
+          name: revision
+          path: MMLibrary.7z
