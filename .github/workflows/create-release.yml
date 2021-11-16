@@ -65,19 +65,5 @@ jobs:
           value=`cat revision.txt`
           echo "::set-ouput name=TAG::$value"
           
-      - name: 📘 Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{steps.read-file.outputs.TAG}}
-          release_name: ${{steps.read-file.outputs.TAG}}
-          body: |
-            ## Title
-            ${{ github.event.pull_request.title }}
-            
-            ## Body
-            ${{ github.event.pull_request.body }}
-          draft: false
-          prerelease: false
+      - run: echo "${{steps.read-file.outputs.TAG}}"
+             echo "${{steps.read-file.outputs}}"
