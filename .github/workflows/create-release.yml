@@ -45,14 +45,18 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: my-event
-          client-payload: '{"revision": "${{ steps.bump-with-alpha.outputs.result }}"}'
+          client-payload: '{"ref": "${{ github.ref }}", "revision": "${{ steps.bump-with-alpha.outputs.result }}"}'
 
   upload:
     name: upload
     needs: setup
-    if: github.event_name == 'push'
+    if: github.event_name == 'repository_dispatch'
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+          
       - name: Check
         shell: bash
         run: |
