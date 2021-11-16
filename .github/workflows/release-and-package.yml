@@ -1,0 +1,54 @@
+name: Create release and upload the library package
+
+on:
+  repository_dispatch:
+    types: my-event
+  
+jobs:
+  build:
+    #if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: windows-latest
+
+    steps:
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+
+      - name: 🚧 Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        
+      - name: 🔧 Restore nuget with dotnet
+        run: nuget restore ./MMLibrary.sln
+      
+      - name: 🧱 Build project
+        run: |
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release"
+        
+      - name: 📘 Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.client_payload.version }}
+          release_name: ${{ github.event.client_payload.version }}
+          body: |
+            ## Title
+            ${{ github.event.pull_request.title }}
+            
+            ## Body
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+      
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
+
+      - name: 📤 Upload library to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.event.client_payload.version }}
+          file: MMLibrary.7z
+          asset_name: MMLibrary
