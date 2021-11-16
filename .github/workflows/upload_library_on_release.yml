@@ -16,7 +16,7 @@ jobs:
           echo "::set-output name=tag::$lastTag"
           
       - name: ⚙️ Get revision.
-      - id : get_release
+        id : get_release
         uses: cardinalby/git-get-release-action@v1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
