@@ -1,7 +1,7 @@
 name: Create release tag
 
 on:
-  pull_request:
+  push:
     branches: main
   
 jobs:
@@ -100,7 +100,7 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z DynTools\GhTools\
+        run: 7z a -t7z -mx=9 MMLibrary.7z .\library\* -x!*.gitignore
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
