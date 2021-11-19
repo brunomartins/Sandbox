@@ -2,7 +2,7 @@
   "license": "MIT",
   "file_hash": null,
   "name": "MMLib",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A library of tools.",
   "group": "",
   "keywords": [
@@ -20,6 +20,6 @@
   "repository_url": "",
   "contains_binaries": true,
   "node_libraries": [
-    "DynExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+    "DynTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
   ]
 }

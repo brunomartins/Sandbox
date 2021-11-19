@@ -77,7 +77,9 @@ namespace Core
                     int lastColumn = 0;
                     for (int i = 0; i <= sheetObj.LastRowNum; i++)
                     {
-                        lastColumn = Math.Max(lastColumn, sheetObj.GetRow(i).LastCellNum);
+                        var row = sheetObj.GetRow(i);
+                        if(row == null) continue;
+                        lastColumn = Math.Max(lastColumn, row.LastCellNum);
                     }
                     sheetRange = (sheetObj.FirstRowNum, sheetObj.LastRowNum, 0, lastColumn);
                 }

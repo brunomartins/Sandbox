@@ -1,7 +1,6 @@
 ﻿using NPOI.HSSF.Util;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -10,7 +9,7 @@ namespace Core
 {
     public static class SpreadSheetWriter
     {
-        public static string Excel(string path, string fileName, string[] sheetNames, Dictionary<string, string[]> headers, Dictionary<string, object[][]> data, bool save)
+        public static string Excel(string path, string fileName, Sheet[] sheets, bool save)
         {
             string filePath = $"{path}\\{fileName}.xlsx";
             if (!save)
@@ -33,30 +32,30 @@ namespace Core
             headerCellStyle.Alignment = HorizontalAlignment.Center;
             headerCellStyle.SetFont(font);
 
-            foreach (string sheet in sheetNames)
+            foreach (Sheet sheet in sheets)
             {
-                ISheet excelSheet = workbook.CreateSheet(sheet);
+                ISheet excelSheet = workbook.CreateSheet(sheet.Name);
 
-                int rawCount = data[sheet][0].Length + 1;
+                int rawCount = sheet.Data[0].Length + 1;
 
                 for (int i = 0; i < rawCount; i++)
                 {
                     IRow row = excelSheet.CreateRow(i);
                     if (i == 0)
                     {
-                        for (int j = 0; j < headers[sheet].Length; j++)
+                        for (int j = 0; j < sheet.Header.Length; j++)
                         {
                             ICell cell = row.CreateCell(j, CellType.String);
-                            cell.SetCellValue(headers[sheet][j]);
+                            cell.SetCellValue(sheet.Header[j]);
                             cell.CellStyle = headerCellStyle;
                         }
                         continue;
                     }
 
-                    for (int j = 0; j < data[sheet].Length; j++)
+                    for (int j = 0; j < sheet.Data.Length; j++)
                     {
                         ICell cell = row.CreateCell(j, CellType.String);
-                        cell.SetCellValue(data[sheet][j][i - 1].ToString());
+                        cell.SetCellValue(sheet.Data[j][i - 1].ToString());
                     }
                 }
             }

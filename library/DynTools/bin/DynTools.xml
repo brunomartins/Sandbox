@@ -28,17 +28,25 @@
         <member name="T:DynTools.ExcelTool.Writer">
             <summary>Excel workbook creation.</summary>
         </member>
-        <member name="M:DynTools.ExcelTool.Writer.Excel(System.String,System.String,System.String[],System.Collections.Generic.Dictionary{System.String,System.String[]},System.Collections.Generic.Dictionary{System.String,System.Object[][]},System.Boolean)">
+        <member name="M:DynTools.ExcelTool.Writer.Excel(System.String,System.String,Core.Sheet[],System.Boolean)">
             <summary>
             Saves an excel file at the given path.
             </summary>
             <param name="path">The directory where to save the file.</param>
             <param name="fileName">The name of the file.</param>
-            <param name="sheetNames">The name of sheet, where the data will be stored.</param>
-            <param name="headers">The headers, matching the number of columns.</param>
-            <param name="data">The data to write.</param>
+            <param name="sheets">The sheets that will be printed into the workbook.</param>
             <param name="save">True the file is written.</param>
             <returns>An information message of the result.</returns>
+            <search>excel, write</search>
+        </member>
+        <member name="M:DynTools.ExcelTool.Writer.Sheet(System.String,System.String[],System.Object[][])">
+            <summary>
+            Create a sheet with the data required.
+            </summary>
+            <param name="sheetName">The name of sheet, where the data will be stored.</param>
+            <param name="headers">The headers, matching the number of columns.</param>
+            <param name="data">The data to write.</param>
+            <returns>A sheet read to be written.</returns>
             <search>excel, write</search>
         </member>
     </members>

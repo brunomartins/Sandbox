@@ -13,25 +13,31 @@ namespace DynTools.ExcelTool
         /// </summary>
         /// <param name="path">The directory where to save the file.</param>
         /// <param name="fileName">The name of the file.</param>
-        /// <param name="sheetNames">The name of sheet, where the data will be stored.</param>
-        /// <param name="headers">The headers, matching the number of columns.</param>
-        /// <param name="data">The data to write.</param>
+        /// <param name="sheets">The sheets that will be printed into the workbook.</param>
         /// <param name="save">True the file is written.</param>
         /// <returns>An information message of the result.</returns>
         /// <search>excel, write</search>
-        public static string Excel(string path, string fileName, string[] sheetNames, Dictionary<string, string[]> headers, Dictionary<string, object[][]> data, bool save)
+        public static string Excel(string path, string fileName, Sheet[] sheets, bool save)
         {
-            if (data.Any(branch => branch.Value.Length != data.First().Value.Length))
+            if (sheets.Length == 0 || sheets == null)
             {
-                throw new Exception("Inconsistency number of elements between the branches.");
+                throw new Exception("Sheets can't be empty.");
             }
 
-            if (sheetNames.Length != data.Count || sheetNames.Length != headers.Count)
-            {
-                throw new Exception("Inconsistency data structure between sheetNames, headers and data.");
-            }
+            return SpreadSheetWriter.Excel(path, fileName, sheets, save);
+        }
 
-            return SpreadSheetWriter.Excel(path, fileName, sheetNames, headers, data, save);
+        /// <summary>
+        /// Create a sheet with the data required.
+        /// </summary>
+        /// <param name="sheetName">The name of sheet, where the data will be stored.</param>
+        /// <param name="headers">The headers, matching the number of columns.</param>
+        /// <param name="data">The data to write.</param>
+        /// <returns>A sheet read to be written.</returns>
+        /// <search>excel, write</search>
+        public static Sheet Sheet(string sheetName, string[] headers, object[][] data)
+        {
+            return new Sheet(sheetName, headers, data);
         }
     }
 }
