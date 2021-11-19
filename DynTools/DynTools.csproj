@@ -7,8 +7,8 @@
     <ProjectGuid>{60534C9F-5FD2-414A-9A4E-CF793C3A2CC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynExcel</RootNamespace>
-    <AssemblyName>DynExcel</AssemblyName>
+    <RootNamespace>DynTools</RootNamespace>
+    <AssemblyName>DynTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -22,7 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>bin\Debug\DynExcel.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\DynTools.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -62,7 +62,6 @@
     <Compile Include="ExcelTool\Writer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="manifests\DynExcel_DynamoCustomization.xml" />
     <None Include="ExampleFiles\ExampleFile.dyn" />
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +73,9 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="manifests\DynTools_DynamoCustomization.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <PropertyGroup>

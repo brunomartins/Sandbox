@@ -1,9 +1,9 @@
 {
   "license": "MIT",
   "file_hash": null,
-  "name": "DynExcel",
-  "version": "1.0.0",
-  "description": "A package to read and write excel sheets. It is able to read xlsm, xlsx, xls and csv",
+  "name": "MMLib",
+  "version": "0.0.1",
+  "description": "A library of tools.",
   "group": "",
   "keywords": [
     "NPOI",

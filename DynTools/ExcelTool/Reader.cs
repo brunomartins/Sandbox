@@ -2,7 +2,7 @@
 using System.IO;
 using Core;
 
-namespace DynExcel.ExcelTool
+namespace DynTools.ExcelTool
 {
     /// <summary>Excel workbook entry point.</summary>
     public static class Reader
