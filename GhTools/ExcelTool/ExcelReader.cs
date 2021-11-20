@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Core;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
+using System;
+using System.Collections.Generic;
 
 namespace GhTools.ExcelTool
 {
@@ -27,7 +26,7 @@ namespace GhTools.ExcelTool
         {
             pManager.AddTextParameter("FilePath", "FP", "The directory of the file.", GH_ParamAccess.item);
             pManager.AddGenericParameter("Sheets", "SH", "Sheets to read, you can pass the name of sheet as a string or integer as the order. This is not need for csv file.", GH_ParamAccess.list);
-            pManager.AddTextParameter("CellRange", "CR", 
+            pManager.AddTextParameter("CellRange", "CR",
                 "Intervals defining the number of rows and columns will be read. /n/" +
                 "A standard area ref (e.g. B1:D8)", GH_ParamAccess.list, new List<string> { String.Empty });
             pManager[2].Optional = true;
@@ -53,7 +52,8 @@ namespace GhTools.ExcelTool
             for (int i = 0; i < sheets.Count; i++)
             {
                 object sheetValue = (sheets[i] is GH_Number val) ? (object)val.QC_Int() : sheets[i].ToString();
-                var result = SpreadSheetReader.Excel(path, sheetValue, cellRanges[i]);
+                var cellRange = (cellRanges.Count < sheets.Count) ? cellRanges[0] : cellRanges[i];
+                var result = SpreadSheetReader.Excel(path, sheetValue, cellRange);
 
                 int count = 0;
                 int[] dataPath = new int[2];

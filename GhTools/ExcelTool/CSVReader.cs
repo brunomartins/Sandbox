@@ -2,7 +2,6 @@
 using Grasshopper;
 using Grasshopper.Kernel;
 using System;
-using System.Collections.Generic;
 
 namespace GhTools.ExcelTool
 {
@@ -26,7 +25,7 @@ namespace GhTools.ExcelTool
             pManager.AddTextParameter("FilePath", "FP", "The directory of the file.", GH_ParamAccess.item);
             pManager.AddTextParameter("CellRange", "CR",
                 "Intervals defining the number of rows and columns will be read. /n/" +
-                "A standard area ref (e.g. B1:D8)", GH_ParamAccess.list, new List<string> { String.Empty });
+                "A standard area ref (e.g. B1:D8)", GH_ParamAccess.item, String.Empty);
             pManager[1].Optional = true;
         }
 
@@ -41,7 +40,7 @@ namespace GhTools.ExcelTool
             string cellRanges = String.Empty;
 
             if (!DA.GetData(0, ref path)) return;
-            if (!DA.GetData(1, ref path)) return;
+            DA.GetData(1, ref cellRanges);
 
             DataTree<object> data = new DataTree<object>();
             var result = SpreadSheetReader.Csv(path, cellRanges);
