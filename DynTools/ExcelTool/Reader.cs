@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using Core;
 
-namespace DynTools.ExcelTool
+namespace MMLib.ExcelTool
 {
     /// <summary>Excel workbook entry point.</summary>
     public static class Reader
@@ -19,19 +18,28 @@ namespace DynTools.ExcelTool
         }
 
         /// <summary>
-        /// Gets the data into the selected sheet.
+        /// Read the data of the workbook.
         /// </summary>
-        /// <param name="filePath">File filePath, use File.Path.</param>
-        /// <param name="sheet">List of sheet to read, you can pass the name of sheet as a string or integer as the order. This is not need for csv file.</param>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="sheet">List of sheet to read, you can pass the name of sheet as a string or integer as the order</param>
         /// <param name="cellRange">Ranges defining the number of rows and columns will be read. A standard area ref (e.g. "B1:D8").</param>
-        /// <returns name="data">The excel sheet content.</returns>
-        /// <search>excel read</search>
-        public static IEnumerable<object[]> SheetData(string filePath, object sheet, string cellRange = "")
+        /// <returns name="data">The excel content.</returns>
+        /// <search>excel, read</search>
+        public static IEnumerable<object[]> Excel(string filePath, object sheet, string cellRange = "")
         {
-            string fileExtension = Path.GetExtension(filePath);
-            return (fileExtension == ".csv")
-                ? SpreadSheetReader.Csv(filePath, cellRange)
-                : SpreadSheetReader.Excel(filePath, sheet, cellRange);
+            return SpreadSheetReader.Excel(filePath, sheet, cellRange);
+        }
+
+        /// <summary>
+        /// Read the data of the csv.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="cellRange">Ranges defining the number of rows and columns will be read. A standard area ref (e.g. "B1:D8").</param>
+        /// <returns name="data">The csv content.</returns>
+        /// <search>csv, read</search>
+        public static IEnumerable<object[]> CSV(string filePath, string cellRange = "")
+        {
+            return SpreadSheetReader.Csv(filePath, cellRange);
         }
     }
 }

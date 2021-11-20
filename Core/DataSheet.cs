@@ -1,8 +1,8 @@
 ﻿namespace Core
 {
-    public class Sheet
+    public class DataSheet
     {
-        public Sheet(string name, string[] headers, object[][] data)
+        public DataSheet(string name, string[] headers, object[][] data)
         {
             Name = name;
             Header = headers;

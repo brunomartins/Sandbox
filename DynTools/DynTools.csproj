@@ -7,7 +7,7 @@
     <ProjectGuid>{60534C9F-5FD2-414A-9A4E-CF793C3A2CC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynTools</RootNamespace>
+    <RootNamespace>MMLib</RootNamespace>
     <AssemblyName>DynTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -79,7 +79,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <PropertyGroup>
-      <PackageName>DynTools</PackageName>
+      <PackageName>MMLibDyn</PackageName>
       <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
       <BinFolder>$(PackageFolder)bin\</BinFolder>
       <ExtraFolder>$(PackageFolder)extra\</ExtraFolder>

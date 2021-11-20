@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <Version>1.0</Version>
-    <Title>GhExcel</Title>
-    <Description>Description of GhExcel</Description>
+    <Title>GhTools</Title>
+    <Description>Serious of tools used to simplify the day to day work.</Description>
     <TargetExt>.gha</TargetExt>
     <UserSecretsId>04a9d61f-d204-4afb-8e24-38452757b0b5</UserSecretsId>
   </PropertyGroup>
@@ -38,7 +38,7 @@
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
-        <OutputPath>$(SolutionDir)library/GhTools</OutputPath>
+        <OutputPath>$(SolutionDir)library/MMLibGh</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
@@ -52,7 +52,7 @@
 		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
 	  </ItemGroup>
 	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
-	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/GhTools" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/MMLibGh" />
 	  <Message Text="Files copied" Importance="high" />
   </Target>
 

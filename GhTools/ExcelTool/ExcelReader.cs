@@ -9,11 +9,11 @@ using Grasshopper.Kernel.Types;
 
 namespace GhTools.ExcelTool
 {
-    public class Reader : GH_Component
+    public class ExcelReader : GH_Component
     {
-        public Reader()
+        public ExcelReader()
           : base("ExcelReader", "ExcelReader",
-            "This component reads these formats: xlsx, xlsm, csv.",
+            "This component reads these formats: xlsx, xlsm, xls.",
             PackageInfo.Category, PackageInfo.SubCategory)
         {
         }
@@ -52,12 +52,8 @@ namespace GhTools.ExcelTool
 
             for (int i = 0; i < sheets.Count; i++)
             {
-                string fileExtension = Path.GetExtension(path);
                 object sheetValue = (sheets[i] is GH_Number val) ? (object)val.QC_Int() : sheets[i].ToString();
-
-                var result = (fileExtension == ".csv")
-                    ? SpreadSheetReader.Csv(path, cellRanges[i])
-                    : SpreadSheetReader.Excel(path, sheetValue, cellRanges[i]);
+                var result = SpreadSheetReader.Excel(path, sheetValue, cellRanges[i]);
 
                 int count = 0;
                 int[] dataPath = new int[2];

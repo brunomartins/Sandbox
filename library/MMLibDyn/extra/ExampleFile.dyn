@@ -152,12 +152,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"TestFile\";\n\"SheetName\";\n[\"ID\", \"Shape\", \"Area\"];\n[\"SheetName1\", \"SheetName2\"];\n[[\"ID\", \"Shape\", \"Area\"],[\"ID\", \"Shape\", \"Area\"]];",
+      "Code": "\"TestFile\";\n\"SheetName\";\n\"SheetName2\";\n[\"ID\", \"Shape\", \"Area\"];",
       "Id": "834f521a0baa46df8d04d70c7fa67a09",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "50eeaab124c2467cbbe52db9422bdffe",
+          "Id": "163fba87a0394f1dbdced2405e7006c4",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -166,7 +166,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "5eafc4c8d0614fbbbc0afa4fb7fae771",
+          "Id": "02bfc6f4a29b4d59934874eb24e17754",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -175,7 +175,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "e4d7c213f8b84c2087693634b181ae2a",
+          "Id": "dd78a29a70984f0fa07ec1297f13170d",
           "Name": "",
           "Description": "Value of expression at line 3",
           "UsingDefaultValue": false,
@@ -184,18 +184,9 @@
           "KeepListStructure": false
         },
         {
-          "Id": "f3eebdbea9ea402fb18a2fd324ed1b1e",
+          "Id": "73d3904df1f34818bcd93830dfc1478d",
           "Name": "",
           "Description": "Value of expression at line 4",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1fe5072ec374461481ce1efa32d0112c",
-          "Name": "",
-          "Description": "Value of expression at line 5",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -208,12 +199,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "[[[\"001\", \"003\", \"004\"],\n[\"Triangle\", \"Square\", \"Circle\"],\n[10, 50, 60]],\n[[\"001\", \"003\", \"004\"],\n[\"Triangle\", \"Square\", \"Circle\"],\n[10, 50, 60]]];",
+      "Code": "[[\"001\", \"003\", \"004\"],\n[\"Triangle\", \"Square\", \"Circle\"],\n[10, 50, 60]];",
       "Id": "0c11a416b862464ca84c69bfaa7a5e2b",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "9756e4b7bfe14589bf6ce4ecde0aa7ec",
+          "Id": "52d393d03a33486ab49d187fec0efc6a",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -248,7 +239,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport os\r\nOUT = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop') ",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport os\r\nOUT = os.path.expanduser(\"~\\\\Desktop\")",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "e7fe848dac494c4691057999cbe615a7",
@@ -358,22 +349,31 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DesignScript.Builtin.Dictionary.ByKeysValues@string[],var[]..[]",
-      "Id": "4a4675503c5447b88ae27c1e12ba96ed",
+      "FunctionSignature": "DynTools.ExcelTool.Writer.Sheet@string,string[],var[][]",
+      "Id": "0f7a6f504a864e189d03757e022ff41c",
       "Inputs": [
         {
-          "Id": "65590a52caa640849cb11c48f3f49147",
-          "Name": "keys",
-          "Description": "Keys of dictionary\n\nstring[]",
+          "Id": "dd03c1c15715406395a0b0531756c782",
+          "Name": "sheetName",
+          "Description": "The name of sheet, where the data will be stored.\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "e2e7fc44d96c448abc6690eb777d9769",
-          "Name": "values",
-          "Description": "Values of dictionary\n\nvar[]..[]",
+          "Id": "138c8b050b7641579c6b59d807211d2f",
+          "Name": "headers",
+          "Description": "The headers, matching the number of columns.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a692772996448a1a428024aea48c824",
+          "Name": "data",
+          "Description": "The data to write.\n\nvar[][]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -382,9 +382,9 @@
       ],
       "Outputs": [
         {
-          "Id": "58b0659791b44e9ca546b5d6999ee437",
-          "Name": "dictionary",
-          "Description": "Dictionary from keys and values",
+          "Id": "b75dc3071e74466aa79e23da5929a48d",
+          "Name": "var",
+          "Description": "A sheet read to be written.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -392,55 +392,16 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Produces a Dictionary with the supplied keys and values. The number of entries is the shorter of keys or values.\n\nDictionary.ByKeysValues (keys: string[], values: var[]..[]): Dictionary"
+      "Description": "Create a sheet with the data required.\n\nWriter.Sheet (sheetName: string, headers: string[], data: var[][]): var"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DesignScript.Builtin.Dictionary.ByKeysValues@string[],var[]..[]",
-      "Id": "5ffc38e8f3f94d6997210ea2afd22602",
+      "FunctionSignature": "DynTools.ExcelTool.Writer.Excel@string,string,var[],bool",
+      "Id": "357b0fb510684f23b1328ecb96259802",
       "Inputs": [
         {
-          "Id": "509e81a485f14d0696ce70cbf42d426d",
-          "Name": "keys",
-          "Description": "Keys of dictionary\n\nstring[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "6df6a0bb5b634fdf879aaf2a62effd70",
-          "Name": "values",
-          "Description": "Values of dictionary\n\nvar[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "88085659907f4b6eb5fda72be9eebcea",
-          "Name": "dictionary",
-          "Description": "Dictionary from keys and values",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Produces a Dictionary with the supplied keys and values. The number of entries is the shorter of keys or values.\n\nDictionary.ByKeysValues (keys: string[], values: var[]..[]): Dictionary"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DynTools.ExcelTool.Writer.Excel@string,string,string[],var[]..[],var[]..[],bool",
-      "Id": "215db4038cae42378a82cf0e137cea43",
-      "Inputs": [
-        {
-          "Id": "53af49ac3edb4a88b6d85bf7f7a01656",
+          "Id": "932c96e5b1d04436958995f664856c04",
           "Name": "path",
           "Description": "The directory where to save the file.\n\nstring",
           "UsingDefaultValue": false,
@@ -449,7 +410,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "b42e45fa7be94f139926d01b466c067c",
+          "Id": "29c1666930164118bdd8403b180261ef",
           "Name": "fileName",
           "Description": "The name of the file.\n\nstring",
           "UsingDefaultValue": false,
@@ -458,34 +419,16 @@
           "KeepListStructure": false
         },
         {
-          "Id": "811242efff6049698e2bfb023d5c777c",
-          "Name": "sheetNames",
-          "Description": "The name of sheet, where the data will be stored.\n\nstring[]",
+          "Id": "eed74a0daeba4c8cb9470de7bd37483f",
+          "Name": "sheets",
+          "Description": "The sheets that will be printed into the workbook.\n\nvar[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "182a6008a0034869aa2c782ec49ef8e9",
-          "Name": "headers",
-          "Description": "The headers, matching the number of columns.\n\nvar[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "eb2db9deab124289b97a67e3278d28f9",
-          "Name": "data",
-          "Description": "The data to write.\n\nvar[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "24c59ca51d9e46a3a06739f3b3743a2f",
+          "Id": "0aa4978d3b8d407fbd56b311abb3e412",
           "Name": "save",
           "Description": "True the file is written.\n\nbool",
           "UsingDefaultValue": false,
@@ -496,7 +439,7 @@
       ],
       "Outputs": [
         {
-          "Id": "ab1c1ee2d63e4458a6e9440714d08c1c",
+          "Id": "80c7435440d3453398a3fa7cca3461af",
           "Name": "string",
           "Description": "An information message of the result.",
           "UsingDefaultValue": false,
@@ -506,7 +449,95 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Saves an excel file at the given path.\n\nWriter.Excel (path: string, fileName: string, sheetNames: string[], headers: var[]..[], data: var[]..[], save: bool): string"
+      "Description": "Saves an excel file at the given path.\n\nWriter.Excel (path: string, fileName: string, sheets: var[], save: bool): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynTools.ExcelTool.Writer.Sheet@string,string[],var[][]",
+      "Id": "0e0dac7e94134a159dc2f1f4a2745dc7",
+      "Inputs": [
+        {
+          "Id": "d8bc266281ad4c3cb9180764323ea6bf",
+          "Name": "sheetName",
+          "Description": "The name of sheet, where the data will be stored.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fe647c5a6e484cb4b81b88f0d6ef28b4",
+          "Name": "headers",
+          "Description": "The headers, matching the number of columns.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "11812eb828d54953b316085233476d98",
+          "Name": "data",
+          "Description": "The data to write.\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "970902807ea04541830616d254c8b0f8",
+          "Name": "var",
+          "Description": "A sheet read to be written.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a sheet with the data required.\n\nWriter.Sheet (sheetName: string, headers: string[], data: var[][]): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.List.Join@var[]..[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "c08bbb9002a84492961d59b8566d2a45",
+      "Inputs": [
+        {
+          "Id": "6a9732d2b9924da3b1e5e1cf96bea861",
+          "Name": "list0",
+          "Description": "Lists to join into one.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9166e238abf74a65bb28d47514fd32f1",
+          "Name": "list1",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "531578d15b8d472f9ac1f44974b54fff",
+          "Name": "list",
+          "Description": "Joined list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Concatenates all given lists into a single list.\n\nList.Join (lists: var[]..[]): var[]..[]"
     }
   ],
   "Connectors": [
@@ -531,54 +562,64 @@
       "Id": "8b019dbe66d843f2bd0d9217770455e8"
     },
     {
-      "Start": "50eeaab124c2467cbbe52db9422bdffe",
-      "End": "b42e45fa7be94f139926d01b466c067c",
-      "Id": "aac737d368fd4c6186f4d4206d9f1c88"
+      "Start": "163fba87a0394f1dbdced2405e7006c4",
+      "End": "29c1666930164118bdd8403b180261ef",
+      "Id": "bb6cab7a21e4494184d0b89b310b2e51"
     },
     {
-      "Start": "e4d7c213f8b84c2087693634b181ae2a",
-      "End": "811242efff6049698e2bfb023d5c777c",
-      "Id": "ed137ad229ad431ca374476ed1184ded"
+      "Start": "02bfc6f4a29b4d59934874eb24e17754",
+      "End": "dd03c1c15715406395a0b0531756c782",
+      "Id": "a6a080ccde7a4828a58586e0b352e61e"
     },
     {
-      "Start": "f3eebdbea9ea402fb18a2fd324ed1b1e",
-      "End": "65590a52caa640849cb11c48f3f49147",
-      "Id": "d252ef4b8ede4d5398801b535d79fd1a"
+      "Start": "dd78a29a70984f0fa07ec1297f13170d",
+      "End": "d8bc266281ad4c3cb9180764323ea6bf",
+      "Id": "0d77a5db0cff4e9782a41ecc2ad950dc"
     },
     {
-      "Start": "f3eebdbea9ea402fb18a2fd324ed1b1e",
-      "End": "509e81a485f14d0696ce70cbf42d426d",
-      "Id": "1de87e2e8e2546059a0097ec66ef674a"
+      "Start": "73d3904df1f34818bcd93830dfc1478d",
+      "End": "138c8b050b7641579c6b59d807211d2f",
+      "Id": "3af319881b4548db9fe60f5c8275a20d"
     },
     {
-      "Start": "1fe5072ec374461481ce1efa32d0112c",
-      "End": "e2e7fc44d96c448abc6690eb777d9769",
-      "Id": "865ced12346745adb26d1008636e8f89"
+      "Start": "73d3904df1f34818bcd93830dfc1478d",
+      "End": "fe647c5a6e484cb4b81b88f0d6ef28b4",
+      "Id": "52d60fc80cba48e5b29f92ecb69a20b6"
     },
     {
-      "Start": "9756e4b7bfe14589bf6ce4ecde0aa7ec",
-      "End": "6df6a0bb5b634fdf879aaf2a62effd70",
-      "Id": "de31c30e8fb942a3a0ad9f58f14f7e12"
+      "Start": "52d393d03a33486ab49d187fec0efc6a",
+      "End": "7a692772996448a1a428024aea48c824",
+      "Id": "f3c0905c70574258b51b6ec292ce6650"
+    },
+    {
+      "Start": "52d393d03a33486ab49d187fec0efc6a",
+      "End": "11812eb828d54953b316085233476d98",
+      "Id": "e2e0df5a17484a12bb1d0913947ad975"
     },
     {
       "Start": "ce2913b04c994450aa40f72bdb36c59e",
-      "End": "24c59ca51d9e46a3a06739f3b3743a2f",
-      "Id": "f5cd0ca161a1457a8f7e6056332614ac"
+      "End": "0aa4978d3b8d407fbd56b311abb3e412",
+      "Id": "6a03b561f332474a8587402abc8de3a9"
     },
     {
       "Start": "5c5f8be425e747a398a7f91703aef876",
-      "End": "53af49ac3edb4a88b6d85bf7f7a01656",
-      "Id": "ecc670fbbf0f41e8bb72ee61a2b2b198"
+      "End": "932c96e5b1d04436958995f664856c04",
+      "Id": "a0659a0eae0d4cddb9e47a2e4aabd6b3"
     },
     {
-      "Start": "58b0659791b44e9ca546b5d6999ee437",
-      "End": "182a6008a0034869aa2c782ec49ef8e9",
-      "Id": "e7d62691b7d543e0ab3a381aa4a0aff6"
+      "Start": "b75dc3071e74466aa79e23da5929a48d",
+      "End": "6a9732d2b9924da3b1e5e1cf96bea861",
+      "Id": "55a376ec1d264eb4812a9f2c8979a71b"
     },
     {
-      "Start": "88085659907f4b6eb5fda72be9eebcea",
-      "End": "eb2db9deab124289b97a67e3278d28f9",
-      "Id": "21305f6709f34daaac80a4f1f6894aa2"
+      "Start": "970902807ea04541830616d254c8b0f8",
+      "End": "9166e238abf74a65bb28d47514fd32f1",
+      "Id": "1897230b0be749e2a19443bd2a8374cc"
+    },
+    {
+      "Start": "531578d15b8d472f9ac1f44974b54fff",
+      "End": "eed74a0daeba4c8cb9470de7bd37483f",
+      "Id": "bfb977bda4a84cb3b0b8d59950e00f15"
     }
   ],
   "Dependencies": [],
@@ -590,7 +631,9 @@
       "Nodes": [
         "9ed73f9f1f614b4d904df09a7cca2cd3",
         "2fc54388a1dd484c878265ad7246f4b2",
-        "215db4038cae42378a82cf0e137cea43"
+        "0f7a6f504a864e189d03757e022ff41c",
+        "357b0fb510684f23b1328ecb96259802",
+        "0e0dac7e94134a159dc2f1f4a2745dc7"
       ]
     }
   ],
@@ -701,8 +744,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -200.22806987408103,
-        "Y": 840.01910275648879
+        "X": -243.1872342526882,
+        "Y": 838.9962655093791
       },
       {
         "ShowGeometry": true,
@@ -711,8 +754,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -64.0507746207685,
-        "Y": 1055.1579770213925
+        "X": 583.40520279966722,
+        "Y": 775.92340856044621
       },
       {
         "ShowGeometry": true,
@@ -721,8 +764,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -79.062401398303,
-        "Y": 584.74932185237981
+        "X": -75.749086056588908,
+        "Y": 528.41731655222986
       },
       {
         "ShowGeometry": true,
@@ -746,38 +789,48 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Dictionary.ByKeysValues",
-        "Id": "4a4675503c5447b88ae27c1e12ba96ed",
+        "Name": "Writer.Sheet",
+        "Id": "0f7a6f504a864e189d03757e022ff41c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 315.84013228203253,
-        "Y": 764.77068480736239
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Dictionary.ByKeysValues",
-        "Id": "5ffc38e8f3f94d6997210ea2afd22602",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 316.30983613497517,
-        "Y": 877.89027411440122
+        "X": 266.87727969854461,
+        "Y": 727.04700691384471
       },
       {
         "ShowGeometry": true,
         "Name": "Writer.Excel",
-        "Id": "215db4038cae42378a82cf0e137cea43",
+        "Id": "357b0fb510684f23b1328ecb96259802",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 695.93831333566061,
-        "Y": 642.40091420624049
+        "X": 859.36282809192062,
+        "Y": 695.83994843623725
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Writer.Sheet",
+        "Id": "0e0dac7e94134a159dc2f1f4a2745dc7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 268.30419561449651,
+        "Y": 866.489561615806
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Join",
+        "Id": "c08bbb9002a84492961d59b8566d2a45",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 586.38382687418471,
+        "Y": 839.62834185670613
       }
     ],
     "Annotations": [],
-    "X": 653.1686277613868,
-    "Y": -134.08479787756255,
-    "Zoom": 0.78033770122794244
+    "X": 502.05954625109354,
+    "Y": 67.592436812043616,
+    "Zoom": 0.69200470749124443
   }
 }

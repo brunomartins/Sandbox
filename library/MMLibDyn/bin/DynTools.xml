@@ -4,10 +4,10 @@
         <name>DynTools</name>
     </assembly>
     <members>
-        <member name="T:DynTools.ExcelTool.Reader">
+        <member name="T:MMLib.ExcelTool.Reader">
             <summary>Excel workbook entry point.</summary>
         </member>
-        <member name="M:DynTools.ExcelTool.Reader.SheetNames(System.String)">
+        <member name="M:MMLib.ExcelTool.Reader.SheetNames(System.String)">
             <summary>
             Gets all the sheet names stored in the excel file.
             </summary>
@@ -15,20 +15,29 @@
             <returns>The sheet names.</returns>
             <search>excel, read, sheet</search>
         </member>
-        <member name="M:DynTools.ExcelTool.Reader.SheetData(System.String,System.Object,System.String)">
+        <member name="M:MMLib.ExcelTool.Reader.Excel(System.String,System.Object,System.String)">
             <summary>
-            Gets the data into the selected sheet.
+            Read the data of the workbook.
             </summary>
-            <param name="filePath">File filePath, use File.Path.</param>
-            <param name="sheet">List of sheet to read, you can pass the name of sheet as a string or integer as the order. This is not need for csv file.</param>
+            <param name="filePath">The file path.</param>
+            <param name="sheet">List of sheet to read, you can pass the name of sheet as a string or integer as the order</param>
             <param name="cellRange">Ranges defining the number of rows and columns will be read. A standard area ref (e.g. "B1:D8").</param>
-            <returns name="data">The excel sheet content.</returns>
-            <search>excel read</search>
+            <returns name="data">The excel content.</returns>
+            <search>excel, read</search>
         </member>
-        <member name="T:DynTools.ExcelTool.Writer">
+        <member name="M:MMLib.ExcelTool.Reader.CSV(System.String,System.String)">
+            <summary>
+            Read the data of the csv.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="cellRange">Ranges defining the number of rows and columns will be read. A standard area ref (e.g. "B1:D8").</param>
+            <returns name="data">The csv content.</returns>
+            <search>csv, read</search>
+        </member>
+        <member name="T:MMLib.ExcelTool.Writer">
             <summary>Excel workbook creation.</summary>
         </member>
-        <member name="M:DynTools.ExcelTool.Writer.Excel(System.String,System.String,Core.Sheet[],System.Boolean)">
+        <member name="M:MMLib.ExcelTool.Writer.Excel(System.String,System.String,Core.DataSheet[],System.Boolean)">
             <summary>
             Saves an excel file at the given path.
             </summary>
@@ -39,7 +48,7 @@
             <returns>An information message of the result.</returns>
             <search>excel, write</search>
         </member>
-        <member name="M:DynTools.ExcelTool.Writer.Sheet(System.String,System.String[],System.Object[][])">
+        <member name="M:MMLib.ExcelTool.Writer.DataSheet(System.String,System.String[],System.Object[][])">
             <summary>
             Create a sheet with the data required.
             </summary>

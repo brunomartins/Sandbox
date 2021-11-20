@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Core;
 
-namespace DynTools.ExcelTool
+namespace MMLib.ExcelTool
 {
     /// <summary>Excel workbook creation.</summary>
     public static class Writer
@@ -17,7 +15,7 @@ namespace DynTools.ExcelTool
         /// <param name="save">True the file is written.</param>
         /// <returns>An information message of the result.</returns>
         /// <search>excel, write</search>
-        public static string Excel(string path, string fileName, Sheet[] sheets, bool save)
+        public static string Excel(string path, string fileName, DataSheet[] sheets, bool save)
         {
             if (sheets.Length == 0 || sheets == null)
             {
@@ -35,9 +33,9 @@ namespace DynTools.ExcelTool
         /// <param name="data">The data to write.</param>
         /// <returns>A sheet read to be written.</returns>
         /// <search>excel, write</search>
-        public static Sheet Sheet(string sheetName, string[] headers, object[][] data)
+        public static DataSheet DataSheet(string sheetName, string[] headers, object[][] data)
         {
-            return new Sheet(sheetName, headers, data);
+            return new DataSheet(sheetName, headers, data);
         }
     }
 }

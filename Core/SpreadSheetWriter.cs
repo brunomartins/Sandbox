@@ -9,7 +9,7 @@ namespace Core
 {
     public static class SpreadSheetWriter
     {
-        public static string Excel(string path, string fileName, Sheet[] sheets, bool save)
+        public static string Excel(string path, string fileName, DataSheet[] sheets, bool save)
         {
             string filePath = $"{path}\\{fileName}.xlsx";
             if (!save)
@@ -32,7 +32,7 @@ namespace Core
             headerCellStyle.Alignment = HorizontalAlignment.Center;
             headerCellStyle.SetFont(font);
 
-            foreach (Sheet sheet in sheets)
+            foreach (DataSheet sheet in sheets)
             {
                 ISheet excelSheet = workbook.CreateSheet(sheet.Name);
 

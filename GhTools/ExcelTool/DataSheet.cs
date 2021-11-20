@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace GhTools.ExcelTool
 {
-    public class Sheet : GH_Component
+    public class DataSheet : GH_Component
     {
-        public Sheet()
+        public DataSheet()
             : base("ExcelSheet", "ExcelSheet",
                 "Create an excel sheet.",
                 PackageInfo.Category, PackageInfo.SubCategory)
@@ -31,7 +31,7 @@ namespace GhTools.ExcelTool
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Sheet", "SH", "The sheet.", GH_ParamAccess.item);
+            pManager.AddGenericParameter("DataSheet", "SH", "The sheet.", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -68,12 +68,12 @@ namespace GhTools.ExcelTool
                 }
             }
 
-            DA.SetData(0, new Core.Sheet(sheetName, headers.ToArray(), dataObject));
+            DA.SetData(0, new Core.DataSheet(sheetName, headers.ToArray(), dataObject));
         }
 
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
-        protected override System.Drawing.Bitmap Icon => Resources.SheetIcon;
+        protected override System.Drawing.Bitmap Icon => Resources.DataSheetIcon;
 
         public override Guid ComponentGuid => new Guid("4154C2AC-5EE7-4C2F-A201-B84D7DA395B7");
     }

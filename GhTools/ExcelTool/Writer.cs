@@ -25,7 +25,7 @@ namespace GhTools.ExcelTool
             pManager.AddBooleanParameter("Write", "W", "If True the file is written.", GH_ParamAccess.item);
             pManager.AddTextParameter("Path", "P", "The directory where the excel will be created.", GH_ParamAccess.item);
             pManager.AddTextParameter("FileName", "FN", "The file name.", GH_ParamAccess.item);
-            pManager.AddGenericParameter("Sheet", "S", "The sheets will be written into the workbook.", GH_ParamAccess.list);
+            pManager.AddGenericParameter("DataSheet", "S", "The sheets will be written into the workbook.", GH_ParamAccess.list);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -36,13 +36,13 @@ namespace GhTools.ExcelTool
         {
             string path = String.Empty;
             string fileName = String.Empty;
-            List<Core.Sheet> sheets = new List<Core.Sheet>();
+            List<Core.DataSheet> sheets = new List<Core.DataSheet>();
             bool canWrite = false;
 
             DA.GetData(0, ref canWrite);
             if (!canWrite) return;
 
-            if (!DA.GetDataList<Core.Sheet>(3, sheets)) return;
+            if (!DA.GetDataList<Core.DataSheet>(3, sheets)) return;
             if (!DA.GetData(1, ref path) || !DA.GetData(2, ref fileName)) return;
 
             if (sheets.Count == 0 || sheets == null)
