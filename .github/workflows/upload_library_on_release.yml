@@ -23,7 +23,7 @@ jobs:
           echo "::set-output name=tag::$lastTag"
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/GhTools ./library/DynTools ./library/installation.txt
+        run: 7z a -t7z -mx=9 MMLibrary.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
       
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
