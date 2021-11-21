@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Version>1.0</Version>
+    <Title>GhTools</Title>
+    <Description>Serious of tools used to simplify the day to day work.</Description>
+    <TargetExt>.gha</TargetExt>
+    <UserSecretsId>04a9d61f-d204-4afb-8e24-38452757b0b5</UserSecretsId>
+  </PropertyGroup>
+  
+  <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
+  <ItemGroup>
+	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
+	  <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  
+  <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+    <StartArguments></StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <!--You can set this one-->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <!--Or replace OutputPath with OutDir-->
+        <OutputPath>$(SolutionDir)library/MMLibGh</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <Optimize>false</Optimize>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <PlatformTarget>x64</PlatformTarget> 
+    </PropertyGroup>
+
+  <!--https://docs.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2019-->
+  <Target Name="CopyGhFiles" AfterTargets="Build">
+	  <ItemGroup>
+		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
+	  </ItemGroup>
+	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/MMLibGh" />
+	  <Message Text="Files copied" Importance="high" />
+  </Target>
+
+</Project>

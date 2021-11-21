@@ -9,7 +9,7 @@ namespace Core
 {
     public static class SpreadSheetWriter
     {
-        public static string Excel(string path, string fileName, string sheetName, string[] headers, object[][] data, bool save)
+        public static string Excel(string path, string fileName, DataSheet[] sheets, bool save)
         {
             string filePath = $"{path}\\{fileName}.xlsx";
             if (!save)
@@ -18,7 +18,6 @@ namespace Core
             }
 
             IWorkbook workbook = new XSSFWorkbook();
-            ISheet excelSheet = workbook.CreateSheet(sheetName);
 
             // Set Font for header.
             IFont font = workbook.CreateFont();
@@ -33,26 +32,31 @@ namespace Core
             headerCellStyle.Alignment = HorizontalAlignment.Center;
             headerCellStyle.SetFont(font);
 
-            int rawCount = data[0].Length + 1;
-
-            for (int i = 0; i < rawCount; i++)
+            foreach (DataSheet sheet in sheets)
             {
-                IRow row = excelSheet.CreateRow(i);
-                if (i == 0)
+                ISheet excelSheet = workbook.CreateSheet(sheet.Name);
+
+                int rawCount = sheet.Data[0].Length + 1;
+
+                for (int i = 0; i < rawCount; i++)
                 {
-                    for (int j = 0; j < headers.Length; j++)
+                    IRow row = excelSheet.CreateRow(i);
+                    if (i == 0)
+                    {
+                        for (int j = 0; j < sheet.Header.Length; j++)
+                        {
+                            ICell cell = row.CreateCell(j, CellType.String);
+                            cell.SetCellValue(sheet.Header[j]);
+                            cell.CellStyle = headerCellStyle;
+                        }
+                        continue;
+                    }
+
+                    for (int j = 0; j < sheet.Data.Length; j++)
                     {
                         ICell cell = row.CreateCell(j, CellType.String);
-                        cell.SetCellValue(headers[j]);
-                        cell.CellStyle = headerCellStyle;
+                        cell.SetCellValue(sheet.Data[j][i - 1].ToString());
                     }
-                    continue;
-                }
-
-                for (int j = 0; j < data.Length; j++)
-                {
-                    ICell cell = row.CreateCell(j, CellType.String);
-                    cell.SetCellValue(data[j][i - 1].ToString());
                 }
             }
 

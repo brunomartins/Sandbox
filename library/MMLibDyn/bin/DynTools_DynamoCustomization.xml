@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+	<assembly>
+		<name>DynTools</name>
+	</assembly>
+	<namespaces>
+		<namespace name="MMLib.ExcelTools">
+			<category>MMLib.ExcelTools</category>
+		</namespace>
+	</namespaces>
+</doc>
