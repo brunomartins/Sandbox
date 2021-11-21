@@ -19,13 +19,13 @@ I hope we can expand with more tools!
 
 Inside the MMLibrary folder: <br/>
 ### For Grasshopper
-* Copy the GhExcel folder into the local folder:<br/> 
+* Copy the MMLibGH folder into the local folder:<br/> 
 ``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
 ### For Dynamo in Revit
-* Copy the DynExcel folder into the local folder:<br/>
+* Copy the MMLibDyn folder into the local folder:<br/>
 ``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
 ### For Dynamo in Civil3D
-* Copy the DynExcel folder into the local folder:<br/>
+* Copy the MMLibDyn folder into the local folder:<br/>
 ``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
 
 ## Feedback
