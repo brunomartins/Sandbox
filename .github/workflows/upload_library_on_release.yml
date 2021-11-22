@@ -15,10 +15,15 @@ jobs:
         with: 
           fetch-depth: 0
           
-      - name: ⚙️ Get previous last tag.
+      - name: ⚙️ Get previous tag.
         id: version
         run: |
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
           echo "::set-output name=tag::$lastTag"
           echo $lastTag
-          echo {{GITHUB_REF}}
+          echo {{$GITHUB_REF}}
+          
+      - name: ⚙️ Get previous tag.
+        id: reading
+        run: |
+          echo "${{steps.version.outputs.tag}}"
