@@ -17,10 +17,10 @@ jobs:
           fetch-depth: 0
           
       - name: ⚙️ Get previous last tag.
-        id: version
+        id: get_release
         run: |
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
-          echo "::set-output name=tag::$lastTag"
+          echo "::set-output name=tag_name::$lastTag"
           
       - name: 💾 7Zip library
         run: 7z a -t7z -mx=9 MMLibrary-${{ steps.get_release.outputs.tag_name }}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
