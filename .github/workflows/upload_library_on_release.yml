@@ -20,6 +20,7 @@ jobs:
         run: |
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
           echo "::set-output name=tag::$lastTag"
+          echo $lastTag
           
       - name: 💾 7Zip library
         run: 7z a -t7z -mx=9 MMLibrary-${{steps.version.outputs.tag}}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
