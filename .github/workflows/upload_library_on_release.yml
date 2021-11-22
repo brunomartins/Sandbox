@@ -2,8 +2,7 @@ name: Upload library to the release
 
 on:
   release:
-    types:
-      - published
+    types: [published, edited]
 
 jobs:
   build:
@@ -17,19 +16,19 @@ jobs:
           fetch-depth: 0
           
       - name: ⚙️ Get previous last tag.
-        id: get_release
+        id: version
         run: |
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
-          echo "::set-output name=tag_name::$lastTag"
+          echo "::set-output name=tag::$lastTag"
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{ steps.get_release.outputs.tag_name }}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
+        run: 7z a -t7z -mx=9 MMLibrary-${{steps.version.outputs.tag}}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
       
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.get_release.outputs.tag_name }}
-          file: MMLibrary-${{ steps.get_release.outputs.tag_name }}.7z
-          asset_name: MMLibrary-${{ steps.get_release.outputs.tag_name }}.7z
-          overwrite: false
+          tag: ${{steps.version.outputs.tag}}
+          file: MMLibrary-${{steps.version.outputs.tag}}.7z
+          asset_name: MMLibrary-${{steps.version.outputs.tag}}.7z
+          overwrite: true
