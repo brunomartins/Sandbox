@@ -1,8 +1,8 @@
 name: Upload library to the release
 
 on:
-  release:
-    types: [published, edited]
+  push:
+    branches: main
 
 jobs:
   build:
@@ -21,15 +21,4 @@ jobs:
           lastTag=`git tag -l --sort=-creatordate --format='%(refname:short)' | head -n 1`
           echo "::set-output name=tag::$lastTag"
           echo $lastTag
-          
-      - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{steps.version.outputs.tag}}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
-      
-      - name: 📤 Upload library to release
-        uses: svenstaro/upload-release-action@v1-release
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{steps.version.outputs.tag}}
-          file: MMLibrary-${{steps.version.outputs.tag}}.7z
-          asset_name: MMLibrary-${{steps.version.outputs.tag}}.7z
-          overwrite: true
+          echo {{GITHUB_REF}}
