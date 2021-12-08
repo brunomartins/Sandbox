@@ -71,7 +71,7 @@ jobs:
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release"
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:version=${{ env.version_state }} /p:VersionNumber=${{ env.version_state }}
           
       - name: 📥 Download artifact
         uses: actions/download-artifact@v2

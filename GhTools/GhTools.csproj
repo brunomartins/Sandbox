@@ -2,7 +2,7 @@
     
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <Version>1.0</Version>
+    <Version Condition="'$(Version)' == ''">1.0.0</Version>
     <Title>GhTools</Title>
     <Description>Serious of tools used to simplify the day to day work.</Description>
     <TargetExt>.gha</TargetExt>
