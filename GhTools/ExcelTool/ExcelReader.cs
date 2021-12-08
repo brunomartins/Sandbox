@@ -13,7 +13,7 @@ namespace GhTools.ExcelTool
         public ExcelReader()
           : base("ExcelReader", "ExcelReader",
             "This component reads these formats: xlsx, xlsm, xls.",
-            PackageInfo.Category, PackageInfo.SubCategory)
+            PackageInfo.Category, "ExcelTools")
         {
         }
 

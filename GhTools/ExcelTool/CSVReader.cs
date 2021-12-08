@@ -11,7 +11,7 @@ namespace GhTools.ExcelTool
         public CSVReader()
           : base("CSVReader", "CSVReader",
             "This component reads csv file.",
-            PackageInfo.Category, PackageInfo.SubCategory)
+            PackageInfo.Category, "ExcelTools")
         {
         }
 

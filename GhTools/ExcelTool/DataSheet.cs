@@ -13,7 +13,7 @@ namespace GhTools.ExcelTool
         public DataSheet()
             : base("DataSheet", "DataSheet",
                 "Collect the data that will be written into a sheet.",
-                PackageInfo.Category, PackageInfo.SubCategory)
+                PackageInfo.Category, "ExcelTools")
         {
         }
 

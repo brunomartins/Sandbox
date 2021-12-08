@@ -11,7 +11,7 @@ namespace GhTools.ExcelTool
         public Writer()
           : base("ExcelWriter", "ExcelWriter",
               "This component write data into an excel form (xlsx). Data must be organized in a data tree where every branch matches the number of header.",
-              PackageInfo.Category, PackageInfo.SubCategory)
+              PackageInfo.Category, "ExcelTools")
         {
         }
 

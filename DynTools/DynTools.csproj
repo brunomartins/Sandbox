@@ -82,7 +82,7 @@
   <PropertyGroup>
     <PostBuildEvent>
       echo HELLO, THE ASSEMBLY VERSION IS: $(Version)
-		  echo { "license":"MIT", "file_hash":null, "name":"MMLib", "version":"$(Version)", "description":"A library of tools.", "group":"DynamoNodeModelsEssentials", "keywords":[ "NPOI", "CSVHelper", "Excel", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/MMLib", "contains_binaries":true,  "node_libraries":[ "MMLib,  Version=$(Version),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
+		  echo { "license":"MIT", "file_hash":null, "name":"MMLib", "version":"$(Version)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/MMLib", "contains_binaries":true,  "node_libraries":[ "MMLib,  Version=$(Version),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
 		  exit 0
 	  </PostBuildEvent>
   </PropertyGroup>

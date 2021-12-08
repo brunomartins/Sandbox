@@ -9,7 +9,7 @@ namespace GhTools.ExcelTool
         public SheetNames()
           : base("ExcelSheets", "ExcelSheets",
               "Reads the sheets into the file.",
-              PackageInfo.Category, PackageInfo.SubCategory)
+              PackageInfo.Category, "ExcelTools")
         {
         }
 
