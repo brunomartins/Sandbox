@@ -4,11 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9444F20F-8353-494F-8067-AC32EC0F967F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+	  <ProjectGuid>{9444F20F-8353-494F-8067-AC32EC0F967F}</ProjectGuid>
+	  <Version Condition="'$(AssemblyVersionNumber)' == '' ">1.0.0</Version>
+	  <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
+	  <AssemblyName Condition="'Core_$(AssemblyVersionNumber)' == '' ">Core</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

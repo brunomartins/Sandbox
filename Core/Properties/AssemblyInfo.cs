@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MMLib.Core")]
+// [assembly: AssemblyTitle("MMLib.Core")]
 [assembly: AssemblyDescription("The core library of the MMLib")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MottMacdonald")]
