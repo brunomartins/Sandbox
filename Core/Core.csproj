@@ -5,17 +5,35 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	  <ProjectGuid>{9444F20F-8353-494F-8067-AC32EC0F967F}</ProjectGuid>
-	  <Version Condition="'$(AssemblyVersionNumber)' == '' ">1.0.0</Version>
 	  <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <Authors>Mirco Bianchini</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mottmacdonaldglobal/MMLib</RepositoryUrl>
+    <PackageTags>computational geometry, architecture, engineering, construction, csharp</PackageTags>
+    <PackageDescription>🧰 A library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.</PackageDescription>
     <RootNamespace>Core</RootNamespace>
-	  <AssemblyName Condition="'Core_$(AssemblyVersionNumber)' == '' ">Core</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
+  <Choose>
+    <When Condition="'$(AssemblyInformationalVersion)' == '' ">
+      <PropertyGroup>
+        <Version>0.0.0</Version>
+        <AssemblyName>Core</AssemblyName>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(AssemblyInformationalVersion)' != '' ">
+      <PropertyGroup>
+        <Version>$(AssemblyInformationalVersion)</Version>
+        <AssemblyName>Core_$(AssemblyInformationalVersion)</AssemblyName>
+      </PropertyGroup>
+    </When>
+  </Choose>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>

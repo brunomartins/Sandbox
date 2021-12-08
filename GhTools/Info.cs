@@ -6,11 +6,11 @@ namespace GhTools
 {
     public class Info : GH_AssemblyInfo
     {
-        public override string Name => "MMLib";
+        public override string Name => "GhTools";
 
         public override Bitmap Icon => Resources.GhExcelIcon;
 
-        public override string Description => "The grasshopper library of the MMLib.";
+        public override string Description => "The Grasshopper library of the MMLib.";
 
         public override Guid Id => new Guid("79B3FE74-B772-4FD5-9307-30BF3E093800");
 
