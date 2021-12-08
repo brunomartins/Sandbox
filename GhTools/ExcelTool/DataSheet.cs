@@ -11,8 +11,8 @@ namespace GhTools.ExcelTool
     public class DataSheet : GH_Component
     {
         public DataSheet()
-            : base("ExcelSheet", "ExcelSheet",
-                "Create an excel sheet.",
+            : base("DataSheet", "DataSheet",
+                "Collect the data that will be written into a sheet.",
                 PackageInfo.Category, PackageInfo.SubCategory)
         {
         }
