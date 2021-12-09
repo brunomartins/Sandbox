@@ -65,6 +65,16 @@
         <DebugSymbols>true</DebugSymbols>
         <PlatformTarget>x64</PlatformTarget> 
     </PropertyGroup>
+	 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(SolutionDir)library/MMLibGh</OutputPath>
+    	<DebugType>pdbonly</DebugType>
+    	<Optimize>true</Optimize>
+    	<DefineConstants>TRACE</DefineConstants>
+    	<ErrorReport>prompt</ErrorReport>
+    	<WarningLevel>4</WarningLevel>
+    </PropertyGroup>
 
   <!--https://docs.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2019-->
   <Target Name="CopyGhFiles" AfterTargets="Build">
