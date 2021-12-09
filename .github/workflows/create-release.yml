@@ -93,8 +93,9 @@ jobs:
           msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.short_version }} /p:AssemblyInformationalVersion=${{ env.version_state }}
 
       - name: 📝 Create installation file
-        run: |-
-          cat <<EOT >> installation.txt
+        shell: bash
+        run: |
+          cat <<EOF > installation.txt
           ### For Grasshopper
           Copy the MMLibGh folder into the local folder:
           C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries
@@ -104,7 +105,7 @@ jobs:
           ### For Dynamo in Civil3D
           Copy the MMLibDyn folder into the local folder:
           C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages
-          EOT
+          EOF
 
       - name: 📘 Create Release
         id: create_release
