@@ -95,7 +95,7 @@ jobs:
       - name: 📝 Create installation file
         shell: bash
         run: |
-          cat <<EOF > installation.txt
+          cat <<EOF > ./library/installation.txt
           ### For Grasshopper
           Copy the MMLibGh folder into the local folder:
           C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries
@@ -125,7 +125,7 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z .\library installation.txt
+        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z ./library/*
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
