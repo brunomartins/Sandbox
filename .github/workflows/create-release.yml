@@ -70,11 +70,17 @@ jobs:
           name: revision
           
       - shell: bash
-        name: 📄 read file
+        name: 📄 Read file
         run: |
-          value=`cat revision.txt`
-          echo "version_state=$value" >> $GITHUB_ENV
-          echo "${{ env.version_state }}"
+          version=`cat revision.txt`
+          shortversion=`echo $version | sed 's/-\w\+//g'`
+          echo "version_state=$version" >> $GITHUB_ENV
+          echo "short_version=$shortversion" >> $GITHUB_ENV
+      
+      - name: 🧪 Test env variable
+        run: |
+          echo ${{ env.version_state }}
+          echo ${{ env.short_version }}
       
       - name: 🚧 Setup MSBuild
         uses: microsoft/setup-msbuild@v1
@@ -84,7 +90,7 @@ jobs:
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:version=${{ env.version_state }} /p:VersionNumber=${{ env.version_state }}
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.short_version }} /p:AssemblyInformationalVersion=${{ env.version_state }}
           
       - name: 📘 Create Release
         id: create_release
