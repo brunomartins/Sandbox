@@ -104,6 +104,7 @@ jobs:
           ### For Dynamo in Civil3D
           Copy the MMLibDyn folder into the local folder:
           C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages
+          EOT
 
       - name: 📘 Create Release
         id: create_release
