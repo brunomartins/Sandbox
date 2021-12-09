@@ -1,0 +1,56 @@
+name: Publish on release
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  TAG_NAME: ${{ github.event.release.tag_name }}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    
+      - name: 🛎 Checkout repo
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+              
+      - name: 🚧 Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        
+      - name: 🔧 Restore nuget with dotnet
+        run: nuget restore ./MMLibrary.sln
+      
+      - name: 🧱 Build project
+        run: |
+          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.TAG_NAME }} /p:AssemblyInformationalVersion=${{ env.TAG_NAME }}
+      - name: 📝 Create installation file
+        shell: bash
+        run: |
+          cat <<EOF > ./library/installation.txt
+          ### For Grasshopper
+          Copy the MMLibGh folder into the local folder:
+          C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries
+          ### For Dynamo in Revit
+          Copy the MMLibDyn folder into the local folder:
+          C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages
+          ### For Dynamo in Civil3D
+          Copy the MMLibDyn folder into the local folder:
+          C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages
+          EOF
+          
+      - name: 💾 7Zip library
+        run: 7z a -t7z -mx=9 MMLibrary-${{ env.TAG_NAME }}.7z ./library/*
+
+      - name: 📤 Upload library to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.TAG_NAME }}
+          file: MMLibrary-${{ env.TAG_NAME }}.7z
+          asset_name: MMLibrary-${{ env.TAG_NAME }}.7z
+          overwrite: true
