@@ -91,7 +91,20 @@ jobs:
       - name: 🧱 Build project
         run: |
           msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.short_version }} /p:AssemblyInformationalVersion=${{ env.version_state }}
-          
+
+      - name: 📝 Create installation file
+        run: |-
+          cat <<EOT >> installation.txt
+          ### For Grasshopper
+          Copy the MMLibGh folder into the local folder:
+          C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries
+          ### For Dynamo in Revit
+          Copy the MMLibDyn folder into the local folder:
+          C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages
+          ### For Dynamo in Civil3D
+          Copy the MMLibDyn folder into the local folder:
+          C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages
+
       - name: 📘 Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -110,7 +123,7 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z ./library/MMLibGh ./library/MMLibDyn ./library/installation.txt
+        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\library installation.txt
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
