@@ -125,7 +125,7 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\library installation.txt
+        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z .\library installation.txt
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
