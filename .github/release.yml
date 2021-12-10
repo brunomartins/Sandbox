@@ -1,0 +1,21 @@
+changelog:
+  exclude:
+    labels:
+      - duplicate
+      - question
+      - duplicate
+      - dynamo
+      - grasshopper
+  categories:
+    - title: 🚀 New Features
+      labels:
+        - enhancement
+    - title: 🐛 Bug Fixes
+      labels:
+        - bug
+    - title: 🧰 Refactor
+      labels:
+        - refactor
+    - title: 📚 Documentation
+      labels:
+        - documentation
