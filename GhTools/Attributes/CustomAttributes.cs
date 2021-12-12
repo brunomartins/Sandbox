@@ -3,7 +3,7 @@ using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
 
-namespace GhTools
+namespace GhTools.Attributes
 {
     // https://discourse.mcneel.com/t/custome-node-color/7427/6
     // https://discourse.mcneel.com/t/change-the-color-of-the-custom-component/56435/2
@@ -17,10 +17,9 @@ namespace GhTools
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                GH_PaletteStyle standardStyle = new GH_PaletteStyle(Color.FromArgb((int)byte.MaxValue, 200, 200, 200), Color.FromArgb((int)byte.MaxValue, 50, 50, 50), Color.FromArgb((int)byte.MaxValue, 0, 0, 0));
-                GH_Skin.palette_normal_standard = new GH_PaletteStyle(Color.DeepPink, Color.Black, Color.PapayaWhip);
+                GH_Skin.palette_normal_standard = AttributeColors.MMColorStyle;
                 base.Render(canvas, graphics, channel);
-                GH_Skin.palette_normal_standard = standardStyle;
+                GH_Skin.palette_normal_standard = AttributeColors.StandardStyle;
             }
             else
                 base.Render(canvas, graphics, channel);

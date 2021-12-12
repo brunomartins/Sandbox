@@ -63,6 +63,16 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CreateDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("CreateDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CSVReaderIcon {
             get {
                 object obj = ResourceManager.GetObject("CSVReaderIcon", resourceCulture);
