@@ -21,7 +21,7 @@ namespace GhTools.Utilities
 
         public override void CreateAttributes()
         {
-            this.m_attributes = new ButtonAttribute(this);
+            m_attributes = new ButtonAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)

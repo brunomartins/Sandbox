@@ -1,6 +1,7 @@
 ﻿using Core;
 using Grasshopper.Kernel;
 using System;
+using GhTools.Attributes;
 
 namespace GhTools.Utilities
 {
@@ -11,6 +12,11 @@ namespace GhTools.Utilities
                 "Read key-value of a dictionary.",
                 PackageInfo.Category, "Utilities")
         {
+        }
+
+        public override void CreateAttributes()
+        {
+            m_attributes = new BaseCustomAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
