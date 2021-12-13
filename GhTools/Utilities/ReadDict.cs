@@ -1,22 +1,15 @@
-﻿using Core;
+﻿using GhTools.Attributes;
 using Grasshopper.Kernel;
 using System;
-using GhTools.Attributes;
 
 namespace GhTools.Utilities
 {
-    public class ReadDict : GH_Component
+    public class ReadDict : MMComponent
     {
         public ReadDict()
             : base("Read Dictionary", "ReadDict",
-                "Read key-value of a dictionary.",
-                PackageInfo.Category, "Utilities")
+                "Read key-value of a dictionary.", "Utilities")
         {
-        }
-
-        public override void CreateAttributes()
-        {
-            m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -41,7 +34,5 @@ namespace GhTools.Utilities
         protected override System.Drawing.Bitmap Icon => Resources.ReadDictIcone;
 
         public override Guid ComponentGuid => new Guid("0CFF43E9-4940-4885-9566-42CAB413DFAE");
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

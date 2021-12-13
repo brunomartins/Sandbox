@@ -9,13 +9,12 @@ using System.Drawing;
 
 namespace GhTools.Utilities
 {
-    public class CreateDict : GH_Component
+    public class CreateDict : MMComponent
     {
         private Dictionary<string, IGH_Goo> _dict;
         public CreateDict()
           : base("Create Dictionary", "Create Dictionary",
-              "Create a new dictionary",
-              PackageInfo.Category, "Utilities")
+              "Create a new dictionary", "Utilities")
         {
         }
 
@@ -66,8 +65,6 @@ namespace GhTools.Utilities
 
         public override Guid ComponentGuid => new Guid("70F44B2A-AED6-493D-978D-2AE0D9E9A15C");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
-
         /// <summary>
         /// Creates a value list pre-populated with user text keys and adds it to the Grasshopper Document, located near the component pivot.
         /// </summary>
@@ -96,7 +93,7 @@ namespace GhTools.Utilities
             // place the object
             docIO.Document.AddObject(vl, false, 1);
             //get the pivot of the keys input param
-            PointF keysInputPivot = this.Params.Input[1].Attributes.Pivot;
+            PointF keysInputPivot = Params.Input[1].Attributes.Pivot;
             //set the pivot of the new object
             vl.Attributes.Pivot = new PointF(keysInputPivot.X - 120, keysInputPivot.Y - 11);
 

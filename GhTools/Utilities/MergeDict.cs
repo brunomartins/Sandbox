@@ -9,20 +9,14 @@ using GhTools.Attributes;
 
 namespace GhTools.Utilities
 {
-    public class MergeDict : GH_Component, IGH_VariableParameterComponent
+    public class MergeDict : MMComponent, IGH_VariableParameterComponent
     {
         public MergeDict()
           : base("Merge Dictionary", "MergeDict",
-              "Merge the dictionary in one dictionary.",
-              PackageInfo.Category, "Utilities")
+              "Merge the dictionary in one dictionary.","Utilities")
         {
             Params.ParameterSourcesChanged +=
                 new GH_ComponentParamServer.ParameterSourcesChangedEventHandler(ParamSourcesChanged);
-        }
-
-        public override void CreateAttributes()
-        {
-            m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -62,8 +56,6 @@ namespace GhTools.Utilities
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.MergeDictIcon;
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         public override Guid ComponentGuid => new Guid("C809F43A-AFAB-4CC7-AF94-4F01A60CC8B0");
 
