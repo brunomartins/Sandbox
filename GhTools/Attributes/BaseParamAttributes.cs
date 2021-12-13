@@ -1,15 +1,13 @@
-﻿using System.Drawing;
-using Grasshopper.GUI.Canvas;
+﻿using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
+using System.Drawing;
 
 namespace GhTools.Attributes
 {
-    // https://discourse.mcneel.com/t/custome-node-color/7427/6
-    // https://discourse.mcneel.com/t/change-the-color-of-the-custom-component/56435/2
-    internal class BaseCustomAttribute : GH_ComponentAttributes
+    internal class BaseParamAttributes : GH_FloatingParamAttributes
     {
-        public BaseCustomAttribute(IGH_Component component) : base(component)
+        public BaseParamAttributes(IGH_Param param) : base(param)
         {
         }
 

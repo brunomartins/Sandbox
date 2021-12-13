@@ -20,7 +20,7 @@ namespace GhTools.ExcelTool
 
         public override void CreateAttributes()
         {
-            base.m_attributes = new BaseCustomAttribute(this);
+            base.m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)

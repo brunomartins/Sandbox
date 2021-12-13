@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using GhTools.Attributes;
 
 namespace GhTools.Utilities
 {
@@ -15,6 +16,11 @@ namespace GhTools.Utilities
                 "Dictionary parameter",
                 PackageInfo.Category, "Utilities", GH_ParamAccess.item)
         {
+        }
+
+        public override void CreateAttributes()
+        {
+            m_attributes = new BaseParamAttributes(this);
         }
 
         protected override string VolatileDataDescription()

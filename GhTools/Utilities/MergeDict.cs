@@ -22,14 +22,13 @@ namespace GhTools.Utilities
 
         public override void CreateAttributes()
         {
-            m_attributes = new BaseCustomAttribute(this);
+            m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DictParam(), string.Empty, string.Empty, string.Empty, GH_ParamAccess.item);
             pManager.AddParameter(new DictParam(), string.Empty, string.Empty, string.Empty, GH_ParamAccess.item);
-
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -43,8 +42,7 @@ namespace GhTools.Utilities
                 return;
 
             var ghDict = new GH_Dict();
-            DA.GetData(0, ref ghDict);
-            if (ghDict.Value == null) return;
+            if(!DA.GetData(0, ref ghDict)) return;
 
             Dictionary<string, IGH_Goo> mergeDictionary = new Dictionary<string, IGH_Goo>(ghDict.Value);
             int num = Params.Input.Count - 1;
@@ -53,7 +51,7 @@ namespace GhTools.Utilities
             while (index <= num)
             {
                 var tempGhDict = new GH_Dict();
-                if (DA.GetData(0, ref tempGhDict) && tempGhDict != null)
+                if (DA.GetData(index, ref tempGhDict) && tempGhDict != null)
                 {
                     tempGhDict.Value.ToList().ForEach(dict => mergeDictionary.Add(dict.Key, dict.Value));
                 }
@@ -88,7 +86,7 @@ namespace GhTools.Utilities
                 Params.Input[index].Description = $"Dictionary stream {(object)checked(index + 1)}";
                 Params.Input[index].Optional = true;
                 Params.Input[index].MutableNickName = false;
-                Params.Input[index].Access = GH_ParamAccess.tree;
+                Params.Input[index].Access = GH_ParamAccess.item;
                 ++index;
             }
         }

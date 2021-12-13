@@ -16,7 +16,7 @@ namespace GhTools.Utilities
 
         public override void CreateAttributes()
         {
-            m_attributes = new BaseCustomAttribute(this);
+            m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
