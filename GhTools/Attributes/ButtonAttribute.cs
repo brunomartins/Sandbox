@@ -48,7 +48,7 @@ namespace GhTools.Attributes
             if (!(Owner is CreateDict component)) return GH_ObjectResponse.Handled;
             RectangleF rec = ButtonBounds;
             if (!rec.Contains(e.CanvasLocation)) return base.RespondToMouseDown(sender, e);
-            component.createValueList(sender, e);
+            component.CreateValueList(sender, e);
             component.ExpireSolution(true);
 
             return GH_ObjectResponse.Handled;

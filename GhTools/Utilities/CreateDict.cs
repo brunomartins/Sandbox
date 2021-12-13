@@ -11,7 +11,7 @@ namespace GhTools.Utilities
 {
     public class CreateDict : GH_Component
     {
-        private Dictionary<string, IGH_Goo> _dict = new Dictionary<string, IGH_Goo>();
+        private readonly Dictionary<string, IGH_Goo> _dict = new Dictionary<string, IGH_Goo>();
         public CreateDict()
           : base("Create Dictionary", "Create Dictionary",
               "Create a new dictionary",
@@ -32,7 +32,7 @@ namespace GhTools.Utilities
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new GH_DictParam(), "Dict", "D", "New dictionary", GH_ParamAccess.item);
+            pManager.AddParameter(new DictParam(), "Dict", "D", "New dictionary", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -72,7 +72,7 @@ namespace GhTools.Utilities
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        internal void createValueList(object sender, EventArgs e)
+        internal void CreateValueList(object sender, EventArgs e)
         {
             var docIO = new GH_DocumentIO { Document = new GH_Document() };
 
