@@ -133,6 +133,26 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MergeDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("MergeDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReadDictIcone {
+            get {
+                object obj = ResourceManager.GetObject("ReadDictIcone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SheetIcon {
             get {
                 object obj = ResourceManager.GetObject("SheetIcon", resourceCulture);
