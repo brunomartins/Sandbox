@@ -5,7 +5,7 @@ namespace GhTools.Attributes
 {
     public abstract class MMComponent : GH_Component
     {
-        public MMComponent(string name, string nickname, string description, string subCategory)
+        protected MMComponent(string name, string nickname, string description, string subCategory)
             : base(name, nickname, description, PackageInfo.Category, subCategory)
         {
         }

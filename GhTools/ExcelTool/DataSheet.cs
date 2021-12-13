@@ -1,28 +1,20 @@
-﻿using Core;
+﻿using GhTools.Attributes;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GhTools.Attributes;
 
 namespace GhTools.ExcelTool
 {
-    public class DataSheet : GH_Component
+    public class DataSheet : MMComponent
     {
         public DataSheet()
             : base("DataSheet", "DataSheet",
-                "Collect the data that will be written into a sheet.",
-                PackageInfo.Category, "ExcelTools")
+                "Collect the data that will be written into a sheet.", "ExcelTools")
         {
         }
-
-        public override void CreateAttributes()
-        {
-            base.m_attributes = new BaseComponentAttribute(this);
-        }
-
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Name", "N", "The name of the sheet where the data will be written.", GH_ParamAccess.item);
@@ -71,8 +63,6 @@ namespace GhTools.ExcelTool
 
             DA.SetData(0, new Core.DataSheet(sheetName, headers.ToArray(), dataObject));
         }
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         protected override System.Drawing.Bitmap Icon => Resources.DataSheetIcon;
 

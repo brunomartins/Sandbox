@@ -1,24 +1,18 @@
 ﻿using Core;
+using GhTools.Attributes;
 using Grasshopper;
 using Grasshopper.Kernel;
 using System;
-using GhTools.Attributes;
 
 namespace GhTools.ExcelTool
 {
-    public class CSVReader : GH_Component
+    public class CSVReader : MMComponent
     {
 
         public CSVReader()
           : base("CSVReader", "CSVReader",
-            "This component reads csv file.",
-            PackageInfo.Category, "ExcelTools")
+            "This component reads csv file.", "ExcelTools")
         {
-        }
-
-        public override void CreateAttributes()
-        {
-            base.m_attributes = new BaseComponentAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -53,8 +47,6 @@ namespace GhTools.ExcelTool
 
             DA.SetDataTree(0, data);
         }
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         protected override System.Drawing.Bitmap Icon => Resources.CSVReaderIcon;
 
