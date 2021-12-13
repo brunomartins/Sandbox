@@ -7,9 +7,9 @@ namespace GhTools.Attributes
 {
     // https://discourse.mcneel.com/t/custome-node-color/7427/6
     // https://discourse.mcneel.com/t/change-the-color-of-the-custom-component/56435/2
-    internal class CustomAttributes : GH_ComponentAttributes
+    internal class BaseCustomAttribute : GH_ComponentAttributes
     {
-        public CustomAttributes(IGH_Component component) : base(component)
+        public BaseCustomAttribute(IGH_Component component) : base(component)
         {
         }
 
