@@ -33,13 +33,20 @@ namespace GhTools.Attributes
 
         protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
         {
-            if (channel != GH_CanvasChannel.Objects) return;
-            GH_Skin.palette_normal_standard = AttributeColors.MMColorStyle;
+            if (channel == GH_CanvasChannel.Objects)
+            {
+                GH_Skin.palette_normal_standard = AttributeColors.MMColorStyle;
+            }
+
+            base.Render(canvas, graphics, channel);
             var button = GH_Capsule.CreateTextCapsule(ButtonBounds, ButtonBounds, GH_Palette.Black, "ValueList", 2, 0);
             button.Render(graphics, Selected, Owner.Locked, false);
             button.Dispose();
-            base.Render(canvas, graphics, channel);
-            GH_Skin.palette_normal_standard = AttributeColors.StandardStyle;
+
+            if (channel == GH_CanvasChannel.Objects)
+            {
+                GH_Skin.palette_normal_standard = AttributeColors.StandardStyle;
+            }
         }
 
         public override GH_ObjectResponse RespondToMouseDown(GH_Canvas sender, GH_CanvasMouseEvent e)

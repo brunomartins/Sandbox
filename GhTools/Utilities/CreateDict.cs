@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Core;
+using GhTools.Attributes;
+using Grasshopper.Kernel;
+using Grasshopper.Kernel.Special;
+using Grasshopper.Kernel.Types;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
-using Core;
-using GhTools.Attributes;
-using Grasshopper.Kernel.Special;
 
 namespace GhTools.Utilities
 {
     public class CreateDict : GH_Component
     {
-        private readonly Dictionary<string, IGH_Goo> _dict = new Dictionary<string, IGH_Goo>();
+        private Dictionary<string, IGH_Goo> _dict;
         public CreateDict()
           : base("Create Dictionary", "Create Dictionary",
               "Create a new dictionary",
@@ -49,6 +49,7 @@ namespace GhTools.Utilities
                 return;
             }
 
+            _dict = new Dictionary<string, IGH_Goo>();
             for (int i = 0; i < keys.Count; i++)
             {
                 if (!_dict.ContainsKey(keys[i]))
@@ -61,7 +62,7 @@ namespace GhTools.Utilities
             DA.SetData(0, ghDict);
         }
 
-        protected override System.Drawing.Bitmap Icon => Resources.CreateDictIcon;
+        protected override Bitmap Icon => Resources.CreateDictIcon;
 
         public override Guid ComponentGuid => new Guid("70F44B2A-AED6-493D-978D-2AE0D9E9A15C");
 
@@ -80,11 +81,11 @@ namespace GhTools.Utilities
             var vl = new GH_ValueList();
             //clear default contents
             vl.ListItems.Clear();
-            vl.ListMode = GH_ValueListMode.CheckList;
+            vl.ListMode = GH_ValueListMode.DropDown;
             //add all the keys as both "Keys" and values
             foreach (var kvp in _dict)
             {
-                var valueList = new GH_ValueListItem(kvp.Key, kvp.Value.ToString());
+                var valueList = new GH_ValueListItem(kvp.Key, $"\"{kvp.Value.ToString()}\"");
                 vl.ListItems.Add(valueList);
             }
             //set component nickname
