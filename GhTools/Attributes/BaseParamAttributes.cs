@@ -15,12 +15,9 @@ namespace GhTools.Attributes
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                GH_Skin.palette_normal_standard = AttributeColors.MMColorStyle;
-                base.Render(canvas, graphics, channel);
-                GH_Skin.palette_normal_standard = AttributeColors.StandardStyle;
+                graphics.DrawRectangle(AttributeColors.PenMM, Rectangle.Round(Bounds));
             }
-            else
-                base.Render(canvas, graphics, channel);
+            base.Render(canvas, graphics, channel);
         }
     }
 }

@@ -35,18 +35,12 @@ namespace GhTools.Attributes
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                GH_Skin.palette_normal_standard = AttributeColors.MMColorStyle;
+                graphics.DrawRectangle(AttributeColors.PenMM, Rectangle.Round(Bounds));
             }
-
             base.Render(canvas, graphics, channel);
             var button = GH_Capsule.CreateTextCapsule(ButtonBounds, ButtonBounds, GH_Palette.Black, "ValueList", 2, 0);
             button.Render(graphics, Selected, Owner.Locked, false);
             button.Dispose();
-
-            if (channel == GH_CanvasChannel.Objects)
-            {
-                GH_Skin.palette_normal_standard = AttributeColors.StandardStyle;
-            }
         }
 
         public override GH_ObjectResponse RespondToMouseDown(GH_Canvas sender, GH_CanvasMouseEvent e)
