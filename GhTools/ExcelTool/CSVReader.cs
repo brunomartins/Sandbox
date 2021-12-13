@@ -2,6 +2,7 @@
 using Grasshopper;
 using Grasshopper.Kernel;
 using System;
+using GhTools.Attributes;
 
 namespace GhTools.ExcelTool
 {
@@ -17,7 +18,7 @@ namespace GhTools.ExcelTool
 
         public override void CreateAttributes()
         {
-            base.m_attributes = new CustomAttributes(this);
+            base.m_attributes = new BaseCustomAttribute(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
