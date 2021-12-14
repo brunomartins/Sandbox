@@ -12,13 +12,18 @@ I know what are you thinking! Another Excel tool! There are tons already! And yo
 * Grasshoper hasn't a vanilla node to read an excel file, so you will end up with the same problems described above.
 
 ## Description 
-The tool is composed of 3 nodes:
-* Reader
-  1. is able to read the following formats (xls, xlsm, xlsx, csv).
+The tool is composed of the follow nodes:
+* ExcelReader
+  1. is able to read the following formats (xls, xlsm, xlsx).
   2. is ablet to read multiple sheets, passing the name of the sheet or the index value.
   3. is able to read ranges of the sheets.
+* CSVReader
+  1. is able to read the csv file that for nature has only one sheet.
+  2. is able to read ranges of the sheets.
 * SheetNames
   1. provides the name of all the sheets present into the workbook.
+* DataSheet
+  1. is an object collectiong the data that will be written into a sheet.
 * Writer
   1. writes an excel file.
 
