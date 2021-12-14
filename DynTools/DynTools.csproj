@@ -70,8 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelTool\Reader.cs" />
-    <Compile Include="ExcelTool\Writer.cs" />
+    <Compile Include="ExcelTools\Reader.cs" />
+    <Compile Include="ExcelTools\Writer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

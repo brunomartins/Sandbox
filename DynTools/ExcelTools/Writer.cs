@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 
-namespace Sandbox.ExcelTool
+namespace Sandbox.ExcelTools
 {
     /// <summary>Excel workbook creation.</summary>
     public static class Writer
