@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
 using Core;
 using GhTools.Attributes;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using System;
-using System.Collections.Generic;
 
-namespace GhTools.ExcelTool
+namespace GhTools.ExcelTools
 {
     public class ExcelReader : MMComponent
     {

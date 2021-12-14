@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GhTools.Utilities
+namespace GhTools.UtilityTools
 {
     public sealed class GH_Dict : GH_Goo<ReadOnlyDictionary<string, IGH_Goo>>
     {

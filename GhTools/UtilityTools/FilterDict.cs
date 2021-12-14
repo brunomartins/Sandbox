@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GhTools.Utilities
+namespace GhTools.UtilityTools
 {
     public class FilterDict : MMComponent
     {

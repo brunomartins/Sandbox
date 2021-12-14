@@ -2,7 +2,7 @@
 using Grasshopper.Kernel;
 using System;
 
-namespace GhTools.Utilities
+namespace GhTools.UtilityTools
 {
     public class ReadDict : MMComponent
     {

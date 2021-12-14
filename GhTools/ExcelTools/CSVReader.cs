@@ -1,10 +1,10 @@
-﻿using Core;
+﻿using System;
+using Core;
 using GhTools.Attributes;
 using Grasshopper;
 using Grasshopper.Kernel;
-using System;
 
-namespace GhTools.ExcelTool
+namespace GhTools.ExcelTools
 {
     public class CSVReader : MMComponent
     {

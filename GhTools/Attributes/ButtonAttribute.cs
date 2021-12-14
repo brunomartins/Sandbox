@@ -1,9 +1,9 @@
-﻿using Grasshopper.GUI;
+﻿using GhTools.UtilityTools;
+using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
 using System.Drawing;
-using GhTools.Utilities;
 
 namespace GhTools.Attributes
 {

@@ -1,13 +1,13 @@
 ﻿using Core;
+using GhTools.Attributes;
 using Grasshopper.Kernel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using GhTools.Attributes;
 
-namespace GhTools.Utilities
+namespace GhTools.UtilityTools
 {
     public class DictParam : GH_Param<GH_Dict>
     {

@@ -1,13 +1,12 @@
-﻿using Core;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using GhTools.Attributes;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Special;
 using Grasshopper.Kernel.Types;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 
-namespace GhTools.Utilities
+namespace GhTools.UtilityTools
 {
     public class CreateDict : MMComponent
     {
