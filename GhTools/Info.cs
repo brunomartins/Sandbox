@@ -8,7 +8,7 @@ namespace GhTools
     {
         public override string Name => "GhTools";
 
-        public override Bitmap Icon => Resources.GhExcelIcon;
+        public override Bitmap Icon => Resources.SandboxIcon;
 
         public override string Description => "The Grasshopper library of the MMLib.";
 

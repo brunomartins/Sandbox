@@ -163,6 +163,16 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SandboxIcon {
+            get {
+                object obj = ResourceManager.GetObject("SandboxIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SheetIcon {
             get {
                 object obj = ResourceManager.GetObject("SheetIcon", resourceCulture);
