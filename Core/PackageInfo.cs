@@ -2,8 +2,8 @@
 {
     public static class PackageInfo
     {
-        public static string LibraryName => "MMLib";
-        public static string Category => "MMLib";
+        public static string LibraryName => "Sandbox";
+        public static string Category => "Sandbox";
 
         public static string Description =>
             "🧰 A growing library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.";

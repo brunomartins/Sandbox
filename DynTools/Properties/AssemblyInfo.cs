@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MMLib.DynTools")]
-[assembly: AssemblyDescription("The dynamo library of the MMLib")]
+[assembly: AssemblyTitle("Sandbox.DynTools")]
+[assembly: AssemblyDescription("The dynamo library of the Sandbox")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MottMacdonald")]
-[assembly: AssemblyProduct("MMLib.DynTools")]
+[assembly: AssemblyProduct("Sandbox.DynTools")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

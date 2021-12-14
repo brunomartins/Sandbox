@@ -4,8 +4,8 @@
 		<name>DynTools</name>
 	</assembly>
 	<namespaces>
-		<namespace name="MMLib.ExcelTools">
-			<category>MMLib.ExcelTools</category>
+		<namespace name="Sandbox.ExcelTools">
+			<category>Sandbox.ExcelTools</category>
 		</namespace>
 	</namespaces>
 </doc>

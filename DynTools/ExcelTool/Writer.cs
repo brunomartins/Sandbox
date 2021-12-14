@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 
-namespace MMLib.ExcelTool
+namespace Sandbox.ExcelTool
 {
     /// <summary>Excel workbook creation.</summary>
     public static class Writer

@@ -7,7 +7,7 @@
     <ProjectGuid>{60534C9F-5FD2-414A-9A4E-CF793C3A2CC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MMLib</RootNamespace>
+    <RootNamespace>Sandbox</RootNamespace>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -94,13 +94,13 @@
   <PropertyGroup>
     <PostBuildEvent>
 		echo HELLO, THE ASSEMBLY VERSION IS: $(AssemblyVersionNumber)
-		echo { "license":"MIT", "file_hash":null, "name":"MMLib", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/MMLib", "contains_binaries":true,  "node_libraries":[ "MMLib,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
+		echo { "license":"MIT", "file_hash":null, "name":"Sandbox", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "Sandbox,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
 		  exit 0
 	  </PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
     <PropertyGroup>
-      <PackageName>MMLibDyn</PackageName>
+      <PackageName>SandboxDyn</PackageName>
       <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
       <BinFolder>$(PackageFolder)bin\</BinFolder>
       <ExtraFolder>$(PackageFolder)extra\</ExtraFolder>

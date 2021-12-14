@@ -2,7 +2,7 @@
     
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <Description>The Grasshopper library of the MMLib.</Description>
+    <Description>The Grasshopper library of the Sandbox.</Description>
     <TargetExt>.gha</TargetExt>
     <UserSecretsId>04a9d61f-d204-4afb-8e24-38452757b0b5</UserSecretsId>
   </PropertyGroup>
@@ -19,7 +19,7 @@
     <When Condition="'$(AssemblyInformationalVersion)' != '' ">
       <PropertyGroup>
         <AssemblyCompany>MottMacdonald</AssemblyCompany>
-        <AssemblyProduct>MMLib.GhTools</AssemblyProduct>
+        <AssemblyProduct>Sandbox.GhTools</AssemblyProduct>
         <Version>$(AssemblyInformationalVersion)</Version>
         <AssemblyName>GhTools_$(AssemblyInformationalVersion)</AssemblyName>
         <Title>GhTools_$(AssemblyInformationalVersion)</Title>
@@ -63,7 +63,7 @@
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
-        <OutputPath>$(SolutionDir)library/MMLibGh</OutputPath>
+        <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
@@ -73,7 +73,7 @@
 	 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <OutputPath>$(SolutionDir)library/MMLibGh</OutputPath>
+        <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
     	<DebugType>pdbonly</DebugType>
     	<Optimize>true</Optimize>
     	<DefineConstants>TRACE</DefineConstants>
@@ -87,7 +87,7 @@
 		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
 	  </ItemGroup>
 	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
-	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/MMLibGh" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/SandboxGh" />
 	  <Message Text="Files copied" Importance="high" />
   </Target>
 

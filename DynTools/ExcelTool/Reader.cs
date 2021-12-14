@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core;
 
-namespace MMLib.ExcelTool
+namespace Sandbox.ExcelTool
 {
     /// <summary>Excel workbook entry point.</summary>
     public static class Reader

@@ -10,7 +10,7 @@ namespace GhTools
 
         public override Bitmap Icon => Resources.SandboxIcon;
 
-        public override string Description => "The Grasshopper library of the MMLib.";
+        public override string Description => "The Grasshopper library of the Sandbox.";
 
         public override Guid Id => new Guid("79B3FE74-B772-4FD5-9307-30BF3E093800");
 

@@ -10,7 +10,7 @@
     <Authors>Mirco Bianchini</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/mottmacdonaldglobal/MMLib</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mottmacdonaldglobal/Sandbox</RepositoryUrl>
     <PackageTags>computational geometry, architecture, engineering, construction, csharp</PackageTags>
     <PackageDescription>🧰 A library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.</PackageDescription>
     <RootNamespace>Core</RootNamespace>
