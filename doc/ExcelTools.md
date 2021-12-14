@@ -1,4 +1,4 @@
-# Excel Tools 📊
+# Excel Tools
 ![image](https://user-images.githubusercontent.com/57708659/136891496-44aaa703-f6be-491b-9530-a9dfc9f72236.png)
 
 I know what are you thinking! Another Excel tool! There are tons already! And you are correct, but here is why those tons of tools and more could be a problem:
