@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-	  <ProjectGuid>{9444F20F-8353-494F-8067-AC32EC0F967F}</ProjectGuid>
-	  <OutputType>Library</OutputType>
+    <ProjectGuid>{9444F20F-8353-494F-8067-AC32EC0F967F}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <Authors>Mirco Bianchini</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -63,6 +63,16 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CreateDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("CreateDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CSVReaderIcon {
             get {
                 object obj = ResourceManager.GetObject("CSVReaderIcon", resourceCulture);
@@ -76,6 +86,16 @@ namespace GhTools {
         internal static System.Drawing.Bitmap DataSheetIcon {
             get {
                 object obj = ResourceManager.GetObject("DataSheetIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DictParameterIcon {
+            get {
+                object obj = ResourceManager.GetObject("DictParameterIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,39 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FilterDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("FilterDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GhExcelIcon {
             get {
                 object obj = ResourceManager.GetObject("GhExcelIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MergeDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("MergeDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReadDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("ReadDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

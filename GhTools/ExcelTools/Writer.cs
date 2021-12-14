@@ -1,23 +1,19 @@
-﻿using Core;
-using Grasshopper.Kernel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Core;
+using GhTools.Attributes;
+using Grasshopper.Kernel;
 
-namespace GhTools.ExcelTool
+namespace GhTools.ExcelTools
 {
-    public class Writer : GH_Component
+    public class Writer : MMComponent
     {
         public Writer()
           : base("ExcelWriter", "ExcelWriter",
               "This component write data into an excel form (xlsx). Data must be organized in a data tree where every branch matches the number of header.",
-              PackageInfo.Category, "ExcelTools")
+              "ExcelTools")
         {
-        }
-
-        public override void CreateAttributes()
-        {
-            base.m_attributes = new CustomAttributes(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -52,8 +48,6 @@ namespace GhTools.ExcelTool
 
             this.Message = SpreadSheetWriter.Excel(path, fileName, sheets.ToArray(), canWrite);
         }
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         protected override Bitmap Icon => Resources.ExcelWriterIcon;
 

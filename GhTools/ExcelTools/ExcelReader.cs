@@ -1,25 +1,20 @@
+using System;
+using System.Collections.Generic;
 using Core;
+using GhTools.Attributes;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using System;
-using System.Collections.Generic;
 
-namespace GhTools.ExcelTool
+namespace GhTools.ExcelTools
 {
-    public class ExcelReader : GH_Component
+    public class ExcelReader : MMComponent
     {
         public ExcelReader()
           : base("ExcelReader", "ExcelReader",
-            "This component reads these formats: xlsx, xlsm, xls.",
-            PackageInfo.Category, "ExcelTools")
+            "This component reads these formats: xlsx, xlsm, xls.", "ExcelTools")
         {
-        }
-
-        public override void CreateAttributes()
-        {
-            base.m_attributes = new CustomAttributes(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -68,8 +63,6 @@ namespace GhTools.ExcelTool
 
             DA.SetDataTree(0, data);
         }
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         protected override System.Drawing.Bitmap Icon => Resources.ExcelReaderIcon;
 

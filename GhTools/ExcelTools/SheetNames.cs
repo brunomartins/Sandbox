@@ -1,21 +1,16 @@
 ﻿using System;
 using Core;
+using GhTools.Attributes;
 using Grasshopper.Kernel;
 
-namespace GhTools.ExcelTool
+namespace GhTools.ExcelTools
 {
-    public class SheetNames : GH_Component
+    public class SheetNames : MMComponent
     {
         public SheetNames()
           : base("ExcelSheets", "ExcelSheets",
-              "Reads the sheets into the file.",
-              PackageInfo.Category, "ExcelTools")
+              "Reads the sheets into the file.", "ExcelTools")
         {
-        }
-
-        public override void CreateAttributes()
-        {
-            base.m_attributes = new CustomAttributes(this);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -35,8 +30,6 @@ namespace GhTools.ExcelTool
 
             DA.SetDataList(0, SpreadSheetReader.GetSheetNames(path));
         }
-
-        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         protected override System.Drawing.Bitmap Icon => Resources.SheetIcon;
 
