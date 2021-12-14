@@ -1,4 +1,4 @@
-# Excel Tool
+# Excel Tools
 ![image](https://user-images.githubusercontent.com/57708659/136891496-44aaa703-f6be-491b-9530-a9dfc9f72236.png)
 
 I know what are you thinking! Another Excel tool! There are tons already! And you are correct, but here is why those tons of tools and more could be a problem:
@@ -11,8 +11,7 @@ I know what are you thinking! Another Excel tool! There are tons already! And yo
 * You can say, ok but Revit has a reader node out of the box, yep true, but if you need other functions what do you do? And also if you are one of the unlucky like me you have to re-install office 360 every time windows make an update, from dynamo [forum](https://forum.dynamobim.com/t/excel-data-importexcel-operation-failed/62197/19) ![image](https://user-images.githubusercontent.com/57708659/136896633-a69c93a9-b615-4f64-93d9-5c69d170d07e.png)
 * Grasshoper hasn't a vanilla node to read an excel file, so you will end up with the same problems described above.
 
-## Description 
-The tool is composed of the follow nodes:
+## Nodes 
 * ExcelReader
   1. is able to read the following formats (xls, xlsm, xlsx).
   2. is ablet to read multiple sheets, passing the name of the sheet or the index value.
