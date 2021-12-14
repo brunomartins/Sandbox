@@ -35,6 +35,8 @@
 	  <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>

@@ -123,6 +123,16 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FilterDictIcone {
+            get {
+                object obj = ResourceManager.GetObject("FilterDictIcone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GhExcelIcon {
             get {
                 object obj = ResourceManager.GetObject("GhExcelIcon", resourceCulture);
