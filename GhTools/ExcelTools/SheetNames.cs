@@ -1,9 +1,9 @@
 ﻿using System;
 using Core;
-using GhTools.Attributes;
 using Grasshopper.Kernel;
+using SandboxGh.Attributes;
 
-namespace GhTools.ExcelTools
+namespace SandboxGh.ExcelTools
 {
     public class SheetNames : MMComponent
     {

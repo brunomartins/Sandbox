@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using GhTools.Attributes;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Special;
 using Grasshopper.Kernel.Types;
+using SandboxGh.Attributes;
 
-namespace GhTools.UtilityTools
+namespace SandboxGh.UtilityTools
 {
     public class CreateDict : MMComponent
     {

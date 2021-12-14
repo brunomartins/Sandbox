@@ -1,12 +1,12 @@
-﻿using GhTools.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using SandboxGh.Attributes;
 
-namespace GhTools.UtilityTools
+namespace SandboxGh.UtilityTools
 {
     public class MergeDict : MMComponent, IGH_VariableParameterComponent
     {

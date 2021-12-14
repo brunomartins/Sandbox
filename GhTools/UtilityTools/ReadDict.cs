@@ -1,8 +1,8 @@
-﻿using GhTools.Attributes;
+﻿using System;
 using Grasshopper.Kernel;
-using System;
+using SandboxGh.Attributes;
 
-namespace GhTools.UtilityTools
+namespace SandboxGh.UtilityTools
 {
     public class ReadDict : MMComponent
     {

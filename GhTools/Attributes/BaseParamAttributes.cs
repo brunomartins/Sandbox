@@ -1,9 +1,9 @@
-﻿using Grasshopper.GUI.Canvas;
+﻿using System.Drawing;
+using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
-using System.Drawing;
 
-namespace GhTools.Attributes
+namespace SandboxGh.Attributes
 {
     internal class BaseParamAttributes : GH_FloatingParamAttributes
     {

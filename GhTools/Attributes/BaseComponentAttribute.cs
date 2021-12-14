@@ -1,9 +1,9 @@
-﻿using Grasshopper.GUI.Canvas;
+﻿using System.Drawing;
+using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
-using System.Drawing;
 
-namespace GhTools.Attributes
+namespace SandboxGh.Attributes
 {
     // https://discourse.mcneel.com/t/custome-node-color/7427/6
     // https://discourse.mcneel.com/t/change-the-color-of-the-custom-component/56435/2

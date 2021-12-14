@@ -19,7 +19,7 @@
     <When Condition="'$(AssemblyInformationalVersion)' != '' ">
       <PropertyGroup>
         <AssemblyCompany>MottMacdonald</AssemblyCompany>
-        <AssemblyProduct>Sandbox.GhTools</AssemblyProduct>
+        <AssemblyProduct>SandboxGh</AssemblyProduct>
         <Version>$(AssemblyInformationalVersion)</Version>
         <AssemblyName>GhTools_$(AssemblyInformationalVersion)</AssemblyName>
         <Title>GhTools_$(AssemblyInformationalVersion)</Title>

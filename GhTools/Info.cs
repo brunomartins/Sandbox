@@ -1,12 +1,12 @@
-﻿using Grasshopper.Kernel;
-using System;
+﻿using System;
 using System.Drawing;
+using Grasshopper.Kernel;
 
-namespace GhTools
+namespace SandboxGh
 {
     public class Info : GH_AssemblyInfo
     {
-        public override string Name => "GhTools";
+        public override string Name => "SandboxGh";
 
         public override Bitmap Icon => Resources.SandboxIcon;
 

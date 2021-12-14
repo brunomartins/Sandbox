@@ -1,7 +1,7 @@
-﻿using Grasshopper.GUI.Canvas;
-using System.Drawing;
+﻿using System.Drawing;
+using Grasshopper.GUI.Canvas;
 
-namespace GhTools.Attributes
+namespace SandboxGh.Attributes
 {
     internal static class AttributeColors
     {

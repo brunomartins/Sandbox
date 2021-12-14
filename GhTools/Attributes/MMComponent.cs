@@ -1,7 +1,7 @@
 ﻿using Core;
 using Grasshopper.Kernel;
 
-namespace GhTools.Attributes
+namespace SandboxGh.Attributes
 {
     public abstract class MMComponent : GH_Component
     {
