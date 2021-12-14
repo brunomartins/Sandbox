@@ -123,9 +123,9 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FilterDictIcone {
+        internal static System.Drawing.Bitmap FilterDictIcon {
             get {
-                object obj = ResourceManager.GetObject("FilterDictIcone", resourceCulture);
+                object obj = ResourceManager.GetObject("FilterDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace GhTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ReadDictIcone {
+        internal static System.Drawing.Bitmap ReadDictIcon {
             get {
-                object obj = ResourceManager.GetObject("ReadDictIcone", resourceCulture);
+                object obj = ResourceManager.GetObject("ReadDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

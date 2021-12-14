@@ -1,11 +1,11 @@
 ﻿using GhTools.Attributes;
 using Grasshopper.Kernel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Grasshopper.Kernel.Types;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GhTools.Utilities
 {
@@ -37,14 +37,14 @@ namespace GhTools.Utilities
             DA.GetData(1, ref pattern);
             if (string.IsNullOrEmpty(pattern)) DA.SetData(0, ghDict.Value); ;
 
-            Dictionary<string, IGH_Goo> filteredDict = ghDict.Value.Where(kvp => 
-                !LikeOperator.LikeString(kvp.Key, pattern, CompareMethod.Binary))
+            Dictionary<string, IGH_Goo> filteredDict = ghDict.Value.Where(kvp =>
+                    LikeOperator.LikeString(kvp.Key, pattern, CompareMethod.Binary))
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             DA.SetData(0, filteredDict);
         }
 
-        protected override System.Drawing.Bitmap Icon => Resources.FilterDictIcone;
+        protected override System.Drawing.Bitmap Icon => Resources.FilterDictIcon;
 
         public override Guid ComponentGuid => new Guid("FD0E8696-15EA-4E06-9182-D4569C830AB1");
     }

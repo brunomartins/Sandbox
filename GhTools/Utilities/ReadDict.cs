@@ -31,7 +31,7 @@ namespace GhTools.Utilities
             DA.SetDataList(1, ghDict.Value.Values);
         }
 
-        protected override System.Drawing.Bitmap Icon => Resources.ReadDictIcone;
+        protected override System.Drawing.Bitmap Icon => Resources.ReadDictIcon;
 
         public override Guid ComponentGuid => new Guid("0CFF43E9-4940-4885-9566-42CAB413DFAE");
     }
