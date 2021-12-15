@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Core;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
+using SandboxCore;
 using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools

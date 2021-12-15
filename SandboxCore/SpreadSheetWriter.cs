@@ -5,7 +5,7 @@ using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
 
-namespace Core
+namespace SandboxCore
 {
     public static class SpreadSheetWriter
     {

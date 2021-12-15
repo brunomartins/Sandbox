@@ -10,8 +10,8 @@
     <When Condition="'$(AssemblyInformationalVersion)' == '' ">
       <PropertyGroup>
         <Version>0.0.0.0</Version>
-        <AssemblyName>GhTools</AssemblyName>
-        <Title>GhTools</Title>
+        <AssemblyName>SandboxGh</AssemblyName>
+        <Title>SandboxGh</Title>
         <AssemblyVersionNumber>0.0.0.0</AssemblyVersionNumber>
         <AssemblyInformationalVersion>0.0.0.0</AssemblyInformationalVersion>
       </PropertyGroup>
@@ -21,8 +21,8 @@
         <AssemblyCompany>MottMacdonald</AssemblyCompany>
         <AssemblyProduct>SandboxGh</AssemblyProduct>
         <Version>$(AssemblyInformationalVersion)</Version>
-        <AssemblyName>GhTools_$(AssemblyInformationalVersion)</AssemblyName>
-        <Title>GhTools_$(AssemblyInformationalVersion)</Title>
+        <AssemblyName>SandboxGh_$(AssemblyInformationalVersion)</AssemblyName>
+        <Title>SandboxGh_$(AssemblyInformationalVersion)</Title>
         <AssemblyVersionNumber>$(AssemblyVersionNumber)</AssemblyVersionNumber>
         <AssemblyInformationalVersion>$(AssemblyInformationalVersion)</AssemblyInformationalVersion> 
       </PropertyGroup>
@@ -32,7 +32,7 @@
   <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
   <ItemGroup>
 	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
-	  <ProjectReference Include="..\Core\Core.csproj" />
+	  <ProjectReference Include="..\SandboxCore\SandboxCore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />

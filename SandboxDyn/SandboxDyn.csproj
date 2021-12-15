@@ -81,9 +81,9 @@
     <None Include="manifests\pkg.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\SandboxCore\SandboxCore.csproj">
       <Project>{9444f20f-8353-494f-8067-ac32ec0f967f}</Project>
-      <Name>Core</Name>
+      <Name>SandboxCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

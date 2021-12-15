@@ -1,4 +1,4 @@
-﻿namespace Core
+﻿namespace SandboxCore
 {
     public static class PackageInfo
     {

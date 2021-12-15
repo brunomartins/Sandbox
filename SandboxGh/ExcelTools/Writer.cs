@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Core;
 using Grasshopper.Kernel;
+using SandboxCore;
 using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
@@ -32,13 +32,13 @@ namespace SandboxGh.ExcelTools
         {
             string path = String.Empty;
             string fileName = String.Empty;
-            List<Core.DataSheet> sheets = new List<Core.DataSheet>();
+            List<SandboxCore.DataSheet> sheets = new List<SandboxCore.DataSheet>();
             bool canWrite = false;
 
             DA.GetData(0, ref canWrite);
             if (!canWrite) return;
 
-            if (!DA.GetDataList<Core.DataSheet>(3, sheets)) return;
+            if (!DA.GetDataList<SandboxCore.DataSheet>(3, sheets)) return;
             if (!DA.GetData(1, ref path) || !DA.GetData(2, ref fileName)) return;
 
             if (sheets.Count == 0 || sheets == null)

@@ -1,7 +1,7 @@
 ﻿using NPOI.SS.UserModel;
 using static NPOI.SS.UserModel.CellType;
 
-namespace Core
+namespace SandboxCore
 {
     public static class NpoiExtension
     {
