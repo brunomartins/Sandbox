@@ -1,0 +1,92 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Description>The Grasshopper library of the Sandbox.</Description>
+    <TargetExt>.gha</TargetExt>
+    <UserSecretsId>04a9d61f-d204-4afb-8e24-38452757b0b5</UserSecretsId>
+    <AssemblyName>SandboxGh</AssemblyName>
+    <Title>SandboxGh</Title>
+  </PropertyGroup>
+    <Choose>
+    <When Condition="'$(AssemblyInformationalVersion)' == '' ">
+      <PropertyGroup>
+        <Version>0.0.0.0</Version>
+        <AssemblyVersionNumber>0.0.0.0</AssemblyVersionNumber>
+        <AssemblyInformationalVersion>0.0.0.0</AssemblyInformationalVersion>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(AssemblyInformationalVersion)' != '' ">
+      <PropertyGroup>
+        <AssemblyCompany>MottMacdonald</AssemblyCompany>
+        <AssemblyProduct>SandboxGh</AssemblyProduct>
+        <Version>$(AssemblyInformationalVersion)</Version>
+        <AssemblyVersionNumber>$(AssemblyVersionNumber)</AssemblyVersionNumber>
+        <AssemblyInformationalVersion>$(AssemblyInformationalVersion)</AssemblyInformationalVersion> 
+      </PropertyGroup>
+    </When>
+  </Choose>
+  
+  <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
+  <ItemGroup>
+	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
+	  <ProjectReference Include="..\SandboxCore\SandboxCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  
+  <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+    <StartArguments></StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <!--You can set this one-->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <!--Or replace OutputPath with OutDir-->
+        <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <Optimize>false</Optimize>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <PlatformTarget>x64</PlatformTarget> 
+    </PropertyGroup>
+	 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
+    	<DebugType>pdbonly</DebugType>
+    	<Optimize>true</Optimize>
+    	<DefineConstants>TRACE</DefineConstants>
+    	<ErrorReport>prompt</ErrorReport>
+    	<WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+
+  <!--https://docs.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2019-->
+  <Target Name="CopyGhFiles" AfterTargets="Build">
+	  <ItemGroup>
+		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
+	  </ItemGroup>
+	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/SandboxGh" />
+	  <Message Text="Files copied" Importance="high" />
+  </Target>
+
+</Project>

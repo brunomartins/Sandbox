@@ -86,24 +86,24 @@ jobs:
         uses: microsoft/setup-msbuild@v1
         
       - name: 🔧 Restore nuget with dotnet
-        run: nuget restore ./MMLibrary.sln
+        run: nuget restore ./Sandbox.sln
       
       - name: 🧱 Build project
         run: |
-          msbuild.exe ./MMLibrary.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.short_version }} /p:AssemblyInformationalVersion=${{ env.version_state }}
+          msbuild.exe ./Sandbox.sln /p:platform="Any CPU" /p:configuration="Release" /p:AssemblyVersionNumber=${{ env.short_version }} /p:AssemblyInformationalVersion=${{ env.version_state }}
 
       - name: 📝 Create installation file
         shell: bash
         run: |
           cat <<EOF > ./library/installation.txt
           ### For Grasshopper
-          Copy the MMLibGh folder into the local folder:
+          Copy the SandboxGh folder into the local folder:
           C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries
           ### For Dynamo in Revit
-          Copy the MMLibDyn folder into the local folder:
+          Copy the SandboxDyn folder into the local folder:
           C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages
           ### For Dynamo in Civil3D
-          Copy the MMLibDyn folder into the local folder:
+          Copy the SandboxDyn folder into the local folder:
           C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages
           EOF
 
@@ -125,13 +125,13 @@ jobs:
           prerelease: false
           
       - name: 💾 7Zip library
-        run: 7z a -t7z -mx=9 MMLibrary-${{ env.version_state }}.7z ./library/*
+        run: 7z a -t7z -mx=9 Sandbox-${{ env.version_state }}.7z ./library/*
 
       - name: 📤 Upload library to release
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.version_state }}
-          file: MMLibrary-${{ env.version_state }}.7z
-          asset_name: MMLibrary-${{ env.version_state }}.7z
+          file: Sandbox-${{ env.version_state }}.7z
+          asset_name: Sandbox-${{ env.version_state }}.7z
           overwrite: true

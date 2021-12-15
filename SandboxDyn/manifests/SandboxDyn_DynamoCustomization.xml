@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+	<assembly>
+		<name>SandboxDyn</name>
+	</assembly>
+	<namespaces>
+		<namespace name="Sandbox.ExcelTools">
+			<category>Sandbox.ExcelTools</category>
+		</namespace>
+	</namespaces>
+</doc>
