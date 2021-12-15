@@ -13,7 +13,8 @@
     <RepositoryUrl>https://github.com/mottmacdonaldglobal/Sandbox</RepositoryUrl>
     <PackageTags>computational geometry, architecture, engineering, construction, csharp</PackageTags>
     <PackageDescription>🧰 A library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.</PackageDescription>
-    <RootNamespace>SandboxCore</RootNamespace>
+    <RootNamespace>Sandbox</RootNamespace>
+    <AssemblyName>SandboxCore</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -24,13 +25,11 @@
     <When Condition="'$(AssemblyInformationalVersion)' == '' ">
       <PropertyGroup>
         <Version>0.0.0</Version>
-        <AssemblyName>SandboxCore</AssemblyName>
       </PropertyGroup>
     </When>
     <When Condition="'$(AssemblyInformationalVersion)' != '' ">
       <PropertyGroup>
         <Version>$(AssemblyInformationalVersion)</Version>
-        <AssemblyName>SandboxCore_$(AssemblyInformationalVersion)</AssemblyName>
       </PropertyGroup>
     </When>
   </Choose>

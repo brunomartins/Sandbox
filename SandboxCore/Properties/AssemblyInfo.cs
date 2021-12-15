@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 // [assembly: AssemblyTitle("MMLib.Core")]
-[assembly: AssemblyDescription("The core library of the MMLib")]
+[assembly: AssemblyDescription("The core library of the Sandbox")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MottMacdonald")]
-[assembly: AssemblyProduct("MMLib.Core")]
+[assembly: AssemblyProduct("SandboxCore")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

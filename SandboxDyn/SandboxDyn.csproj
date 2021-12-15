@@ -8,6 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sandbox</RootNamespace>
+    <AssemblyName>SandboxDyn</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -15,14 +16,12 @@
   <Choose>
     <When Condition="'$(AssemblyInformationalVersion)' == '' ">
       <PropertyGroup>
-        <Version>0.0.0</Version>
-        <AssemblyName>SandboxDyn</AssemblyName>
+        <Version>0.0.0.0</Version>
       </PropertyGroup>
     </When>
     <When Condition="'$(AssemblyInformationalVersion)' != '' ">
       <PropertyGroup>
-        <Version>$(AssemblyInformationalVersion)</Version>
-        <AssemblyName>SandboxDyn_$(AssemblyInformationalVersion)</AssemblyName>
+        <Version>$(AssemblyVersionNumber)</Version>
       </PropertyGroup>
     </When>
   </Choose>
@@ -94,7 +93,7 @@
   <PropertyGroup>
     <PostBuildEvent>
 		echo HELLO, THE ASSEMBLY VERSION IS: $(AssemblyVersionNumber)
-		echo { "license":"MIT", "file_hash":null, "name":"SandboxDyn", "version":"$(AssemblyInformationalVersion)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDyn,  Version=$(AssemblyInformationalVersion),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
+		echo { "license":"MIT", "file_hash":null, "name":"SandboxDyn", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDyn,  Version=$(AssemblyInformationalVersion),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
 		  exit 0
 	  </PostBuildEvent>
   </PropertyGroup>
