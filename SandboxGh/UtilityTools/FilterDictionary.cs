@@ -9,11 +9,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.UtilityTools
 {
-    public class FilterDict : MMComponent
+    public class FilterDictionary : SandboxComponent
     {
-        public FilterDict()
-          : base("Filter Dictionary", "FD",
-              "Match the keys of the dictionary against a pattern.", "Utilities")
+        public FilterDictionary()
+          : base("Match the keys of the dictionary against a pattern.", "Utilities")
         {
         }
 

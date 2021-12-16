@@ -35,7 +35,7 @@ namespace SandboxGh.Attributes
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                graphics.DrawRectangle(AttributeColors.PenMM, Rectangle.Round(Bounds));
+                graphics.DrawRectangle(ColorAttributes.SandboxPen, Rectangle.Round(Bounds));
             }
             base.Render(canvas, graphics, channel);
             var button = GH_Capsule.CreateTextCapsule(ButtonBounds, ButtonBounds, GH_Palette.Black, "ValueList", 2, 0);
@@ -46,7 +46,7 @@ namespace SandboxGh.Attributes
         public override GH_ObjectResponse RespondToMouseDown(GH_Canvas sender, GH_CanvasMouseEvent e)
         {
             if (e.Button != System.Windows.Forms.MouseButtons.Left) return base.RespondToMouseDown(sender, e);
-            if (!(Owner is CreateDict component)) return GH_ObjectResponse.Handled;
+            if (!(Owner is CreateDictionary component)) return GH_ObjectResponse.Handled;
             RectangleF rec = ButtonBounds;
             if (!rec.Contains(e.CanvasLocation)) return base.RespondToMouseDown(sender, e);
             component.CreateValueList(sender, e);

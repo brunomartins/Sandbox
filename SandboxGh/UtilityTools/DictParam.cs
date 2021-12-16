@@ -20,7 +20,7 @@ namespace SandboxGh.UtilityTools
 
         public override void CreateAttributes()
         {
-            m_attributes = new BaseParamAttributes(this);
+            m_attributes = new ParamAttributes(this);
         }
 
         protected override string VolatileDataDescription()

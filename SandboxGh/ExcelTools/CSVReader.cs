@@ -6,12 +6,11 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
 {
-    public class CSVReader : MMComponent
+    public class CSVReader : SandboxComponent
     {
 
         public CSVReader()
-          : base("CSVReader", "CSVReader",
-            "This component reads csv file.", "ExcelTools")
+          : base("This component reads csv file.", "ExcelTools")
         {
         }
 

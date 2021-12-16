@@ -8,12 +8,11 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.UtilityTools
 {
-    public class CreateDict : MMComponent
+    public class CreateDictionary : SandboxComponent
     {
         private Dictionary<string, IGH_Goo> _dict;
-        public CreateDict()
-          : base("Create Dictionary", "Create Dictionary",
-              "Create a new dictionary", "Utilities")
+        public CreateDictionary()
+          : base("Create a new dictionary", "Utilities")
         {
         }
 
