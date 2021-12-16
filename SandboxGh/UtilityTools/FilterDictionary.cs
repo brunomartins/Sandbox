@@ -19,8 +19,7 @@ namespace SandboxGh.UtilityTools
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DictParam(), "Dict", "D", "Dictionary", GH_ParamAccess.item);
-            pManager.AddTextParameter("Pattern", "P", "wildcard pattern for matching.", GH_ParamAccess.item);
-
+            pManager.AddTextParameter("Pattern", "P", "Wildcard pattern for matching.", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
