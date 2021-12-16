@@ -5,11 +5,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
 {
-    public class SheetNames : MMComponent
+    public class SheetNames : SandboxComponent
     {
         public SheetNames()
-          : base("ExcelSheets", "ExcelSheets",
-              "Reads the sheets into the file.", "ExcelTools")
+          : base("Retrieve the name of the sheets into the workbook.", "ExcelTools")
         {
         }
 

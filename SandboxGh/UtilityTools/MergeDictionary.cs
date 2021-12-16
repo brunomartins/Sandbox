@@ -8,11 +8,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.UtilityTools
 {
-    public class MergeDict : MMComponent, IGH_VariableParameterComponent
+    public class MergeDictionary : SandboxComponent, IGH_VariableParameterComponent
     {
-        public MergeDict()
-          : base("Merge Dictionary", "MergeDict",
-              "Merge the dictionary in one dictionary.", "Utilities")
+        public MergeDictionary()
+          : base("Merge the dictionary in one dictionary.", "Utilities")
         {
             Params.ParameterSourcesChanged +=
                 new GH_ComponentParamServer.ParameterSourcesChangedEventHandler(ParamSourcesChanged);

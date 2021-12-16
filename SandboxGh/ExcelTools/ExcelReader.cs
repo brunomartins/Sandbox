@@ -9,11 +9,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
 {
-    public class ExcelReader : MMComponent
+    public class ExcelReader : SandboxComponent
     {
         public ExcelReader()
-          : base("ExcelReader", "ExcelReader",
-            "This component reads these formats: xlsx, xlsm, xls.", "ExcelTools")
+          : base("This component reads these formats: xlsx, xlsm, xls.", "ExcelTools")
         {
         }
 

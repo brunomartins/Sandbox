@@ -8,11 +8,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
 {
-    public class DataSheet : MMComponent
+    public class DataSheet : SandboxComponent
     {
         public DataSheet()
-            : base("DataSheet", "DataSheet",
-                "Collect the data that will be written into a sheet.", "ExcelTools")
+            : base("Collect the data that will be written into a sheet.", "ExcelTools")
         {
         }
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)

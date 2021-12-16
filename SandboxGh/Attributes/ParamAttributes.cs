@@ -5,9 +5,9 @@ using Grasshopper.Kernel.Attributes;
 
 namespace SandboxGh.Attributes
 {
-    internal class BaseParamAttributes : GH_FloatingParamAttributes
+    internal class ParamAttributes : GH_FloatingParamAttributes
     {
-        public BaseParamAttributes(IGH_Param param) : base(param)
+        internal ParamAttributes(IGH_Param param) : base(param)
         {
         }
 
@@ -15,7 +15,7 @@ namespace SandboxGh.Attributes
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                graphics.DrawRectangle(AttributeColors.PenMM, Rectangle.Round(Bounds));
+                graphics.DrawRectangle(ColorAttributes.SandboxPen, Rectangle.Round(Bounds));
             }
             base.Render(canvas, graphics, channel);
         }

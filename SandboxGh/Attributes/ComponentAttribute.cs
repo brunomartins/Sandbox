@@ -7,9 +7,9 @@ namespace SandboxGh.Attributes
 {
     // https://discourse.mcneel.com/t/custome-node-color/7427/6
     // https://discourse.mcneel.com/t/change-the-color-of-the-custom-component/56435/2
-    internal class BaseComponentAttribute : GH_ComponentAttributes
+    internal class ComponentAttribute : GH_ComponentAttributes
     {
-        public BaseComponentAttribute(IGH_Component component) : base(component)
+        internal ComponentAttribute(IGH_Component component) : base(component)
         {
         }
 
@@ -17,9 +17,8 @@ namespace SandboxGh.Attributes
         {
             if (channel == GH_CanvasChannel.Objects)
             {
-                graphics.DrawRectangle(AttributeColors.PenMM, Rectangle.Round(Bounds));
+                graphics.DrawRectangle(ColorAttributes.SandboxPen, Rectangle.Round(Bounds));
             }
-
             base.Render(canvas, graphics, channel);
         }
     }

@@ -7,12 +7,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.ExcelTools
 {
-    public class Writer : MMComponent
+    public class ExcelWriter : SandboxComponent
     {
-        public Writer()
-          : base("ExcelWriter", "ExcelWriter",
-              "This component write data into an excel form (xlsx). Data must be organized in a data tree where every branch matches the number of header.",
-              "ExcelTools")
+        public ExcelWriter()
+          : base("This component write data into an excel form (xlsx).", "ExcelTools")
         {
         }
 

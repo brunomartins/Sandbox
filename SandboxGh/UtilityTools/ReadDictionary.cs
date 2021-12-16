@@ -4,11 +4,10 @@ using SandboxGh.Attributes;
 
 namespace SandboxGh.UtilityTools
 {
-    public class ReadDict : MMComponent
+    public class ReadDictionary : SandboxComponent
     {
-        public ReadDict()
-            : base("Read Dictionary", "ReadDict",
-                "Read key-value of a dictionary.", "Utilities")
+        public ReadDictionary()
+            : base("Read key-value of a dictionary.", "Utilities")
         {
         }
 
