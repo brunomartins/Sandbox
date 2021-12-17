@@ -1,55 +1,43 @@
 # What is Sandbox?
 
-## Getting Started
+![](./media/SandBoxBanner.png "Sandbox")
 
-**Got 2 minutes?** Check out a video overview of our product:
+## A library of tools for Grasshopper and Dynamo.
+Having our own library means:
+* We can implement all the functions we need to make everyone's everyday job easier and more integrated with our workflows.
+* You don't need to install multiple libraries creating problems of usabilities across teams.
+* We maintain and improve it.
 
-{% embed url="https://www.loom.com/share/3bfa83acc9fd41b7b98b803ba9197d90" %}
+## 🧰 Tools 
+* [Excel tools](./doc/ExcelTools.md)
+* [Utility tools](./doc/UtilityTools.md)
 
-{% hint style="info" %}
-**Good to know:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at [Loom](https://loom.com) as a perfect example of a succinct feature overview.
-{% endhint %}
+## 💿 Installation Instructions
+### 🖱 Click on the last realease.
+![image1](https://user-images.githubusercontent.com/57708659/146117683-950c3efc-505d-4016-bafc-e02292afd0c6.png)
+### 📩 Download the libray!
+![image2](https://user-images.githubusercontent.com/57708659/146117649-a6315d1d-fc3d-4bcc-bcaf-8940ad8fcd1f.png)
+### 🔓 [Unblock](https://winaero.com/how-to-unblock-files-downloaded-from-internet-in-windows-10/) the zip before to unzip it!!
+![image3](https://user-images.githubusercontent.com/57708659/146117853-a4944e6b-21c1-404a-9af9-15d575cb7951.png)
 
-### Guides: Jump right in
+Inside the Sandbox folder: <br/>
+### For 🦗
+* Copy the SandboxGh folder into the local folder:<br/> 
+``C:\Users\"your username"\AppData\Roaming\Grasshopper\Libraries``
+### For 🧨 in Revit
+* Copy the SandboxDyn folder into the local folder:<br/>
+``C:\Users\{USER}\AppData\Roaming\Dynamo\Dynamo {TARGET}\{VERSION}\pakages``
+### For 🧨 in Civil3D
+* Copy the SandboxDyn folder into the local folder:<br/>
+``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
 
-Follow our handy guides to get started on the basics as quickly as possible:
+## Feedback or reporting bugs
+Please use **GitHub issues** for your feedback, reporting bugs or suggesting new tools.
+Follow these steps on how to create an [issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue)
 
-{% content-ref url="guides/creating-your-first-project.md" %}
-[creating-your-first-project.md](guides/creating-your-first-project.md)
-{% endcontent-ref %}
+## Tested on
+* **Rhino version**: 7
+* **DynamoSandbox version**: 2.12
 
-{% content-ref url="guides/creating-your-first-task.md" %}
-[creating-your-first-task.md](guides/creating-your-first-task.md)
-{% endcontent-ref %}
-
-{% content-ref url="guides/advanced-permissions.md" %}
-[advanced-permissions.md](guides/advanced-permissions.md)
-{% endcontent-ref %}
-
-{% hint style="info" %}
-**Good to know:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
-{% endhint %}
-
-### Fundamentals: Dive a little deeper
-
-Learn the fundamentals of MyProduct to get a deeper understanding of our main features:
-
-{% content-ref url="fundamentals/projects.md" %}
-[projects.md](fundamentals/projects.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/members.md" %}
-[members.md](fundamentals/members.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/task-lists.md" %}
-[task-lists.md](fundamentals/task-lists.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/tasks.md" %}
-[tasks.md](fundamentals/tasks.md)
-{% endcontent-ref %}
-
-{% hint style="info" %}
-**Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
-{% endhint %}
+### Tags 
+Grasshopper, Dynamo, Library, Tools
