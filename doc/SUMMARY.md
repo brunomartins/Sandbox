@@ -26,4 +26,4 @@
 
 ## Extras
 
-* [Keyboard Shortcuts](extras/keyboard-shortcuts.md)
+* [Keyboard Shortcuts](./doc/extras/keyboard-shortcuts.md)
