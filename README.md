@@ -9,8 +9,8 @@ Having our own library means:
 * We maintain and improve it.
 
 ## 📚 Guides
-* [Instalattion](./doc/guides/Contributing.md)
-* [Contribute](./doc/guides/Installation.md)
+* [Installation](./doc/guides/Installation.md)
+* [Contribute](./doc/guides/Contributing.md)
 
 ## 🧰 Tools 
 * [Excel tools](./doc/tools/ExcelTools.md)

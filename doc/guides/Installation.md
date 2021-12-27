@@ -1,7 +1,8 @@
 # 💿 Installation Instructions
 
 ## Tested on
-* **Rhino version**: 7
+* **Rhino version**: 7.11.21257.7001, 2021-09-14
+* **Dynamo Revit**: 2020 - 2021
 * **DynamoSandbox version**: 2.12
 
 ### 🖱 Click on the last realease.

@@ -2,12 +2,12 @@
 
 * [What is Sandbox?](./README.md)
 
-## Guides
+## 📚 Guides
 
-* [Instalattion](./doc/guides/Contributing.md)
-* [Contribute](./doc/guides/Installation.md)
+* [Installation](./doc/guides/Installation.md)
+* [Contribute](./doc/guides/Contributing.md)
 
-## Tools
+## 🧰 Tools 
 
-* [Excel tools](./doc/tools/ExcelTools.md)
-* [Utility tools](./doc/tools/UtilityTools.md)
+* [Excel](./doc/tools/ExcelTools.md)
+* [Utility](./doc/tools/UtilityTools.md)
