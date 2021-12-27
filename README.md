@@ -1,6 +1,6 @@
 # What is Sandbox?
 
-![](./media/SandBoxBanner.png "Sandbox")
+![](./media/Sandbox_Banner.png "Sandbox")
 
 ## A library of tools for Grasshopper and Dynamo.
 Having our own library means:
