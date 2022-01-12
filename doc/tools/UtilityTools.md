@@ -1,7 +1,7 @@
-# Utility Tools 
+# Utility Tools ⚙️
 - [Dictionary](#Dictionary)
 
-## Dictionary 📖
+## Dictionary
 ![image](https://user-images.githubusercontent.com/57708659/145928584-7dcad912-642b-4eb3-95a0-dd32fe0ebc78.png)
 
 **Why has to be Dynamo the only one to have Dictionaries?**<br/>

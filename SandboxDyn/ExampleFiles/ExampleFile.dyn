@@ -4,7 +4,12 @@
   "Description": "",
   "Name": "ExampleFile",
   "ElementResolver": {
-    "ResolutionMap": {}
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
   },
   "Inputs": [],
   "Outputs": [],
@@ -654,6 +659,65 @@
       ],
       "Replication": "Auto",
       "Description": "Saves an excel file at the given path.\n\nWriter.Excel (path: string, fileName: string, sheets: var[], save: bool): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[Point.ByCoordinates(2.007487, 8.3117, 0),\nPoint.ByCoordinates(2.007487, 7.180412, 0),\nPoint.ByCoordinates(2.007487, 6.464235, 0),\nPoint.ByCoordinates(2.007487, 4.176446, 0),\nPoint.ByCoordinates(3.367784, 4.176446, 0),\nPoint.ByCoordinates(4.640987, 4.176446, 0),\nPoint.ByCoordinates(5.996631, 4.709117, 0),\nPoint.ByCoordinates(7.200084, 5.716088, 0),\nPoint.ByCoordinates(7.200084, 6.526576, 0),\nPoint.ByCoordinates(7.200084, 7.435306, 0),\nPoint.ByCoordinates(5.308944, 7.435306, 0)];",
+      "Id": "5a7c76e776a44db395b466d9d55687d9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0fbaa3a9d797499899715c0b1657fa54",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.GeometryTools.Points.RemoveCollinear@Autodesk.DesignScript.Geometry.Point[],double",
+      "Id": "5dd6116dc57c42ef9762341df101cf87",
+      "Inputs": [
+        {
+          "Id": "fafbad14c05943128ea95411facf1969",
+          "Name": "pts",
+          "Description": "The collection of points that have to be check.\n\nPoint[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3d7644b58586433e8d5b9b89e3b5e8c3",
+          "Name": "tol",
+          "Description": "Tolerance, the deviation from the straight line.\n\ndouble\nDefault value : 0.001",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "863ec893a0c04ff7a2eb2de3f70a9c1a",
+          "Name": "Point[]",
+          "Description": "A collection of points not collinear.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Removes collinear points.\n\nPoints.RemoveCollinear (pts: Point[], tol: double = 0.001): Point[]"
     }
   ],
   "Connectors": [
@@ -756,10 +820,31 @@
       "Start": "b98c6ea8976547e085f0aca746113a01",
       "End": "9166e238abf74a65bb28d47514fd32f1",
       "Id": "20a346fb32a14f98a6e81f119d7a5652"
+    },
+    {
+      "Start": "0fbaa3a9d797499899715c0b1657fa54",
+      "End": "fafbad14c05943128ea95411facf1969",
+      "Id": "12688d9d326444198d19e2dbace9fc04"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Sandbox",
+      "Version": "1.0.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "5a776cb188d74652b1d07bd8a859cacb",
+        "216d2773384c4ca18001257d0219ed2c",
+        "b712c6f67ea349ada921560eff71c9b1",
+        "290ff0a789144b499bdd43a3130519a6",
+        "be558adfbf9941c294352e856ab4545e",
+        "52c45617046d4e5a8ee062bb8d2e8a13",
+        "abbd1ec530d54cdf85260983dec9e691",
+        "5dd6116dc57c42ef9762341df101cf87"
+      ]
+    }
+  ],
   "Thumbnail": "",
   "GraphDocumentationURL": null,
   "ExtensionWorkspaceData": [
@@ -979,11 +1064,31 @@
         "Excluded": false,
         "X": 861.48546693491,
         "Y": 779.881770090479
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "5a7c76e776a44db395b466d9d55687d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -173.20348055787997,
+        "Y": 1561.6818727919037
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Points.RemoveCollinear",
+        "Id": "5dd6116dc57c42ef9762341df101cf87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 282.06327561047635,
+        "Y": 1556.2569152403689
       }
     ],
     "Annotations": [],
-    "X": 562.527095880891,
-    "Y": 185.96639963674215,
-    "Zoom": 0.42966481820390806
+    "X": 179.6566097767535,
+    "Y": -1034.8794635682732,
+    "Zoom": 0.94964849588834743
   }
 }

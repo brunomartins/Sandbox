@@ -11,3 +11,4 @@
 
 * [Excel](./doc/tools/ExcelTools.md)
 * [Utility](./doc/tools/UtilityTools.md)
+* [Geometry](./doc/tools/GeometryTools.md)

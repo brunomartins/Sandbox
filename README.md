@@ -15,6 +15,7 @@ Having our own library means:
 ## 🧰 Tools 
 * [Excel tools](./doc/tools/ExcelTools.md)
 * [Utility tools](./doc/tools/UtilityTools.md)
+* [Geometry](./doc/tools/GeometryTools.md)
 
 ### Tags 
 Grasshopper, Dynamo, Library, Tools
