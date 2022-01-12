@@ -72,9 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\Point.cs" />
+    <Compile Include="Converters\PointConverter.cs" />
     <Compile Include="ExcelTools\Reader.cs" />
     <Compile Include="ExcelTools\Writer.cs" />
+    <Compile Include="GeometryTools\Points.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
