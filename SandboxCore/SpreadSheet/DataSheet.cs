@@ -1,4 +1,4 @@
-﻿namespace SandboxCore
+﻿namespace SandboxCore.SpreadSheet
 {
     public class DataSheet
     {

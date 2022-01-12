@@ -60,7 +60,7 @@ namespace SandboxGh.ExcelTools
                 }
             }
 
-            DA.SetData(0, new SandboxCore.DataSheet(sheetName, headers.ToArray(), dataObject));
+            DA.SetData(0, new SandboxCore.SpreadSheet.DataSheet(sheetName, headers.ToArray(), dataObject));
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.DataSheetIcon;

@@ -30,7 +30,7 @@
   <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
   <ItemGroup>
 	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
-	  <PackageReference Include="GShark" Version="1.5.0" />
+	  <ProjectReference Include="..\SandboxConverter\SandboxConverter.csproj" />
 	  <ProjectReference Include="..\SandboxCore\SandboxCore.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +50,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GeometryTools\" />
   </ItemGroup>
   
   <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
