@@ -30,13 +30,13 @@ namespace SandboxGh.ExcelTools
         {
             string path = String.Empty;
             string fileName = String.Empty;
-            List<SandboxCore.DataSheet> sheets = new List<SandboxCore.DataSheet>();
+            List<SandboxCore.SpreadSheet.DataSheet> sheets = new List<SandboxCore.SpreadSheet.DataSheet>();
             bool canWrite = false;
 
             DA.GetData(0, ref canWrite);
             if (!canWrite) return;
 
-            if (!DA.GetDataList<SandboxCore.DataSheet>(3, sheets)) return;
+            if (!DA.GetDataList<SandboxCore.SpreadSheet.DataSheet>(3, sheets)) return;
             if (!DA.GetData(1, ref path) || !DA.GetData(2, ref fileName)) return;
 
             if (sheets.Count == 0 || sheets == null)

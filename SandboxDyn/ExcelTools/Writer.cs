@@ -1,5 +1,6 @@
 ﻿using System;
 using SandboxCore;
+using SandboxCore.SpreadSheet;
 
 namespace Sandbox.ExcelTools
 {

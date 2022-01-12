@@ -173,6 +173,16 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RemoveCollinearPoints {
+            get {
+                object obj = ResourceManager.GetObject("RemoveCollinearPoints", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SandboxIcon {
             get {
                 object obj = ResourceManager.GetObject("SandboxIcon", resourceCulture);

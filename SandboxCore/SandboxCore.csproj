@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/mottmacdonaldglobal/Sandbox</RepositoryUrl>
     <PackageTags>computational geometry, architecture, engineering, construction, csharp</PackageTags>
     <PackageDescription>🧰 A library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.</PackageDescription>
-    <RootNamespace>Sandbox</RootNamespace>
+    <RootNamespace>SandboxCore</RootNamespace>
     <AssemblyName>SandboxCore</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -57,6 +57,9 @@
     </Reference>
     <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\Packages\CsvHelper.27.1.1\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="GShark, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Packages\GShark.1.5.0\lib\netstandard2.0\GShark.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\Packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -107,12 +110,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NpoiExtension.cs" />
+    <Compile Include="Geometry\PointHelper.cs" />
+    <Compile Include="SpreadSheet\NpoiExtension.cs" />
     <Compile Include="PackageInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataSheet.cs" />
-    <Compile Include="SpreadSheetReader.cs" />
-    <Compile Include="SpreadSheetWriter.cs" />
+    <Compile Include="SpreadSheet\DataSheet.cs" />
+    <Compile Include="SpreadSheet\SpreadSheetReader.cs" />
+    <Compile Include="SpreadSheet\SpreadSheetWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
