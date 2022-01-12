@@ -80,6 +80,10 @@
     <None Include="manifests\pkg.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SandboxConverter\SandboxConverter.csproj">
+      <Project>{a66b68d4-3ba8-42fc-a1c5-399a18b55369}</Project>
+      <Name>SandboxConverter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SandboxCore\SandboxCore.csproj">
       <Project>{9444f20f-8353-494f-8067-ac32ec0f967f}</Project>
       <Name>SandboxCore</Name>

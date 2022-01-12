@@ -30,6 +30,7 @@
   <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
   <ItemGroup>
 	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
+	  <ProjectReference Include="..\SandboxConverter\SandboxConverter.csproj" />
 	  <ProjectReference Include="..\SandboxCore\SandboxCore.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyDescription("The core library of the Sandbox")]
+[assembly: AssemblyDescription("The converter library of the Sandbox")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MottMacdonald")]
-[assembly: AssemblyProduct("SandboxCore")]
+[assembly: AssemblyProduct("SandboxConverter")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9444f20f-8353-494f-8067-ac32ec0f967f")]
+[assembly: Guid("a66b68d4-3ba8-42fc-a1c5-399a18b55369")]
 
 // Version information for an assembly consists of the following four values:
 //
