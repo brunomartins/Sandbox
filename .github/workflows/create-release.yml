@@ -1,7 +1,11 @@
 name: Create release
 
 on:
-  #workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Bump the version
+        
   pull_request:
     types: [closed]
     branches:
