@@ -14,7 +14,7 @@ on:
 jobs:
   setup:
     if: |
-        github.event.inputs.use-emoji == 'false' ||
+        github.event.inputs.is-a-PR == 'false' ||
         github.event.action == 'closed' && github.event.pull_request.merged == true
     name: bump-revision
     runs-on: ubuntu-latest
