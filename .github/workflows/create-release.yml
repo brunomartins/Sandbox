@@ -2,6 +2,9 @@ name: Create release
 
 on:
   workflow_dispatch:
+    inputs:
+      is-PR:
+        type: boolean
         
   pull_request:
     types: [closed]
@@ -10,7 +13,9 @@ on:
   
 jobs:
   setup:
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    if: |
+        github.event.inputs.use-emoji == 'true' ||
+        github.event.action == 'closed' && github.event.pull_request.merged == true
     name: bump-revision
     runs-on: ubuntu-latest
     steps:
