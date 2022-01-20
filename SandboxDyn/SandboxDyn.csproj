@@ -72,7 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\PointConverter.cs" />
     <Compile Include="ExcelTools\Reader.cs" />
     <Compile Include="ExcelTools\Writer.cs" />
     <Compile Include="GeometryTools\Points.cs" />
@@ -89,6 +88,10 @@
     <ProjectReference Include="..\SandboxCore\SandboxCore.csproj">
       <Project>{9444f20f-8353-494f-8067-ac32ec0f967f}</Project>
       <Name>SandboxCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SandboxDynUtilities\SandboxDynUtilities.csproj">
+      <Project>{614173f6-2671-497d-bd14-93ebfed3c311}</Project>
+      <Name>SandboxDynUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
