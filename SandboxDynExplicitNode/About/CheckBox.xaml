@@ -8,6 +8,6 @@
              d:DesignHeight="200" d:DesignWidth="200">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
         <TextBlock Text="Check me for a nice quote" FontSize="10"/>
-        <CheckBox Name="AboutCheck" HorizontalAlignment="Center" Margin="10" IsChecked="{Binding isChecked}"/>
+        <CheckBox Name="AboutCheck" HorizontalAlignment="Center" Margin="10" IsChecked="{Binding IsChecked}"/>
     </StackPanel>
 </UserControl>

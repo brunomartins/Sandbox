@@ -30,13 +30,13 @@ namespace SandboxDynExplicitNode.About
         {
         }
 
-        public bool isChecked
+        public bool IsChecked
         {
             get => _aboutChecked;
             set
             {
                 _aboutChecked = value;
-                RaisePropertyChanged("isChecked");
+                RaisePropertyChanged("IsChecked");
                 OnNodeModified();
             }
         }
@@ -48,7 +48,7 @@ namespace SandboxDynExplicitNode.About
                 return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), AstFactory.BuildNullNode()) };
             }
 
-            var checkValue = AstFactory.BuildBooleanNode(isChecked);
+            var checkValue = AstFactory.BuildBooleanNode(IsChecked);
             var functionNode =
                 AstFactory.BuildFunctionCall(
                     new Func<string, bool, string>(SandboxDynUtilities.Functions.About.AboutSandbox),
