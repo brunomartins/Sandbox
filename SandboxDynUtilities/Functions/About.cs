@@ -7,6 +7,12 @@ namespace SandboxDynUtilities.Functions
     [IsVisibleInDynamoLibrary(false)]
     public class About
     {
+        /// <summary>
+        /// Method used by the about node
+        /// </summary>
+        /// <param name="name">A name.</param>
+        /// <param name="check">A check value.</param>
+        /// <returns>A nice hello with a quote.</returns>
         public static string AboutSandbox(string name, bool check)
         {
             string aboutSandbox = "Sandbox is a set of useful nodes to help speed your day to day work at Mott.";

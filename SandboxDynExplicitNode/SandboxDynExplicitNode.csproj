@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
     <DocumentationFile>bin\Debug\SandboxDynExplicitNode.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -201,7 +202,7 @@
   <PropertyGroup>
     <PostBuildEvent>
 		echo SANDBOXDYN EXPLICIT NODE ASSEMBLY VERSION IS: $(AssemblyVersionNumber)
-		echo { "license":"MIT", "file_hash":null, "name":"Sandbox", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald", "Geometries"], "dependencies":[], "contents":"A library of dynamo nodes.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDynExplicitNode,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynUtilities.Functions,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynExtensions,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynZeroTouch, Version=$(AssemblyVersionNumber), Culture=neutral, PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
+		echo { "license":"MIT", "file_hash":null, "name":"Sandbox", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald", "Geometries"], "dependencies":[], "contents":"A library of dynamo nodes.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDynExplicitNode,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynUtilities,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynExtensions,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null", "SandboxDynZeroTouch, Version=$(AssemblyVersionNumber), Culture=neutral, PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
 		  exit 0
 	  </PostBuildEvent>
   </PropertyGroup>

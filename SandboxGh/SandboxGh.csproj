@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    
-  <PropertyGroup>
+	<PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <Description>The Grasshopper library of the Sandbox.</Description>
     <TargetExt>.gha</TargetExt>
@@ -26,8 +25,7 @@
       </PropertyGroup>
     </When>
   </Choose>
-  
-  <!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
+	<!--https://stackoverflow.com/questions/42412282/nuget-when-sharing-projects-between-solutions-->
   <ItemGroup>
 	  <PackageReference Include="Grasshopper" Version="7.4.21078.1001" IncludeAssets="compile;build" />
 	  <PackageReference Include="GShark" Version="1.5.0" />
@@ -51,14 +49,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  
   <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
     <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
     <StartArguments></StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
@@ -69,8 +65,7 @@
         <DebugSymbols>true</DebugSymbols>
         <PlatformTarget>x64</PlatformTarget> 
     </PropertyGroup>
-	 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
     	<DebugType>pdbonly</DebugType>
@@ -79,7 +74,9 @@
     	<ErrorReport>prompt</ErrorReport>
     	<WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
+  <Target Name="DisplayMessages">
+	  <Message Text="SANDBOXGH ASSEMBLY VERSION IS: $(AssemblyVersionNumber)" />
+  </Target>
   <!--https://docs.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2019-->
   <Target Name="CopyGhFiles" AfterTargets="Build">
 	  <ItemGroup>
@@ -89,5 +86,4 @@
 	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/SandboxGh" />
 	  <Message Text="Files copied" Importance="high" />
   </Target>
-
 </Project>
