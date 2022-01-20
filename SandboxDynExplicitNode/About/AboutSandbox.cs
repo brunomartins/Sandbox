@@ -4,13 +4,13 @@ using ProtoCore.AST.AssociativeAST;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using SandboxDynFunctions.About;
 
 namespace SandboxDynExplicitNode.About
 {
     /// <summary>
     /// Wrapper for about class.
     /// This is mostly to show the icon in the Dynamo 2.0 library.
+    /// This is also a template class useful to develop other nodes.
     /// </summary>
     [NodeDescription("Sandbox about")]
     [NodeCategory("Sandbox.AboutSandbox")]
@@ -51,7 +51,7 @@ namespace SandboxDynExplicitNode.About
             var checkValue = AstFactory.BuildBooleanNode(isChecked);
             var functionNode =
                 AstFactory.BuildFunctionCall(
-                    new Func<string, bool, string>(AboutFunction.AboutSandbox),
+                    new Func<string, bool, string>(SandboxDynUtilities.Functions.About.AboutSandbox),
                     new List<AssociativeNode> { inputAstNodes[0], checkValue });
 
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), functionNode) };
