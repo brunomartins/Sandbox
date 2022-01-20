@@ -30,6 +30,11 @@ namespace SandboxDynExplicitNode.About
         {
         }
 
+        public AboutSandbox()
+        {
+            RegisterAllPorts();
+        }
+
         public bool IsChecked
         {
             get => _aboutChecked;
