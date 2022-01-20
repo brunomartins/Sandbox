@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <doc>
 	<assembly>
-		<name>SandboxDyn</name>
+		<name>SandboxDynZeroTouch</name>
 	</assembly>
 	<namespaces>
 		<namespace name="Sandbox.ExcelTools">

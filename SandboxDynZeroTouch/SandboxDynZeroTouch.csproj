@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sandbox</RootNamespace>
-    <AssemblyName>SandboxDyn</AssemblyName>
+    <AssemblyName>SandboxDynZeroTouch</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>bin\Debug\SandboxDyn.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\SandboxDynZeroTouch.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -95,7 +95,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="manifests\SandboxDyn_DynamoCustomization.xml" />
+    <Content Include="manifests\SandboxDynZeroTouch_DynamoCustomization.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -103,7 +103,7 @@
   <PropertyGroup>
     <PostBuildEvent>
 		echo HELLO, THE ASSEMBLY VERSION IS: $(AssemblyVersionNumber)
-		echo { "license":"MIT", "file_hash":null, "name":"Sandbox", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDyn,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
+		echo { "license":"MIT", "file_hash":null, "name":"Sandbox", "version":"$(AssemblyVersionNumber)", "description":"A library of tools.", "group":"", "keywords":[ "NPOI", "CSVHelper", "MottMacDonald"], "dependencies":[], "contents":"A library of dynamo noods.", "engine_version":"2.12.0.5650", "engine":"dynamo", "engine_metadata":"", "site_url":"", "repository_url":"https://github.com/mottmacdonaldglobal/Sandbox", "contains_binaries":true,  "node_libraries":[ "SandboxDynZeroTouch,  Version=$(AssemblyVersionNumber),  Culture=neutral,  PublicKeyToken=null"]} &gt; $(ProjectDir)manifests\pkg.json
 		  exit 0
 	  </PostBuildEvent>
   </PropertyGroup>

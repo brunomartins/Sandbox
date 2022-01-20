@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxCore", "SandboxCore\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandboxGh", "SandboxGh\SandboxGh.csproj", "{2326E4F3-873E-4357-8B70-12771892F58E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDyn", "SandboxDyn\SandboxDyn.csproj", "{60534C9F-5FD2-414A-9A4E-CF793C3A2CC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDynZeroTouch", "SandboxDynZeroTouch\SandboxDynZeroTouch.csproj", "{60534C9F-5FD2-414A-9A4E-CF793C3A2CC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDynUtilities", "SandboxDynUtilities\SandboxDynUtilities.csproj", "{614173F6-2671-497D-BD14-93EBFED3C311}"
 EndProject
