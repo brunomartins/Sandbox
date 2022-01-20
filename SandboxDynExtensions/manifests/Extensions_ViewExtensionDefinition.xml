@@ -1,0 +1,4 @@
+﻿<ViewExtensionDefinition>
+	<AssemblyPath>..\bin\SandboxDynExtensions.dll</AssemblyPath>
+	<TypeName>SandboxDynExtensions.NodeExtension</TypeName>
+</ViewExtensionDefinition>
