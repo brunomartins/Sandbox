@@ -23,7 +23,7 @@ namespace SandboxDynExplicitNode.About
     [IsDesignScriptCompatible]
     public class AboutSandbox : NodeModel
     {
-        private bool _aboutChecked;
+        private bool _isChecked;
 
         [JsonConstructor]
         private AboutSandbox(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
@@ -37,10 +37,10 @@ namespace SandboxDynExplicitNode.About
 
         public bool IsChecked
         {
-            get => _aboutChecked;
+            get => _isChecked;
             set
             {
-                _aboutChecked = value;
+                _isChecked = value;
                 RaisePropertyChanged("IsChecked");
                 OnNodeModified();
             }
