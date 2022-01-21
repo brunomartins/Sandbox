@@ -12,8 +12,6 @@ namespace SandboxCore.Geometry
     {
         public static (int[] itemsOrdered, bool[] revers) OrderByProximity(IEnumerable<Line> lines)
         {
-            if (lines.Any()) return (Array.Empty<int>(), Array.Empty<bool>());
-
             Line[] copyLines = lines.ToArray();
             int[] indexes = new int[copyLines.Length];
             bool[] revers = new bool[copyLines.Length];

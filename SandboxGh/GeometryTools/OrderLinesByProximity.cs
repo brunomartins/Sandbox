@@ -12,7 +12,7 @@ namespace SandboxGh.GeometryTools
     public class OrderLinesByProximity : SandboxComponent
     {
         public OrderLinesByProximity()
-          : base("Order lines by proximity.", "Geometry")
+          : base("Orders lines by proximity between each others.", "Geometry")
         {
         }
 
