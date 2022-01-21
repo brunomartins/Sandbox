@@ -22,16 +22,16 @@ namespace Sandbox.GeometryTools
         /// <returns name="i">Indexes ordered.</returns>
         /// <returns name="R">Line that have to be reversed to have the point continue.</returns>
         /// <search>lines, order</search>
-        [MultiReturn(new[] { "L", "i", "R" })]
-        public static IDictionary RemoveCollinear(List<Line> lines)
+        [MultiReturn(new[] { "Lines", "i", "Revers" })]
+        public static IDictionary OrderLinesByProximity(List<Line> lines)
         {
             if (lines.Count == 0)
             {
                 return new Dictionary<string, object>
                 {
-                    {"L", lines},
+                    {"Lines", lines},
                     {"i", Array.Empty<int>()},
-                    {"R", Array.Empty<bool>()}
+                    {"Revers", Array.Empty<bool>()}
                 };
             }
 
@@ -42,9 +42,9 @@ namespace Sandbox.GeometryTools
 
             return new Dictionary<string, object>
             {
-                {"L", orderedLines},
+                {"Lines", orderedLines},
                 {"i", result.itemsOrdered},
-                {"R", result.revers}
+                {"Revers", result.revers}
             };
         }
     }
