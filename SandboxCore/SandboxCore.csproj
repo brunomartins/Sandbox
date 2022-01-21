@@ -110,6 +110,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geometry\LineHelper.cs" />
     <Compile Include="Geometry\PointHelper.cs" />
     <Compile Include="SpreadSheet\NpoiExtension.cs" />
     <Compile Include="PackageInfo.cs" />

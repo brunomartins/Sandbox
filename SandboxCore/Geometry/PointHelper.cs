@@ -6,8 +6,17 @@ using System.Linq;
 
 namespace SandboxCore.Geometry
 {
+    /// <summary>
+    /// Collections of methods used to operate in points.
+    /// </summary>
     public static class PointHelper
     {
+        /// <summary>
+        /// Remove the collinear points into a ordered collection of points.
+        /// </summary>
+        /// <param name="pts">Collection of point to clean up.</param>
+        /// <param name="tol">Tolerance from the straight line between collinear points. Set by default at 1e-3.</param>
+        /// <returns>Cleaned collection of points.</returns>
         public static IEnumerable<Point3> RemoveCollinear(IEnumerable<Point3> pts, double tol = 1e-3)
         {
             Point3[] ptsCollection = pts.ToArray();
@@ -38,7 +47,7 @@ namespace SandboxCore.Geometry
         /// <param name="pt1">First point.</param>
         /// <param name="pt2">Second point.</param>
         /// <param name="pt3">Third point.</param>
-        /// <param name="tol">Tolerance set per default as 0.0</param>
+        /// <param name="tol">Tolerance set per default as 1e-3</param>
         /// <returns>True if the three points are collinear.</returns>
         private static bool ArePointsCollinear(Point3 pt1, Point3 pt2, Point3 pt3, double tol = 1e-3)
         {
