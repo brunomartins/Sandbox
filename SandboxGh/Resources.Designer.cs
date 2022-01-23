@@ -163,6 +163,16 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OrderLinesByProximity {
+            get {
+                object obj = ResourceManager.GetObject("OrderLinesByProximity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ReadDictIcon {
             get {
                 object obj = ResourceManager.GetObject("ReadDictIcon", resourceCulture);

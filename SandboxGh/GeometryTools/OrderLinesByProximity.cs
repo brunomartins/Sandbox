@@ -44,7 +44,7 @@ namespace SandboxGh.GeometryTools
             DA.SetDataList(2, result.revers);
         }
 
-        protected override System.Drawing.Bitmap Icon => null;
+        protected override System.Drawing.Bitmap Icon => Resources.OrderLinesByProximity;
 
         public override Guid ComponentGuid => new Guid("F1273AFE-B3B6-4C96-8BB4-C297373EAFFA");
     }
