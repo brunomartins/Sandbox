@@ -1,6 +1,6 @@
 # Geometry Tools 📐
 
-Serious of tools which involves geometry operations.<br/>
+Series of tools which involves geometry operations.<br/>
 
 - [Points](#Points)
 - [Lines](#Lines)
