@@ -18,9 +18,9 @@ namespace Sandbox.GeometryTools
         /// Orders lines by proximity between each others.
         /// </summary>
         /// <param name="lines">The collection of lines to order.</param>
-        /// <returns name="L">A collection of lines ordered.</returns>
+        /// <returns name="Lines">A collection of lines ordered.</returns>
         /// <returns name="i">Indexes ordered.</returns>
-        /// <returns name="R">Line that have to be reversed to have the point continue.</returns>
+        /// <returns name="Revers">Line that have to be reversed to have the point continue.</returns>
         /// <search>lines, order</search>
         [MultiReturn(new[] { "Lines", "i", "Revers" })]
         public static IDictionary OrderLinesByProximity(List<Line> lines)
