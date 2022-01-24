@@ -1,14 +1,14 @@
 # Table of contents
 
-* [What is Sandbox?](./README.md)
+* [What is Sandbox?](README.md)
 
-## 📚 Guides
+## Guides
 
-* [Installation](./doc/guides/Installation.md)
-* [Contribute](./doc/guides/Contributing.md)
+* [Installation](doc/guides/Installation.md)
+* [Contribute](doc/guides/Contributing.md)
 
-## 🧰 Tools 
+## Tools
 
-* [Excel](./doc/tools/ExcelTools.md)
-* [Utility](./doc/tools/UtilityTools.md)
-* [Geometry](./doc/tools/GeometryTools.md)
+* [Excel](doc/tools/ExcelTools.md)
+* [Utility](doc/tools/UtilityTools.md)
+* [Geometry](doc/tools/GeometryTools.md)
