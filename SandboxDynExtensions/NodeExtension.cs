@@ -24,14 +24,14 @@ namespace SandboxDynExtensions
 
         private void ViewLoadedParamsOnCurrentWorkspaceChanged(IWorkspaceModel obj)
         {
-            obj.NodeAdded += ObjOnNodeAdded;
             obj.NodeAdded -= ObjOnNodeAdded;
+            obj.NodeAdded += ObjOnNodeAdded;
         }
 
         private void ObjOnNodeAdded(NodeModel obj)
         {
-            string category = obj.Category;
-            if (category.Contains("Sandbox"))
+
+            if (string.IsNullOrEmpty(obj.Name) && obj.Category.Contains("Sandbox"))
             {
                 obj.Name = $"Sandbox | {obj.Name}";
             }

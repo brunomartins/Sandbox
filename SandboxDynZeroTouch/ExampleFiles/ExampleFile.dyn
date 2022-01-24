@@ -8,6 +8,10 @@
       "Point": {
         "Key": "Autodesk.DesignScript.Geometry.Point",
         "Value": "ProtoGeometry.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
       }
     }
   },
@@ -345,267 +349,6 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Reader.CSV@string,string",
-      "Id": "5a776cb188d74652b1d07bd8a859cacb",
-      "Inputs": [
-        {
-          "Id": "c146f04f743d4fbabf010ead0b69970f",
-          "Name": "filePath",
-          "Description": "The file path.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "ea59338717a544e38bbfe449c529a6ff",
-          "Name": "cellRange",
-          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "f89db3d3e3b54572b7c969ebaa7deafa",
-          "Name": "data",
-          "Description": "The csv content.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Read the data of the csv.\n\nReader.CSV (filePath: string, cellRange: string = \"\"): var[][]"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Reader.SheetNames@string",
-      "Id": "216d2773384c4ca18001257d0219ed2c",
-      "Inputs": [
-        {
-          "Id": "a5b5c4c9d4644de9be50c3f5ae1df8b5",
-          "Name": "filePath",
-          "Description": "File filePath, use File.Path.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "43a60518b0834dcc9f86691f141f0d1b",
-          "Name": "string[]",
-          "Description": "The sheet names.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Gets all the sheet names stored in the excel file.\n\nReader.SheetNames (filePath: string): string[]"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Reader.Excel@string,var,string",
-      "Id": "b712c6f67ea349ada921560eff71c9b1",
-      "Inputs": [
-        {
-          "Id": "2183836aa57f4fc2936e56d4d9dd3049",
-          "Name": "filePath",
-          "Description": "The file path.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "da34287fae5441c5a1032941f23302cb",
-          "Name": "sheet",
-          "Description": "List of sheet to read, you can pass the name of sheet as a string or integer as the order\n\nvar",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1d120b8279564c8aa878007991aa4ef7",
-          "Name": "cellRange",
-          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "40fe348426664230b5bedbf69d1f69a0",
-          "Name": "data",
-          "Description": "The excel content.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Read the data of the workbook.\n\nReader.Excel (filePath: string, sheet: var, cellRange: string = \"\"): var[][]"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Reader.Excel@string,var,string",
-      "Id": "290ff0a789144b499bdd43a3130519a6",
-      "Inputs": [
-        {
-          "Id": "4a55cac83a64469091fb0fc0a8cf0d0f",
-          "Name": "filePath",
-          "Description": "The file path.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "da33ea22f0b741dcbe1cfd2d58dc526e",
-          "Name": "sheet",
-          "Description": "List of sheet to read, you can pass the name of sheet as a string or integer as the order\n\nvar",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "460e2a42298a4021831bac5c32596a43",
-          "Name": "cellRange",
-          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "247e1a3a38f04d6ebe719c2b8ed61e42",
-          "Name": "data",
-          "Description": "The excel content.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Read the data of the workbook.\n\nReader.Excel (filePath: string, sheet: var, cellRange: string = \"\"): var[][]"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Writer.DataSheet@string,string[],var[][]",
-      "Id": "be558adfbf9941c294352e856ab4545e",
-      "Inputs": [
-        {
-          "Id": "161d459ca9d44fda975a25792fb5d3d6",
-          "Name": "sheetName",
-          "Description": "The name of sheet, where the data will be stored.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1823adf9a0ad4cc9ad0f58356b9cf058",
-          "Name": "headers",
-          "Description": "The headers, matching the number of columns.\n\nstring[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c339693b589e42c2b2b468627b685261",
-          "Name": "data",
-          "Description": "The data to write.\n\nvar[][]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "b8b5a0981ebd4ab6a36515b8ef6fa60d",
-          "Name": "var",
-          "Description": "A sheet read to be written.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Create a sheet with the data required.\n\nWriter.DataSheet (sheetName: string, headers: string[], data: var[][]): var"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.ExcelTools.Writer.DataSheet@string,string[],var[][]",
-      "Id": "52c45617046d4e5a8ee062bb8d2e8a13",
-      "Inputs": [
-        {
-          "Id": "9fe2547b265d47088fe33eadd6877d31",
-          "Name": "sheetName",
-          "Description": "The name of sheet, where the data will be stored.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "76da01d1011d480cbcbe81201eaef77a",
-          "Name": "headers",
-          "Description": "The headers, matching the number of columns.\n\nstring[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "a7515411b4f84b13a89b567f612de5c3",
-          "Name": "data",
-          "Description": "The data to write.\n\nvar[][]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "b98c6ea8976547e085f0aca746113a01",
-          "Name": "var",
-          "Description": "A sheet read to be written.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Create a sheet with the data required.\n\nWriter.DataSheet (sheetName: string, headers: string[], data: var[][]): var"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
       "FunctionSignature": "Sandbox.ExcelTools.Writer.Excel@string,string,var[],bool",
       "Id": "abbd1ec530d54cdf85260983dec9e691",
       "Inputs": [
@@ -681,24 +424,123 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[Point.ByCoordinates(-5.79803, 10.532202, 0),\nPoint.ByCoordinates(1.80856, 5.000136, 0),\nPoint.ByCoordinates(-9.787501, 10.159851, 0),\nPoint.ByCoordinates(-7.978941, 5.106522, 0),\nPoint.ByCoordinates(-4.415014, 3.08519, 0),\nPoint.ByCoordinates(-2.446875, 10.851359, 0)];",
+      "Id": "04d9a32c65cc4a67a98e2ed301c8604c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "86822b9308fe48b8ae8f9770b8ccb849",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "Sandbox.GeometryTools.Points.RemoveCollinear@Autodesk.DesignScript.Geometry.Point[],double",
-      "Id": "5dd6116dc57c42ef9762341df101cf87",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Line.ByStartPointEndPoint@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point",
+      "Id": "651279b5c0ea462394efd20520d5c227",
       "Inputs": [
         {
-          "Id": "fafbad14c05943128ea95411facf1969",
-          "Name": "pts",
-          "Description": "The collection of points that have to be check.\n\nPoint[]",
+          "Id": "3c67c5b8c2044b85bbadce0cec0dfcc2",
+          "Name": "startPoint",
+          "Description": "Line start point\n\nPoint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "3d7644b58586433e8d5b9b89e3b5e8c3",
-          "Name": "tol",
-          "Description": "Tolerance, the deviation from the straight line.\n\ndouble\nDefault value : 0.001",
+          "Id": "2eed806fd5304a23878d698ac1ab1445",
+          "Name": "endPoint",
+          "Description": "Line end point\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f905b8cf96524d1693297b8901222e62",
+          "Name": "Line",
+          "Description": "Line from start and end point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a straight Line between two input Points.\n\nLine.ByStartPointEndPoint (startPoint: Point, endPoint: Point): Line"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[Point.ByCoordinates(-3.61712, 7.340626, 0),\nPoint.ByCoordinates(-0.319158, 7.712976, 0),\nPoint.ByCoordinates(-6.170381, 13.776971, 0),\nPoint.ByCoordinates(-7.127854, 0.478736, 0),\nPoint.ByCoordinates(-0.159579, 2.925612, 0),\nPoint.ByCoordinates(1.223438, 13.564199, 0)];",
+      "Id": "f0483aa6b0d94406a4e8b57820c6fa93",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "119d5d4fa4d84cf79b27103f7e7dd9c6",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0.5;",
+      "Id": "daa4ab9c36b245cfabb0bca09ae0f3a5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8cf4ad8964934b10a2267bdd9313e0c1",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Curve.PointAtParameter@double",
+      "Id": "a444feba8101474db4a7cf7d6808b565",
+      "Inputs": [
+        {
+          "Id": "6416ef0cba4f4589bfd8fb45ae032355",
+          "Name": "curve",
+          "Description": "Autodesk.DesignScript.Geometry.Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ea22c25949dc4a8e9a3127c3ba39bc3f",
+          "Name": "param",
+          "Description": "The parameter at which to evaluate\n\ndouble\nDefault value : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -707,7 +549,471 @@
       ],
       "Outputs": [
         {
-          "Id": "863ec893a0c04ff7a2eb2de3f70a9c1a",
+          "Id": "147c446a2027448ebc3ad83494fad0c3",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get a Point on the Curve at a specified parameter between StartParameter() and EndParameter()\n\nCurve.PointAtParameter (param: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-1;",
+      "Id": "7d5ea05af9344287aaef39147967b7b4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "443b8143238e418a9371fe63179e9704",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.ShiftIndices@var[]..[],int",
+      "Id": "6fd4646adf3e421486393185115409d8",
+      "Inputs": [
+        {
+          "Id": "c1ea4fb730784cca895cdb34dc7d004e",
+          "Name": "list",
+          "Description": "List to be shifted.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f98ae553bdbb424296556eb72a50a73d",
+          "Name": "amount",
+          "Description": "Amount to shift indices by. If negative, indices will be shifted to the left.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "320a72a3062e4746b0289e39408cad0f",
+          "Name": "list",
+          "Description": "Shifted list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Shifts indices in the list to the right by the given amount.\n\nList.ShiftIndices (list: var[]..[], amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Line.ByStartPointDirectionLength@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Vector,double",
+      "Id": "402a70a5453e49778d4f3a4c36ec8bc3",
+      "Inputs": [
+        {
+          "Id": "378a954286b141e3aac85031dc26855f",
+          "Name": "startPoint",
+          "Description": "Line start point\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b69bcf0c7d4c41b18b462420d8a811d0",
+          "Name": "direction",
+          "Description": "Direction vector\n\nVector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f97d1d3b9abc4c05b68451de4fc0a69a",
+          "Name": "length",
+          "Description": "Length of line\n\ndouble\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "849a468398564a699cb5a1d4895ac158",
+          "Name": "Line",
+          "Description": "Line from start direction and length",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a straight Line starting at start Point, extending in Vector direction by specified length.\n\nLine.ByStartPointDirectionLength (startPoint: Point, direction: Vector, length: double = 1): Line"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Vector.ByTwoPoints@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point",
+      "Id": "9809d2e3bf674ebdadca8c90e0196bc3",
+      "Inputs": [
+        {
+          "Id": "ccd0884d446d4bf082cc5e1b9bdd538c",
+          "Name": "start",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ba044db3ac3f4ad9839a3f575c9852ca",
+          "Name": "end",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a01736fdba124895b1c8d76b53488ad6",
+          "Name": "Vector",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Vector by two end points. The result is a vector from the start to the end point.\n\nVector.ByTwoPoints (start: Point, end: Point): Vector"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Range, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "bdc5d622460040bd898e45c2d188d22e",
+      "Inputs": [
+        {
+          "Id": "73e6c23b02544f0496b8117319fd2cf6",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3134940cfa764be983c4bff5bc7c5703",
+          "Name": "end",
+          "Description": "Number or letter to end the sequence at\r\nDefault value: 9",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8b1fdfb5532f4913aeb1227102c83a4a",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d5b307f528994341bcc04bff458ff716",
+          "Name": "list",
+          "Description": "New list of type: var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers or letters in the specified range."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.ColorRange, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "c3680c2512bd430f97d466eb255804fd",
+      "Inputs": [
+        {
+          "Id": "f6f480c1cdeb43928e0db3fb9e56abad",
+          "Name": "colors",
+          "Description": "List of colors to include in the range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "88c5a60d8412414f817a5f45f96c970e",
+          "Name": "indices",
+          "Description": "List of values between 0.0 and 1.0 which position the input colors along the range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9f0127d3aa64499ea4158a0aa8e125c9",
+          "Name": "value",
+          "Description": "List of values between 0.0 and 1.0. These values define the colors that are picked along the color range to create the color list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0c92d88c2a19429bab3dc6184368dbf6",
+          "Name": "color",
+          "Description": "Selected colors",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get a color given a color range."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "List.Count(x) - 1;",
+      "Id": "9a1e854e169a4b30a0c6115088668bac",
+      "Inputs": [
+        {
+          "Id": "716e7dfac37440b3b2ac18ac0045925e",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3044d484b8fa47f79a8bb8c8a9dbd473",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Modifiers.GeometryColor.ByGeometryColor@Autodesk.DesignScript.Geometry.Geometry,DSCore.Color",
+      "Id": "9d67c9f3dc4f4f3fb3c24ec5e9b832b3",
+      "Inputs": [
+        {
+          "Id": "e775b89541334024a37dd087f96c1e48",
+          "Name": "geometry",
+          "Description": "The geometry to which you would like to apply color.\n\nGeometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9543bdda6a824e6b9f648a0778492a2c",
+          "Name": "color",
+          "Description": "The color.\n\nColor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c79879d3ee84491686dcad4997a4f62e",
+          "Name": "GeometryColor",
+          "Description": "A Display object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Display geometry using a color.\n\nGeometryColor.ByGeometryColor (geometry: Geometry, color: Color): GeometryColor"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[0,0.5,1];",
+      "Id": "92167a38106a48478f3bfc7e62e7f312",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "95c2a6d0ef1843ca83ad41ea2b582974",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RemapRange@double[],double,double",
+      "Id": "b368395abbfb440db60f26fcd39f470f",
+      "Inputs": [
+        {
+          "Id": "52342620b8034f009c973bf0fa9d757b",
+          "Name": "numbers",
+          "Description": "List of numbers to adjust range of.\n\ndouble[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fe333e61184d4407849e466823f0d5c9",
+          "Name": "newMin",
+          "Description": "New minimum of the range.\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2c28d428a3fa4736b58f8044148688b1",
+          "Name": "newMax",
+          "Description": "New maximum of the range\n\ndouble\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6571c83cbce84a4aadd9798231267501",
+          "Name": "list",
+          "Description": "List remapped to new range.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adjusts the range of a list of numbers while preserving the distribution ratio.\n\nMath.RemapRange (numbers: double[], newMin: double = 0, newMax: double = 1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.GeometryTools.Lines.OrderLinesByProximity@Autodesk.DesignScript.Geometry.Line[]",
+      "Id": "bbad357af806451aa575f628dd42133c",
+      "Inputs": [
+        {
+          "Id": "e9b346ce7e2b47c99548966baf02947b",
+          "Name": "lines",
+          "Description": "The collection of lines to order.\n\nLine[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0291c1a5f27c49f58c6265796cce80bd",
+          "Name": "Lines",
+          "Description": "A collection of lines ordered.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5b8bd3997e114cc3a033c20f2986ab01",
+          "Name": "i",
+          "Description": "Indexes ordered.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9fad45ab70c3498d87d33550f5814d24",
+          "Name": "Revers",
+          "Description": "Line that have to be reversed to have the point continue.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Orders lines by proximity between each others.\n\nLines.OrderLinesByProximity (lines: Line[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.GeometryTools.Points.RemoveCollinear@Autodesk.DesignScript.Geometry.Point[],double",
+      "Id": "5496be3f01f846c4bb222277f0519db0",
+      "Inputs": [
+        {
+          "Id": "a6ef13f6a652453ea83f2f4db12f528c",
+          "Name": "pts",
+          "Description": "The collection of points that have to be check.\n\nPoint[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "40ffb631ae2f40ad991d6f54f6c9b3f8",
+          "Name": "tol",
+          "Description": "Tolerance, the deviation from the straight line, if omitted, 0.001 is used.\n\ndouble\nDefault value : 0.001",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0446ecef8bd04e2d8694b448a3285d96",
           "Name": "Point[]",
           "Description": "A collection of points not collinear.",
           "UsingDefaultValue": false,
@@ -718,43 +1024,304 @@
       ],
       "Replication": "Auto",
       "Description": "Removes collinear points.\n\nPoints.RemoveCollinear (pts: Point[], tol: double = 0.001): Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Reader.CSV@string,string",
+      "Id": "c19a50d7d2f444e39f106bb0c387f043",
+      "Inputs": [
+        {
+          "Id": "2b3770efa4714f869917166b315fe7ba",
+          "Name": "filePath",
+          "Description": "The file path.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3c482f74890443db933c9fda812cf46",
+          "Name": "cellRange",
+          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f4c8c4ab79264f28b2c8445992e00574",
+          "Name": "data",
+          "Description": "The csv content.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read the data of the csv.\n\nReader.CSV (filePath: string, cellRange: string = \"\"): var[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Reader.Excel@string,var,string",
+      "Id": "9b499fd046d141deb62869ddffb31f5f",
+      "Inputs": [
+        {
+          "Id": "c8c4490f4772439fbc73861198fbf923",
+          "Name": "filePath",
+          "Description": "The file path.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ba867ea4d09a4c5a96cf6fe57941a5cf",
+          "Name": "sheet",
+          "Description": "List of sheet to read, you can pass the name of sheet as a string or integer as the order\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d5a1d0235ab04b1c857837b429e12056",
+          "Name": "cellRange",
+          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7beb91de3e014770b8160f2857830836",
+          "Name": "data",
+          "Description": "The excel content.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read the data of the workbook.\n\nReader.Excel (filePath: string, sheet: var, cellRange: string = \"\"): var[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Reader.SheetNames@string",
+      "Id": "fa9fb04046774a84ab3be49db38ffb43",
+      "Inputs": [
+        {
+          "Id": "406d747bb829425bb34d520a099fb5b4",
+          "Name": "filePath",
+          "Description": "File filePath, use File.Path.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fff815dc9fb348d7a9a2401aba14f0a0",
+          "Name": "string[]",
+          "Description": "The sheet names.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Gets all the sheet names stored in the excel file.\n\nReader.SheetNames (filePath: string): string[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Reader.Excel@string,var,string",
+      "Id": "15ab6ae188aa493392564287233f7878",
+      "Inputs": [
+        {
+          "Id": "0c1b16d6929b40fe8c9956df8a82b439",
+          "Name": "filePath",
+          "Description": "The file path.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "121f064f4eee4034afdef76f0b95f266",
+          "Name": "sheet",
+          "Description": "List of sheet to read, you can pass the name of sheet as a string or integer as the order\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fc67fab3842d4b77b8887effbe0f2e3c",
+          "Name": "cellRange",
+          "Description": "Ranges defining the number of rows and columns will be read. A standard area ref (e.g. \"B1:D8\").\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0ced9e735a2f468dad0343f4227e26c8",
+          "Name": "data",
+          "Description": "The excel content.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read the data of the workbook.\n\nReader.Excel (filePath: string, sheet: var, cellRange: string = \"\"): var[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Writer.DataSheet@string,string[],var[][]",
+      "Id": "624d733ad243434bbf6fd7d6cda06947",
+      "Inputs": [
+        {
+          "Id": "b9a94ccf8ae9482da46d32009d518fad",
+          "Name": "sheetName",
+          "Description": "The name of sheet, where the data will be stored.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "adde621015a944eeb7865179137a30d4",
+          "Name": "headers",
+          "Description": "The headers, matching the number of columns.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6b00faef059f4b5fbef4ac91bfa23e2d",
+          "Name": "data",
+          "Description": "The data to write.\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "de6320254b17427290ddbf243ab12a66",
+          "Name": "var",
+          "Description": "A sheet read to be written.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a sheet with the data required.\n\nWriter.DataSheet (sheetName: string, headers: string[], data: var[][]): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Sandbox.ExcelTools.Writer.DataSheet@string,string[],var[][]",
+      "Id": "dbac4d80f5b94e919f7034aa16eac69b",
+      "Inputs": [
+        {
+          "Id": "ae6e3fdfe6cb4f54bf87ee0c2b6fe691",
+          "Name": "sheetName",
+          "Description": "The name of sheet, where the data will be stored.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "366bef1bcb9145a99306fca4d774279c",
+          "Name": "headers",
+          "Description": "The headers, matching the number of columns.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7dff97540e7c4b49b9713e73382bfe46",
+          "Name": "data",
+          "Description": "The data to write.\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c6f206d3a23d419e8650e88856506b0a",
+          "Name": "var",
+          "Description": "A sheet read to be written.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a sheet with the data required.\n\nWriter.DataSheet (sheetName: string, headers: string[], data: var[][]): var"
     }
   ],
   "Connectors": [
     {
       "Start": "dd90fc2a25274e69beb92cda9f94ae22",
-      "End": "2183836aa57f4fc2936e56d4d9dd3049",
-      "Id": "f1e7fb9c451443baae956de20b0109ff"
+      "End": "c8c4490f4772439fbc73861198fbf923",
+      "Id": "335cd014e4f747008d7b60359d01a6bd"
     },
     {
       "Start": "dd90fc2a25274e69beb92cda9f94ae22",
-      "End": "4a55cac83a64469091fb0fc0a8cf0d0f",
-      "Id": "63c7b61581d64ca18dff394b36739c34"
+      "End": "0c1b16d6929b40fe8c9956df8a82b439",
+      "Id": "21d916322be64cad969e69b1af1b53eb"
     },
     {
       "Start": "c0aa57ffff274f41a3fe5705dc02c5d3",
-      "End": "c146f04f743d4fbabf010ead0b69970f",
-      "Id": "9205f60a0ff044e28d15ffc86bd292f6"
+      "End": "2b3770efa4714f869917166b315fe7ba",
+      "Id": "8200352ff91043c3ad884a6519329837"
     },
     {
       "Start": "ea48c93784744521815acde69cea40a0",
-      "End": "a5b5c4c9d4644de9be50c3f5ae1df8b5",
-      "Id": "35362e672ef142d78cd3dd1b19f57763"
+      "End": "406d747bb829425bb34d520a099fb5b4",
+      "Id": "9d2304a36e7b416aa8d3b1db61192ee1"
     },
     {
       "Start": "7755412ac34a45e6a83345a4f9343749",
-      "End": "da34287fae5441c5a1032941f23302cb",
-      "Id": "1ced28eb97ea44edb29bd375202c43f9"
+      "End": "121f064f4eee4034afdef76f0b95f266",
+      "Id": "e6f3521ed6644af1994750dfa3f965a0"
     },
     {
       "Start": "269f43df4e8d4c0384cd5b02e1ccf100",
-      "End": "da33ea22f0b741dcbe1cfd2d58dc526e",
-      "Id": "247781f4a1f74108a5de894a7b759d6a"
+      "End": "ba867ea4d09a4c5a96cf6fe57941a5cf",
+      "Id": "3088274aa2d0436a8825be1e1f081841"
     },
     {
       "Start": "796cb570929b490ca690166e99da0f49",
-      "End": "1d120b8279564c8aa878007991aa4ef7",
-      "Id": "5e11d9b3ce494f2b83700dd532e3f14d"
+      "End": "fc67fab3842d4b77b8887effbe0f2e3c",
+      "Id": "5684960faff24659973fa540c50d0c60"
     },
     {
       "Start": "163fba87a0394f1dbdced2405e7006c4",
@@ -763,33 +1330,33 @@
     },
     {
       "Start": "02bfc6f4a29b4d59934874eb24e17754",
-      "End": "161d459ca9d44fda975a25792fb5d3d6",
-      "Id": "6951b57292454503a46c097accbb5cfa"
+      "End": "ae6e3fdfe6cb4f54bf87ee0c2b6fe691",
+      "Id": "843b84b6216d4c59804ad9ec73c5da62"
     },
     {
       "Start": "dd78a29a70984f0fa07ec1297f13170d",
-      "End": "9fe2547b265d47088fe33eadd6877d31",
-      "Id": "7ae424adfc3c47cf96246777218c3bdf"
+      "End": "b9a94ccf8ae9482da46d32009d518fad",
+      "Id": "339ea1ba96fe47398492ad76241b2872"
     },
     {
       "Start": "73d3904df1f34818bcd93830dfc1478d",
-      "End": "1823adf9a0ad4cc9ad0f58356b9cf058",
-      "Id": "20cd8ea4ba124915815d60b603a26d98"
+      "End": "adde621015a944eeb7865179137a30d4",
+      "Id": "d401c018a8ee42feaa91e3c9979277e6"
     },
     {
       "Start": "73d3904df1f34818bcd93830dfc1478d",
-      "End": "76da01d1011d480cbcbe81201eaef77a",
-      "Id": "12cd6560b23f438eba4bd328901a32ee"
+      "End": "366bef1bcb9145a99306fca4d774279c",
+      "Id": "537fb3d713de413a8851e4089f3648fd"
     },
     {
       "Start": "52d393d03a33486ab49d187fec0efc6a",
-      "End": "c339693b589e42c2b2b468627b685261",
-      "Id": "0c44209ec6584685942d6585a1fd875e"
+      "End": "6b00faef059f4b5fbef4ac91bfa23e2d",
+      "Id": "24318bc4755244c69e36bae793a20619"
     },
     {
       "Start": "52d393d03a33486ab49d187fec0efc6a",
-      "End": "a7515411b4f84b13a89b567f612de5c3",
-      "Id": "62e0a11878df4f11aba4365d9dd324c8"
+      "End": "7dff97540e7c4b49b9713e73382bfe46",
+      "Id": "bf9192f903bf40fbac56567363d10021"
     },
     {
       "Start": "ce2913b04c994450aa40f72bdb36c59e",
@@ -807,24 +1374,114 @@
       "Id": "0dd9411f9a664900a9f86f4ccde21288"
     },
     {
-      "Start": "f89db3d3e3b54572b7c969ebaa7deafa",
-      "End": "3001464a983b40fca1c8089b658c2097",
-      "Id": "e817f9730e804c9791f466ae3b82895d"
-    },
-    {
-      "Start": "b8b5a0981ebd4ab6a36515b8ef6fa60d",
-      "End": "6a9732d2b9924da3b1e5e1cf96bea861",
-      "Id": "8ff94d82db78412681aabd84329b941e"
-    },
-    {
-      "Start": "b98c6ea8976547e085f0aca746113a01",
-      "End": "9166e238abf74a65bb28d47514fd32f1",
-      "Id": "20a346fb32a14f98a6e81f119d7a5652"
-    },
-    {
       "Start": "0fbaa3a9d797499899715c0b1657fa54",
-      "End": "fafbad14c05943128ea95411facf1969",
-      "Id": "12688d9d326444198d19e2dbace9fc04"
+      "End": "a6ef13f6a652453ea83f2f4db12f528c",
+      "Id": "de3a4d0ce6384997abc5398d470a463f"
+    },
+    {
+      "Start": "86822b9308fe48b8ae8f9770b8ccb849",
+      "End": "3c67c5b8c2044b85bbadce0cec0dfcc2",
+      "Id": "d63026d1e6d248b292385dacf6064a86"
+    },
+    {
+      "Start": "f905b8cf96524d1693297b8901222e62",
+      "End": "e9b346ce7e2b47c99548966baf02947b",
+      "Id": "c39404f3a75c4aa9b4da822652ab72b8"
+    },
+    {
+      "Start": "119d5d4fa4d84cf79b27103f7e7dd9c6",
+      "End": "2eed806fd5304a23878d698ac1ab1445",
+      "Id": "346a3c1b15684b6da248d024dcde55f7"
+    },
+    {
+      "Start": "8cf4ad8964934b10a2267bdd9313e0c1",
+      "End": "ea22c25949dc4a8e9a3127c3ba39bc3f",
+      "Id": "f1b728b738f64534900c8871b5649a21"
+    },
+    {
+      "Start": "147c446a2027448ebc3ad83494fad0c3",
+      "End": "c1ea4fb730784cca895cdb34dc7d004e",
+      "Id": "3a078234c7ce47e08dadd4e1316f061e"
+    },
+    {
+      "Start": "147c446a2027448ebc3ad83494fad0c3",
+      "End": "378a954286b141e3aac85031dc26855f",
+      "Id": "76013c6fb7c549bbadd27e9abce91165"
+    },
+    {
+      "Start": "147c446a2027448ebc3ad83494fad0c3",
+      "End": "ccd0884d446d4bf082cc5e1b9bdd538c",
+      "Id": "4bcf8064978849d1a70462832ef6227a"
+    },
+    {
+      "Start": "443b8143238e418a9371fe63179e9704",
+      "End": "f98ae553bdbb424296556eb72a50a73d",
+      "Id": "365ddf635b6b4f0abf151a525171bb2c"
+    },
+    {
+      "Start": "320a72a3062e4746b0289e39408cad0f",
+      "End": "ba044db3ac3f4ad9839a3f575c9852ca",
+      "Id": "fb6ec5945bf842dc8c3070120c51983a"
+    },
+    {
+      "Start": "849a468398564a699cb5a1d4895ac158",
+      "End": "e775b89541334024a37dd087f96c1e48",
+      "Id": "138e61d7e50142328bd2796ac01e0cb7"
+    },
+    {
+      "Start": "a01736fdba124895b1c8d76b53488ad6",
+      "End": "b69bcf0c7d4c41b18b462420d8a811d0",
+      "Id": "ee69ea2da43f47b2ac72e32743bcc08e"
+    },
+    {
+      "Start": "d5b307f528994341bcc04bff458ff716",
+      "End": "52342620b8034f009c973bf0fa9d757b",
+      "Id": "f537804dabdc409ea82d30ea871530ed"
+    },
+    {
+      "Start": "0c92d88c2a19429bab3dc6184368dbf6",
+      "End": "9543bdda6a824e6b9f648a0778492a2c",
+      "Id": "91d471fcd5bf4ef0b8caab37e7ccfacd"
+    },
+    {
+      "Start": "3044d484b8fa47f79a8bb8c8a9dbd473",
+      "End": "3134940cfa764be983c4bff5bc7c5703",
+      "Id": "4dc7d7a459d04ab7b47d6dd5074fb96c"
+    },
+    {
+      "Start": "95c2a6d0ef1843ca83ad41ea2b582974",
+      "End": "88c5a60d8412414f817a5f45f96c970e",
+      "Id": "7aed0e34d5734e6e8c3c84ddeaad3cb9"
+    },
+    {
+      "Start": "6571c83cbce84a4aadd9798231267501",
+      "End": "9f0127d3aa64499ea4158a0aa8e125c9",
+      "Id": "75c2fa27bde44150965f1d8448f35573"
+    },
+    {
+      "Start": "0291c1a5f27c49f58c6265796cce80bd",
+      "End": "6416ef0cba4f4589bfd8fb45ae032355",
+      "Id": "eb8eecb00c474a7aaf233ed5d37fdd05"
+    },
+    {
+      "Start": "0291c1a5f27c49f58c6265796cce80bd",
+      "End": "716e7dfac37440b3b2ac18ac0045925e",
+      "Id": "e117e13f223b4d19b6a70324dcee8214"
+    },
+    {
+      "Start": "f4c8c4ab79264f28b2c8445992e00574",
+      "End": "3001464a983b40fca1c8089b658c2097",
+      "Id": "5a6cb1325193425c93b71bc81e7b60f3"
+    },
+    {
+      "Start": "de6320254b17427290ddbf243ab12a66",
+      "End": "9166e238abf74a65bb28d47514fd32f1",
+      "Id": "398371e83c154d5b85eaf3b2dd7c92bc"
+    },
+    {
+      "Start": "c6f206d3a23d419e8650e88856506b0a",
+      "End": "6a9732d2b9924da3b1e5e1cf96bea861",
+      "Id": "c80e76e4611b494fad5d252372b05801"
     }
   ],
   "Dependencies": [],
@@ -834,14 +1491,15 @@
       "Version": "1.0.0.0",
       "ReferenceType": "Package",
       "Nodes": [
-        "5a776cb188d74652b1d07bd8a859cacb",
-        "216d2773384c4ca18001257d0219ed2c",
-        "b712c6f67ea349ada921560eff71c9b1",
-        "290ff0a789144b499bdd43a3130519a6",
-        "be558adfbf9941c294352e856ab4545e",
-        "52c45617046d4e5a8ee062bb8d2e8a13",
         "abbd1ec530d54cdf85260983dec9e691",
-        "5dd6116dc57c42ef9762341df101cf87"
+        "bbad357af806451aa575f628dd42133c",
+        "5496be3f01f846c4bb222277f0519db0",
+        "c19a50d7d2f444e39f106bb0c387f043",
+        "9b499fd046d141deb62869ddffb31f5f",
+        "fa9fb04046774a84ab3be49db38ffb43",
+        "15ab6ae188aa493392564287233f7878",
+        "624d733ad243434bbf6fd7d6cda06947",
+        "dbac4d80f5b94e919f7034aa16eac69b"
       ]
     }
   ],
@@ -874,15 +1532,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -5.0518250465393066,
+      "EyeY": 42.283645629882813,
+      "EyeZ": 7.679595947265625,
+      "LookX": 0.051825046539306641,
+      "LookY": -31.283645629882813,
+      "LookZ": -15.679595947265625,
+      "UpX": 0.0025686149019747972,
+      "UpY": 0.62932008504867554,
+      "UpZ": -0.77714192867279053
     },
     "NodeViews": [
       {
@@ -997,66 +1655,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Reader.CSV",
-        "Id": "5a776cb188d74652b1d07bd8a859cacb",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 631.78444877767629,
-        "Y": 274.87658804130086
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Reader.SheetNames",
-        "Id": "216d2773384c4ca18001257d0219ed2c",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 631.784448777676,
-        "Y": 390.38668074223966
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Reader.Excel",
-        "Id": "b712c6f67ea349ada921560eff71c9b1",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 631.78444877767583,
-        "Y": 135.793007034048
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Reader.Excel",
-        "Id": "290ff0a789144b499bdd43a3130519a6",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 631.3723331136398,
-        "Y": 3.7440074583224145
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Writer.DataSheet",
-        "Id": "be558adfbf9941c294352e856ab4545e",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 268.4360515892281,
-        "Y": 756.73837827211094
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Writer.DataSheet",
-        "Id": "52c45617046d4e5a8ee062bb8d2e8a13",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 270.18059344338724,
-        "Y": 900.52672137908758
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Writer.Excel",
         "Id": "abbd1ec530d54cdf85260983dec9e691",
         "IsSetAsInput": false,
@@ -1072,23 +1670,243 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -173.20348055787997,
-        "Y": 1561.6818727919037
+        "X": -182.03559396841013,
+        "Y": 1559.9154501097976
       },
       {
-        "ShowGeometry": true,
-        "Name": "Points.RemoveCollinear",
-        "Id": "5dd6116dc57c42ef9762341df101cf87",
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "04d9a32c65cc4a67a98e2ed301c8604c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 282.06327561047635,
-        "Y": 1556.2569152403689
+        "X": -251.83989924780133,
+        "Y": 1876.2259514237758
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Line.ByStartPointEndPoint",
+        "Id": "651279b5c0ea462394efd20520d5c227",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 249.39790864030283,
+        "Y": 1929.2630861313069
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "f0483aa6b0d94406a4e8b57820c6fa93",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -254.29843050259041,
+        "Y": 2043.6546659004348
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "daa4ab9c36b245cfabb0bca09ae0f3a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 614.62009275466471,
+        "Y": 1962.5523951374314
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Curve.PointAtParameter",
+        "Id": "a444feba8101474db4a7cf7d6808b565",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 727.69015541739213,
+        "Y": 1923.6687187852121
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7d5ea05af9344287aaef39147967b7b4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 745.36615044420864,
+        "Y": 2092.2996469278496
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.ShiftIndices",
+        "Id": "6fd4646adf3e421486393185115409d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 946.91601215125729,
+        "Y": 1923.9099930187072
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Line.ByStartPointDirectionLength",
+        "Id": "402a70a5453e49778d4f3a4c36ec8bc3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1335.1414892958028,
+        "Y": 1924.272227420704
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Vector.ByTwoPoints",
+        "Id": "9809d2e3bf674ebdadca8c90e0196bc3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1115.3004592128209,
+        "Y": 2042.813959328194
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Range",
+        "Id": "bdc5d622460040bd898e45c2d188d22e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1183.6358526037818,
+        "Y": 2222.1109820461324
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Color Range",
+        "Id": "c3680c2512bd430f97d466eb255804fd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1599.3230723960503,
+        "Y": 2117.3075457135888
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9a1e854e169a4b30a0c6115088668bac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 940.39560382765012,
+        "Y": 2249.9379857580875
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GeometryColor.ByGeometryColor",
+        "Id": "9d67c9f3dc4f4f3fb3c24ec5e9b832b3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1936.1796236016512,
+        "Y": 1923.207394959232
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "92167a38106a48478f3bfc7e62e7f312",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1416.5685809076892,
+        "Y": 2135.2085982543554
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Math.RemapRange",
+        "Id": "b368395abbfb440db60f26fcd39f470f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1361.1546942089981,
+        "Y": 2218.9197382757698
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Lines.OrderLinesByProximity",
+        "Id": "bbad357af806451aa575f628dd42133c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 447.87300459994844,
+        "Y": 1753.5689238855982
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Points.RemoveCollinear",
+        "Id": "5496be3f01f846c4bb222277f0519db0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 288.44996973468858,
+        "Y": 1555.496259027778
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Reader.CSV",
+        "Id": "c19a50d7d2f444e39f106bb0c387f043",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 634.3239455944738,
+        "Y": 275.11211639258329
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Reader.Excel",
+        "Id": "9b499fd046d141deb62869ddffb31f5f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 634.32394559447334,
+        "Y": 6.1819422007273488
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Reader.SheetNames",
+        "Id": "fa9fb04046774a84ab3be49db38ffb43",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 625.70438872934983,
+        "Y": 397.50982387733814
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Reader.Excel",
+        "Id": "15ab6ae188aa493392564287233f7878",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 634.32394559447368,
+        "Y": 142.3709406696799
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Writer.DataSheet",
+        "Id": "624d733ad243434bbf6fd7d6cda06947",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 270.91669494494272,
+        "Y": 905.39029603017627
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sandbox | Writer.DataSheet",
+        "Id": "dbac4d80f5b94e919f7034aa16eac69b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 272.59100699952216,
+        "Y": 762.23661536364466
       }
     ],
     "Annotations": [],
-    "X": 179.6566097767535,
-    "Y": -1034.8794635682732,
-    "Zoom": 0.94964849588834743
+    "X": 519.011989609087,
+    "Y": 101.01857239023249,
+    "Zoom": 0.34527863344931287
   }
 }
