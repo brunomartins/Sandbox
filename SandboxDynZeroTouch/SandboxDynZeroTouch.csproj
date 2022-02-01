@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamoCore">
+      <HintPath>..\library\SandboxDyn\bin\DynamoCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamoRevitDS">
+      <HintPath>..\library\SandboxDyn\bin\DynamoRevitDS.dll</HintPath>
+    </Reference>
     <Reference Include="DynamoServices, Version=2.12.0.5650, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\Packages\DynamoVisualProgramming.DynamoServices.2.12.0.5650\lib\net48\DynamoServices.dll</HintPath>
       <Private>False</Private>
@@ -77,6 +83,7 @@
     <Compile Include="GeometryTools\Lines.cs" />
     <Compile Include="GeometryTools\Points.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revit\DynamoWorkspace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ExampleFiles\ExampleFile.dyn" />

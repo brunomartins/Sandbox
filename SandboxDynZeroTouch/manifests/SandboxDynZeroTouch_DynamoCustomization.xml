@@ -10,5 +10,8 @@
 		<namespace name="Sandbox.GeometryTools">
 			<category>Sandbox.GeometryTools</category>
 		</namespace>
+    <namespace name="Sandbox.Revit">
+      <category>Sandbox.Revit</category>
+    </namespace>
 	</namespaces>
 </doc>
