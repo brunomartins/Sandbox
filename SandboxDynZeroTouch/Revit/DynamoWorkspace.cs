@@ -40,15 +40,16 @@ namespace Sandbox.Revit
             foreach (Dynamo.Graph.Nodes.NodeModel node in model.Nodes)
             {
 
-                if (node.CreationName.ToString() == "Sandbox.Revit.DynamoWorkspace.FlowAllowedIfManual@var[]")
-                {
-                    NodeCount++;
-                }
-                if (node.CreationName.ToString() == "Sandbox.Revit.DynamoWorkspace.FlowAllowedIfManual@var[]")
+                if (node.Description.StartsWith("MMRunEvent"))
                 {
                     node.MarkNodeAsModified(true);
+                    if (node.CreationName.ToString() == "Sandbox.Revit.DynamoWorkspace.ForcePreviousNodeUpdate@var[]")
+                    {
+                        //node.InputNodes.Values.First().Item2.MarkNodeAsModified(true);
+                        node.InputNodes.First().Value.Item2.MarkNodeAsModified(true);
+                    }
+                    NodeCount++;
                 }
-
             }
             
             if (NodeCount == 0)
@@ -60,7 +61,7 @@ namespace Sandbox.Revit
         }
 
         /// <summary>
-        /// Graph must be in manual mode to pass this node, otherwise an empty list is returned. Must be used with "ForceIndiviadualNodeRun" renamed with a prfix of "*Force".
+        /// MMRunEvent - Graph must be in manual mode to pass this node, otherwise an empty list is returned.
         /// </summary>
         /// <param name="List">Any List.</param>
         /// <param name="Out">Returns empty list if graph in manual.</param>
@@ -75,15 +76,29 @@ namespace Sandbox.Revit
                 activeEvaluate = true;
             }
             List<string> l = new List<string>();
-            if (model.RunSettings.RunType.ToString() == "Manual")
-            {
-
-            }
-            else
-            {
-                list.Clear();
-            }
+            if (model.RunSettings.RunType.ToString() != "Manual")
+            { list.Clear(); }
             return list;
+        }
+        /// <summary>
+        /// MMRunEvent - Graph must be in manual mode to pass this node, otherwise an empty list is returned. Must be used with "ForceIndiviadualNodeRun" renamed with a prfix of "*Force".
+        /// </summary>
+        /// <param name="List">Any List.</param>
+        /// <param name="Out">Returns empty list if graph in manual.</param>
+        /// <returns>A sheet read to be written.</returns>
+        /// <search>flow, control</search>
+        public static object ForcePreviousNodeUpdate(List<object> list)
+        {
+            var model = Dynamo.Applications.DynamoRevit.RevitDynamoModel.CurrentWorkspace as HomeWorkspaceModel;
+            foreach (Dynamo.Graph.Nodes.NodeModel node in model.Nodes)
+            {
+                if (activeEvaluate == false)
+                {
+                    Register(model);
+                    activeEvaluate = true;
+                }
+            }
+            return "Active = "+activeEvaluate.ToString();
         }
 
     }
