@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       msg:
-        description: 'Message to show'
-        default: 'Create a release draft'
+        description: 'This action:'
+        default: 'Generate a release draft.'
 
 jobs:
   update_release_draft:
