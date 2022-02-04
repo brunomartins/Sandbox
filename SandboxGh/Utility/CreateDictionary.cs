@@ -6,7 +6,7 @@ using Grasshopper.Kernel.Special;
 using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.UtilityTools
+namespace SandboxGh.Utility
 {
     public class CreateDictionary : SandboxComponent
     {

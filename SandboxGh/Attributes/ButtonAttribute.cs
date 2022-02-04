@@ -3,7 +3,7 @@ using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
-using SandboxGh.UtilityTools;
+using SandboxGh.Utility;
 
 namespace SandboxGh.Attributes
 {
