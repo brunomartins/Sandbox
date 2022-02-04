@@ -6,7 +6,7 @@ using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.ExcelTools
+namespace SandboxGh.Excel
 {
     public class DataSheet : SandboxComponent
     {

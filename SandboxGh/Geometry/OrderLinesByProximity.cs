@@ -1,13 +1,13 @@
-﻿using Grasshopper.Kernel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Grasshopper.Kernel;
 using Rhino.Geometry;
 using SandboxCore.Geometry;
 using SandboxGh.Attributes;
 using SandboxGh.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace SandboxGh.GeometryTools
+namespace SandboxGh.Geometry
 {
     public class OrderLinesByProximity : SandboxComponent
     {

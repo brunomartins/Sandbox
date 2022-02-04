@@ -1,10 +1,10 @@
-﻿using Autodesk.DesignScript.Geometry;
-using SandboxCore.Geometry;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Autodesk.DesignScript.Geometry;
+using SandboxCore.Geometry;
 using SandboxDynUtilities.Converters;
 
-namespace Sandbox.GeometryTools
+namespace Sandbox.Geometry
 {
     /// <summary>
     /// Tools operating on points.

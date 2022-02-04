@@ -1,13 +1,13 @@
-﻿using Autodesk.DesignScript.Geometry;
-using Autodesk.DesignScript.Runtime;
-using SandboxCore.Geometry;
-using SandboxDynUtilities.Converters;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Autodesk.DesignScript.Geometry;
+using Autodesk.DesignScript.Runtime;
+using SandboxCore.Geometry;
+using SandboxDynUtilities.Converters;
 
-namespace Sandbox.GeometryTools
+namespace Sandbox.Geometry
 {
     /// <summary>
     /// Tools operating on lines.

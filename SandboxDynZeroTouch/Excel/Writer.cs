@@ -2,7 +2,7 @@
 using SandboxCore;
 using SandboxCore.SpreadSheet;
 
-namespace Sandbox.ExcelTools
+namespace Sandbox.Excel
 {
     /// <summary>Excel workbook creation.</summary>
     public static class Writer

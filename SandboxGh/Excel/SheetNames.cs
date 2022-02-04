@@ -3,7 +3,7 @@ using Grasshopper.Kernel;
 using SandboxCore;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.ExcelTools
+namespace SandboxGh.Excel
 {
     public class SheetNames : SandboxComponent
     {

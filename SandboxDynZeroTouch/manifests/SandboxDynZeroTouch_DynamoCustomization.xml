@@ -4,11 +4,11 @@
 		<name>SandboxDynZeroTouch</name>
 	</assembly>
 	<namespaces>
-		<namespace name="Sandbox.ExcelTools">
-			<category>Sandbox.ExcelTools</category>
+		<namespace name="Sandbox.Excel">
+			<category>Sandbox.Excel</category>
 		</namespace>
-		<namespace name="Sandbox.GeometryTools">
-			<category>Sandbox.GeometryTools</category>
+		<namespace name="Sandbox.Geometry">
+			<category>Sandbox.Geometry</category>
 		</namespace>
 	</namespaces>
 </doc>

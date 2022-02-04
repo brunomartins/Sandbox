@@ -72,10 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelTools\Reader.cs" />
-    <Compile Include="ExcelTools\Writer.cs" />
-    <Compile Include="GeometryTools\Lines.cs" />
-    <Compile Include="GeometryTools\Points.cs" />
+    <Compile Include="Excel\Reader.cs" />
+    <Compile Include="Excel\Writer.cs" />
+    <Compile Include="Geometry\Lines.cs" />
+    <Compile Include="Geometry\Points.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
