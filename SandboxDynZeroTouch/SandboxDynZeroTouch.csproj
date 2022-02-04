@@ -108,6 +108,7 @@
       <BinFolder>$(PackageFolder)bin\</BinFolder>
       <ExtraFolder>$(PackageFolder)extra\</ExtraFolder>
       <DyfFolder>$(PackageFolder)dyf\</DyfFolder>
+	    <DynamoDir>$(AppData)\Dynamo\Dynamo Core\2.12</DynamoDir>
     </PropertyGroup>
     <ItemGroup>
       <Dlls Include="$(OutDir)*.dll" />
@@ -124,6 +125,8 @@
     <MakeDir Directories="$(ExtraFolder)" Condition="!Exists($(ExtraFolder))" />
     <MakeDir Directories="$(DyfFolder)" Condition="!Exists($(DyfFolder))" />
     <!-- This copies the distributed package on dist folder to the Dynamo Packages folder. -->
-    <Copy SourceFiles="@(SourcePackage)" DestinationFolder="$(AppData)\Dynamo\Dynamo Core\2.12\packages\$(PackageName)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(SourcePackage)" 
+          DestinationFolder="$(DynamoDir)\packages\$(PackageName)\%(RecursiveDir)"
+          Condition="Exists($(DynamoDir))"/>
   </Target>
 </Project>
