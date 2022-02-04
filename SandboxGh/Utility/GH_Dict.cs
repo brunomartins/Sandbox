@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using Grasshopper.Kernel.Types;
 
-namespace SandboxGh.UtilityTools
+namespace SandboxGh.Utility
 {
     public sealed class GH_Dict : GH_Goo<ReadOnlyDictionary<string, IGH_Goo>>
     {

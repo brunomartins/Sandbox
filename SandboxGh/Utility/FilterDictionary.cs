@@ -7,7 +7,7 @@ using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.UtilityTools
+namespace SandboxGh.Utility
 {
     public class FilterDictionary : SandboxComponent
     {
