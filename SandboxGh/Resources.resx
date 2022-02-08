@@ -127,6 +127,9 @@
   <data name="DataSheetIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\DataSheetIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DeleteKeyDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\deletekeydicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DictParameterIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\DictParameterIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
