@@ -15,8 +15,8 @@ namespace SandboxGh.Utility
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DictParam(), "Dict", "D", "The dictionary to delete the key-value pair.", GH_ParamAccess.item);
-            pManager.AddTextParameter("Key", "K", "The key to delete.", GH_ParamAccess.list);
+            pManager.AddParameter(new DictParam(), "Dict", "D", "The dictionary to delete the key-value pair from.", GH_ParamAccess.item);
+            pManager.AddTextParameter("Keys", "K", "The keys to search for and remove from the dictionary.", GH_ParamAccess.list);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -47,7 +47,7 @@ namespace SandboxGh.Utility
             DA.SetData(0, new GH_Dict(dict));
         }
 
-        protected override System.Drawing.Bitmap Icon => Resources.DeleteKetDictIcon;
+        protected override System.Drawing.Bitmap Icon => Resources.DeleteKeyDictIcon;
 
         public override Guid ComponentGuid => new Guid("2DD78996-31C9-44A8-A884-BB4AAC9741A1");
     }

@@ -93,9 +93,9 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DeleteKetDictIcon {
+        internal static System.Drawing.Bitmap DeleteKeyDictIcon {
             get {
-                object obj = ResourceManager.GetObject("DeleteKetDictIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("DeleteKeyDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
