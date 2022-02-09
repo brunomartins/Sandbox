@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
+﻿using Grasshopper.Kernel;
 using SandboxGh.Attributes;
+using System;
+using System.Linq;
 
 namespace SandboxGh.Utility
 {
@@ -26,18 +25,10 @@ namespace SandboxGh.Utility
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var ghDict = new GH_Dict();
-            List<string> types = new List<string>();
-
-
             if (!DA.GetData(0, ref ghDict)) return;
 
-            foreach (var item in ghDict.Value.Values)
-            {
-                types.Add(item.TypeName);   
-            }
-
+            var types = ghDict.Value.Values.Select(value => value.TypeName);
             DA.SetDataList(0, types);
-
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.ValueTypeDictIcon;
