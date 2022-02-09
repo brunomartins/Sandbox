@@ -21,6 +21,8 @@ This will help to transport more data easily.
   1. is able to filter the dictionary keys using a wildcard pattern.
 * DeleteKeyDict
   1. is able to search for keys and delete the key-value pair from the dictionary.
+* ValueTypeDict
+  1. returns the type of all the values in a dictionary. 
 
 ### Tags 
 Grasshopper, Dictionary
