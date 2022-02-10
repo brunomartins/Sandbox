@@ -23,7 +23,7 @@ This will help to transport more data easily.
   1. is able to search for keys and delete the key-value pair from the dictionary.
 * ValueTypeDict
   1. returns the type of all the values in a dictionary. 
-* SortDict
+* SortByKeyDict
   1. sorts the dictionary keys by ascending or descending order
 
 ### Tags 
