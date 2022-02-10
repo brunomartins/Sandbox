@@ -45,7 +45,7 @@ namespace SandboxGh.Utility
                     break;
                 case SortByKeyDictionary.SortingMode.Descending:
                     this.Message = "Descending";
-                    var revSortedDict = ghDict.Value.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+                    var revSortedDict = ghDict.Value.OrderByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
                     DA.SetData(0, revSortedDict);
                     break;
             }
