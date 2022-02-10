@@ -223,9 +223,9 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SortDictIcon {
+        internal static System.Drawing.Bitmap SortByKeyDictIcon {
             get {
-                object obj = ResourceManager.GetObject("SortDictIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("SortByKeyDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
