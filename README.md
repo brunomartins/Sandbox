@@ -1,4 +1,7 @@
 # What is Sandbox?
+![GitHub all releases](https://img.shields.io/github/downloads/mottmacdonaldglobal/Sandbox/total?color=green)
+![GitHub Release](https://img.shields.io/github/release/mottmacdonaldglobal/Sandbox?color=orange)
+![Target Framework](https://img.shields.io/badge/Target%20Framework-..NETFramework4.8-blue.svg)
 
 ![](./media/Sandbox_Banner.png "Sandbox")
 
