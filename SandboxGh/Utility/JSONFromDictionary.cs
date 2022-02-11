@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Types;
 using Newtonsoft.Json;
@@ -29,13 +30,22 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             if (!DA.GetData(0, ref ghDict)) return;
 
-            // Dictionary<string, IGH_Goo> dict = new Dictionary<string, IGH_Goo>(ghDict.Value.Values);
+            /*
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, IGH_Goo> entry in ghDict.Value)
+            {
+                dict.Add(entry.Key, entry.Value.ToString());
+            }
+            */
 
-            string json = JsonConvert.SerializeObject(ghDict.Value.Values);
+            var jsonDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value)
+
+
+            string json = JsonConvert.SerializeObject(dict);
             DA.SetData(0, json);
         }
 
-        //protected override System.Drawing.Bitmap Icon => Resources.JSONFromDictIcon;
+        protected override System.Drawing.Bitmap Icon => Resources.JSONFromDictIcon;
 
         public override Guid ComponentGuid => new Guid("0CFF43E9-4940-4885-9566-42CAB413DFA9");
     }
