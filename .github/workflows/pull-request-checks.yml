@@ -4,7 +4,7 @@ name: PR Checks
 # https://github.com/marketplace/actions/check-pull-request-title
 
 on:
-  pull_request:
+  pull_request_target:
    types: [opened, labeled, unlabeled, synchronize, edited]
 
 jobs:
@@ -19,6 +19,8 @@ jobs:
         invalid-labels: 'help wanted, duplicate, question'
 
     - name: Checks PR title
-      uses: Slashgear/action-check-pr-title@v3.0.0
+      uses: thehanimo/pr-title-checker@v1.3.4
       with:
-        regexp: '([0-9])'
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        pass_on_octokit_error: false
+        configuration_path: ".github/pr-title-checker-config.json"
