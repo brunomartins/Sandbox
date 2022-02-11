@@ -18,13 +18,14 @@ jobs:
         valid-labels: 'bug, enhancement, grasshopper, dynamo, documentation, refactor'
         invalid-labels: 'help wanted, duplicate, question'
 
-    - name: Checks PR title
-      uses: thehanimo/pr-title-checker@v1.3.4
+    - name: Checks name
+      uses: actions-ecosystem/action-regex-match@v2
+      id: regex-match
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        pass_on_octokit_error: false
-        configuration_path: ".github/pr-title-checker-config.json"
-      
-    - uses: Slashgear/action-check-pr-title@v3.0.0
-      with:
-        regexp: '([^0-9A-Za-z ])+'
+        text: ${{ github.event.pull_request.title }}
+        regex: '[^0-9A-Za-z ]'
+        
+    - name: Checks the result
+      if: ${{ steps.regex-match.outputs.match != '' }}
+      run: |
+         echo "we have special caracthers"
