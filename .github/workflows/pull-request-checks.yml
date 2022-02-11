@@ -1,4 +1,7 @@
 name: PR Checks
+# https://github.com/marketplace/actions/verify-pull-request-labels
+# https://github.com/marketplace/actions/pr-title-checker
+# https://github.com/marketplace/actions/check-pull-request-title
 
 on:
   pull_request_target:
@@ -14,3 +17,9 @@ jobs:
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         valid-labels: 'bug, enhancement, grasshopper, dynamo, documentation, refactor'
         invalid-labels: 'help wanted, duplicate, question'
+    
+    - name: Checks PR title
+      uses: Slashgear/action-check-pr-title@2.0.0
+      with:
+        regex: '([aA-zZ])+'
+        
