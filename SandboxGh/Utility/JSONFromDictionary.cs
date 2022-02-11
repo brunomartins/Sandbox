@@ -30,19 +30,9 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             if (!DA.GetData(0, ref ghDict)) return;
 
-            /*
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            foreach (KeyValuePair<string, IGH_Goo> entry in ghDict.Value)
-            {
-                dict.Add(entry.Key, entry.Value.ToString());
-            }
-            */
-
-            var jsonDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value)
-
-
-            string json = JsonConvert.SerializeObject(dict);
-            DA.SetData(0, json);
+            var jsonDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value.ToString());
+            //NOTE ---- THIS WORKS FOR A SINGLE LAYER OF DICTIONARY. IF THERE IS ANY NESTING IT DOES NOT.
+            DA.SetData(0, JsonConvert.SerializeObject(jsonDict, Formatting.Indented));
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.JSONFromDictIcon;
