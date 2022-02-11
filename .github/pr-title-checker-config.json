@@ -4,8 +4,8 @@
     "color": "#FBCA04"
   },
   "CHECKS": {
-    "regexp": "[<>'";`%~@#$^*()_+=[\]{}|\\,.?:-]",
-    "alwaysPassCI": "true"
+    "regexp": "^([<>'"/;`%])",
+    "alwaysPassCI": true
   },
   "MESSAGES": {
     "success": "All good the PR title doesn't need to be formatted",
