@@ -24,3 +24,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         pass_on_octokit_error: false
         configuration_path: ".github/pr-title-checker-config.json"
+      
+    - uses: Slashgear/action-check-pr-title@v3.0.0
+      with:
+        regexp: '[<>'"/;`%~@#$^*()_+={}|\\,.?:-]'
