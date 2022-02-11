@@ -1,0 +1,34 @@
+name: PR Checks
+# https://github.com/marketplace/actions/verify-pull-request-labels
+# https://github.com/marketplace/actions/pr-title-checker
+# https://github.com/marketplace/actions/check-pull-request-title
+
+on:
+  pull_request:
+   types: [opened, labeled, unlabeled, synchronize, edited]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checks for label
+      uses: jesusvasquez333/verify-pr-label-action@v1.4.0
+      with:
+        github-token: '${{ secrets.GITHUB_TOKEN }}'
+        valid-labels: 'bug, enhancement, grasshopper, dynamo, documentation, refactor'
+        invalid-labels: 'help wanted, duplicate, question'
+
+    - name: Checks name
+      uses: actions-ecosystem/action-regex-match@v2
+      id: regex-match
+      with:
+        text: ${{ github.event.pull_request.title }}
+        regex: '[^0-9A-Za-z ]'
+        
+    - name: Checks the result
+      if: ${{ steps.regex-match.outputs.match != '' }}
+      uses: andrewmusgrave/automatic-pull-request-review@0.0.5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        event: REQUEST_CHANGES
+        body: '☠️ Title with special characters, please fix it!'
