@@ -27,5 +27,8 @@ jobs:
         
     - name: Checks the result
       if: ${{ steps.regex-match.outputs.match != '' }}
-      run: |
-         echo "we have special caracthers"
+      uses: andrewmusgrave/automatic-pull-request-review@0.0.5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        event: REQUEST_CHANGES
+        body: '☠️ Title with special characters, please fix it!'
