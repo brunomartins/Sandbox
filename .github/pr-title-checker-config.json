@@ -4,7 +4,7 @@
     "color": "#FBCA04"
   },
   "CHECKS": {
-    "regexp": "[aA-zZ]",
+    "regexp": "([^<>[\]{\}|\\\/^~%# :;,$%?\0-\cZ]+)",
     "alwaysPassCI": "true"
   },
   "MESSAGES": {
