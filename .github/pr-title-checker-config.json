@@ -1,0 +1,15 @@
+{
+  "LABEL": {
+    "name": "title needs formatting",
+    "color": "#FBCA04"
+  },
+  "CHECKS": {
+    "regexp": "[aA-zZ]",
+    "alwaysPassCI": "true"
+  },
+  "MESSAGES": {
+    "success": "All good the PR title doesn't need to be formatted",
+    "failure": "Failing CI test",
+    "notice": ""
+  }
+}
