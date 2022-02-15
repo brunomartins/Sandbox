@@ -35,29 +35,9 @@ namespace SandboxGh.Utility
             if (!DA.GetData(0, ref ghDict)) return;
             if (!DA.GetData(1, ref path)) return;
             if (!DA.GetData(2, ref fileName)) return;
-            //Check for \ in filepath
-            if (!path[path.Length - 1].Equals(@"\"))
-            {
-                path += @"\";
-            }
-            //Check for ".csv" in filename
-            //This part seems very convoluted but I don't know how to check the ending of the string without first checking if it is over 4 characters
-            string filePath;
-            if (fileName.Length > 4)
-            {
-                if (fileName.Substring(fileName.Length - 4).Equals(".csv"))
-                {
-                    filePath = path + fileName;
-                }
-                else
-                {
-                    filePath = path + fileName + ".csv";
-                }
-            }
-            else
-            {
-                filePath = path + fileName + ".csv";
-            }
+
+            string filePath = path + @"\" + fileName + ".csv";
+
             /*
             string csv = String.Empty;  
             foreach (var kvp in ghDict.Value)
@@ -70,22 +50,23 @@ namespace SandboxGh.Utility
             }
             */
 
-            var csvDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value);
-            string csv = NestedDictIteration(csvDict).ToString();
+            //var csvDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value);
+            string csv = NestedDictIteration(ghDict).ToString();
             File.WriteAllText(filePath, csv);
             DA.SetData(0, csv);
         }
 
-        private static object NestedDictIteration(Dictionary<string, IGH_Goo> nestedDict)
+        private string NestedDictIteration(GH_Dict nestedDict)
         {
             string csvEntry = String.Empty;
-            foreach (var kvp in nestedDict)
+            foreach (var kvp in nestedDict.Value)
             {
                 csvEntry += kvp.Key;
-                if (kvp.Value is Dictionary<string, IGH_Goo>)
+                if (kvp.Value is GH_Dict)
                 {
-                    var nextLevel = nestedDict[kvp.Key];
-                    NestedDictIteration((Dictionary<string, IGH_Goo>)nextLevel);
+                    var castVal = kvp.Value as GH_Dict;
+                    NestedDictIteration(castVal);
+                    csvEntry += "This is the value---> " + kvp.Value.ToString() + " This is the value type ----> " +kvp.Value.GetType().ToString() + "\n";
                 }
                 else
                 {
