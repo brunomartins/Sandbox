@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
 namespace SandboxGh.Utility
@@ -8,7 +11,7 @@ namespace SandboxGh.Utility
     public class CSVFromDictionary : SandboxComponent
     {
         public CSVFromDictionary()
-            : base("Turns a dictionary into a csv file.", "Utilities")
+            : base("Turns a dictionary into a csv file as well as returning the csv string.", "Utilities")
         {
         }
 
@@ -16,12 +19,12 @@ namespace SandboxGh.Utility
         {
             pManager.AddParameter(new DictParam(), "Dict", "D", "Dictionary to convert to csv", GH_ParamAccess.item);
             pManager.AddTextParameter("Path", "P", "The directory where the csv will be created.", GH_ParamAccess.item);
-            pManager.AddTextParameter("FileName", "FN", "The file name.", GH_ParamAccess.item);
+            pManager.AddTextParameter("FileName", "FN", "The file name to create.", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("CSV", "C", "Resulting CSV.", GH_ParamAccess.list);
+            pManager.AddTextParameter("CSV", "C", "Resulting csv string.", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -55,12 +58,41 @@ namespace SandboxGh.Utility
             {
                 filePath = path + fileName + ".csv";
             }
+            /*
             string csv = String.Empty;  
             foreach (var kvp in ghDict.Value)
             {
                 csv = csv + kvp.Key + ", " + kvp.Value + "\n";
             }
+            foreach (string key in ghDict.Value.Keys)
+            {
+
+            }
+            */
+
+            var csvDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value);
+            string csv = NestedDictIteration(csvDict).ToString();
             File.WriteAllText(filePath, csv);
+            DA.SetData(0, csv);
+        }
+
+        private static object NestedDictIteration(Dictionary<string, IGH_Goo> nestedDict)
+        {
+            string csvEntry = String.Empty;
+            foreach (var kvp in nestedDict)
+            {
+                csvEntry += kvp.Key;
+                if (kvp.Value is Dictionary<string, IGH_Goo>)
+                {
+                    var nextLevel = nestedDict[kvp.Key];
+                    NestedDictIteration((Dictionary<string, IGH_Goo>)nextLevel);
+                }
+                else
+                {
+                    csvEntry += (", " + kvp.Value.GetType() + "\n");
+                }
+            }
+            return csvEntry;
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.CSVFromDictIcon;
