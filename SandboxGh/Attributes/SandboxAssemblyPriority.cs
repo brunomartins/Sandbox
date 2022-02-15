@@ -5,14 +5,15 @@ using Grasshopper.Kernel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
+using SandboxCore.Utilities.Github;
 
 namespace SandboxGh.Attributes
 {
     public class SandboxAssemblyPriority : GH_AssemblyPriority
     {
-        private ToolStripMenuItem _sayHelloSandbox;
+        private ToolStripMenuItem _sandboxVersion;
+        private ToolStripMenuItem _sandboxDocu;
 
         public override GH_LoadingInstruction PriorityLoad()
         {
@@ -29,6 +30,7 @@ namespace SandboxGh.Attributes
                 return;
             this.SetupSandboxMenu(documentEditor);
         }
+
         private void SetupSandboxMenu(GH_DocumentEditor docEditor)
         {
             ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
@@ -43,6 +45,15 @@ namespace SandboxGh.Attributes
             toolStripMenuItem.Text = "Sandbox";
             docEditor.MainMenuStrip.ResumeLayout(false);
             docEditor.MainMenuStrip.PerformLayout();
+            GH_DocumentEditor.AggregateShortcutMenuItems += new GH_DocumentEditor.AggregateShortcutMenuItemsEventHandler(this.GH_DocumentEditor_AggregateShortcutMenuItems);
+        }
+
+        private void GH_DocumentEditor_AggregateShortcutMenuItems(
+            object sender,
+            GH_MenuShortcutEventArgs e)
+        {
+            e.AppendItem(this._sandboxVersion);
+            e.AppendItem(this._sandboxDocu);
         }
 
         private List<ToolStripMenuItem> SandboxMenuItems
@@ -50,19 +61,27 @@ namespace SandboxGh.Attributes
             get
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
-                this._sayHelloSandbox = new ToolStripMenuItem();
+                this._sandboxVersion = new ToolStripMenuItem();
+                this._sandboxVersion.Size = new Size(265, 30);
+                this._sandboxVersion.Text = "Sandbox Version";
+                this._sandboxVersion.Click += new EventHandler(this.GetVersion);
+                SandboxMenuItems.Add(this._sandboxVersion);
 
-                this._sayHelloSandbox.Name = "sayHelloSandbox";
-                this._sayHelloSandbox.Size = new Size(265, 30);
-                this._sayHelloSandbox.Text = "Hello Sandbox";
-                this._sayHelloSandbox.Click += new EventHandler(this.SayHello);
-                
-                SandboxMenuItems.Add(this._sayHelloSandbox);
+                this._sandboxDocu = new ToolStripMenuItem();
+                this._sandboxDocu.Size = new Size(265, 30);
+                this._sandboxDocu.Text = "Sandbox Documentation";
+                this._sandboxDocu.Click += new EventHandler(this.GoToDocumentation);
+                SandboxMenuItems.Add(this._sandboxDocu);
 
                 return SandboxMenuItems;
             }
         }
 
-        private void SayHello(object sender, EventArgs e) => MessageBox.Show("CIAO BELLO!");
+        private void GetVersion(object sender, EventArgs e)
+        {
+            MessageBox.Show(Helper.GetReleaseVersion().Result);
+        }
+
+        private void GoToDocumentation(object sender, EventArgs e) => Helper.SandboxDocumentation();
     }
 }
