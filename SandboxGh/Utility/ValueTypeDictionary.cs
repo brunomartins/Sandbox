@@ -27,7 +27,7 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             if (!DA.GetData(0, ref ghDict)) return;
 
-            var types = ghDict.Value.Values.Select(value => value.TypeName);
+            var types = ghDict.Value.Values.Select(value => value.GetType());
             DA.SetDataList(0, types);
         }
 
