@@ -38,39 +38,26 @@ namespace SandboxGh.Utility
 
             string filePath = path + @"\" + fileName + ".csv";
 
-            /*
-            string csv = String.Empty;  
-            foreach (var kvp in ghDict.Value)
-            {
-                csv = csv + kvp.Key + ", " + kvp.Value + "\n";
-            }
-            foreach (string key in ghDict.Value.Keys)
-            {
+            string csv = String.Empty;
 
-            }
-            */
-
-            //var csvDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value);
-            string csv = NestedDictIteration(ghDict).ToString();
+            csv = RecursiveDictionary(ghDict, csv);
             File.WriteAllText(filePath, csv);
             DA.SetData(0, csv);
         }
 
-        private string NestedDictIteration(GH_Dict nestedDict)
+        private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry)
         {
-            string csvEntry = String.Empty;
             foreach (var kvp in nestedDict.Value)
             {
-                csvEntry += kvp.Key;
+                csvEntry += kvp.Key + ", ";
                 if (kvp.Value is GH_Dict)
                 {
                     var castVal = kvp.Value as GH_Dict;
-                    NestedDictIteration(castVal);
-                    csvEntry += "This is the value---> " + kvp.Value.ToString() + " This is the value type ----> " +kvp.Value.GetType().ToString() + "\n";
+                    csvEntry = RecursiveDictionary(castVal, csvEntry);
                 }
                 else
                 {
-                    csvEntry += (", " + kvp.Value.GetType() + "\n");
+                    csvEntry += (kvp.Value.ToString() + "\n");
                 }
             }
             return csvEntry;
