@@ -39,25 +39,28 @@ namespace SandboxGh.Utility
             string filePath = path + @"\" + fileName + ".csv";
 
             string csv = String.Empty;
+            string csvBase = String.Empty;
 
-            csv = RecursiveDictionary(ghDict, csv);
+
+            csv = RecursiveDictionary(ghDict, csv, csvBase);
             File.WriteAllText(filePath, csv);
             DA.SetData(0, csv);
         }
 
-        private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry)
+        private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
         {
+
             foreach (var kvp in nestedDict.Value)
             {
-                csvEntry += kvp.Key + ", ";
                 if (kvp.Value is GH_Dict)
                 {
+                    string newBase = baseVal + kvp.Key + ", ";
                     var castVal = kvp.Value as GH_Dict;
-                    csvEntry = RecursiveDictionary(castVal, csvEntry);
+                    csvEntry = RecursiveDictionary(castVal, csvEntry, newBase);
                 }
                 else
                 {
-                    csvEntry += (kvp.Value.ToString() + "\n");
+                    csvEntry += (baseVal + kvp.Key + ", "+ kvp.Value.ToString() + "\n");
                 }
             }
             return csvEntry;
