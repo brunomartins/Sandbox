@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SandboxCore.Utilities
 {
@@ -15,7 +11,7 @@ namespace SandboxCore.Utilities
             var dynamoDir = @"\Dynamo\Dynamo Core";
             var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), dynamoDir);
             var file = Directory.GetFiles(path, "SandboxCore.dll", SearchOption.AllDirectories);
-       
+
             return file.Length == 0 ? string.Empty : file[0];
         }
 
@@ -30,7 +26,7 @@ namespace SandboxCore.Utilities
             if (!File.Exists(path)) return string.Empty;
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(path);
 
-            return versionInfo.FileVersion;
+            return versionInfo.ProductVersion;
         }
     }
 }
