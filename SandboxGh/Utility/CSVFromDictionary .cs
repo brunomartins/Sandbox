@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
 namespace SandboxGh.Utility
