@@ -40,11 +40,10 @@ namespace SandboxGh.Utility
         {
             foreach (var kvp in nestedDict.Value)
             {
-                if (kvp.Value is GH_Dict)
+                if (kvp.Value is GH_Dict dataValue)
                 {
                     string newBase = $"{baseVal}\"{kvp.Key.Replace("\"","\"\"")}\",";
-                    var castVal = kvp.Value as GH_Dict;
-                    csvEntry = RecursiveDictionary(castVal, csvEntry, newBase);
+                    csvEntry = RecursiveDictionary(dataValue, csvEntry, newBase);
                 }
                 else
                 {
