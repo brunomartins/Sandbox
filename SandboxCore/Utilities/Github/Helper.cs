@@ -1,5 +1,5 @@
-﻿using System;
-using Octokit;
+﻿using Octokit;
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
@@ -8,6 +8,9 @@ namespace SandboxCore.Utilities.Github
 {
     public static class Helper
     {
+        private static GitHubClient _gitHubClient = new GitHubClient(new ProductHeaderValue("MyGit"));
+        private static string _assetUrl;
+        private static string _releaseTagName;
         public delegate Task<string> DelEvent();
 
         /// <summary>
@@ -18,9 +21,18 @@ namespace SandboxCore.Utilities.Github
         {
             return Task.Run(async () =>
             {
-                var client = new GitHubClient(new ProductHeaderValue("MyGit"));
-                var lastRelease = await client.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
-                return lastRelease.TagName;
+                try
+                {
+                    var lastRelease = await _gitHubClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
+                    var asset = lastRelease.Assets[0];
+                    _assetUrl = asset.BrowserDownloadUrl;
+                    _releaseTagName = lastRelease.TagName;
+                    return _releaseTagName;
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
             });
         }
 
@@ -30,17 +42,23 @@ namespace SandboxCore.Utilities.Github
         /// <returns>The asset from the last release.</returns>
         public static Task<string> GetLastAsset()
         {
-            return Task.Run(async () =>
+            var desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            var fileName = $@"{desktopDir}\Sandbox_{_releaseTagName}.zip";
+
+            return Task.Run(() =>
             {
-                var gitClient = new GitHubClient(new ProductHeaderValue("MyGit"));
-                var lastRelease = await gitClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
-                var asset = lastRelease.Assets[0];
-                using (var client = new WebClient())
+                try
                 {
-                    client.DownloadFileAsync(new Uri(asset.BrowserDownloadUrl),
-                        @"C: \Users\BIA97506\OneDrive - Mott MacDonald\Desktop\SandboxRelease.zip");
+                    using (var client = new WebClient())
+                    {
+                        client.DownloadFileAsync(new Uri(_assetUrl), fileName);
+                    }
+                    return $"Release {_releaseTagName} downloaded on the desktop!";
                 }
-                return asset.Name;
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
             });
         }
 
