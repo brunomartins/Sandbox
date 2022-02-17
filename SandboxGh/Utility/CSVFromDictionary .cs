@@ -60,7 +60,7 @@ namespace SandboxGh.Utility
                 }
                 else
                 {
-                    csvEntry += (baseVal + kvp.Key + ", "+ kvp.Value.ToString() + "\n");
+                    csvEntry += $"{baseVal}{kvp.Key}, {kvp.Value.ToString()}\n";
                 }
             }
             return csvEntry;
