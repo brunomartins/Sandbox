@@ -31,11 +31,11 @@ namespace SandboxGh.Utility
             if (!DA.GetData(0, ref ghDict)) return;
             if (!DA.GetData(1, ref path)) return;
             if (!DA.GetData(2, ref fileName)) return;
-            string filePath = path + @"\" + fileName + ".csv";
+            string dictionaryPath = $"{path}\\{fileName}.csv";
             string csv = String.Empty;
             string csvBase = String.Empty;
             csv = RecursiveDictionary(ghDict, csv, csvBase);
-            File.WriteAllText(filePath, csv);
+            File.WriteAllText(dictionaryPath, csv);
         }
 
         private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
