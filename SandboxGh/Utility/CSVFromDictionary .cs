@@ -36,6 +36,12 @@ namespace SandboxGh.Utility
             File.WriteAllText(dictionaryPath, csv);
         }
 
+        /// <summary>
+        ///  This function recursively iterates over a GH_Dict object to convert it to a csv formatted string.
+        /// </summary>
+        /// <param name="nestedDict">The GH_Dict object to iterate over.</param>
+        /// <param name="csvEntry">The csv string that is concatenated on to. Provide an empty string or an existing csv string to be extended.</param>
+        /// <param name="baseVal">Value used to maintain parent key information during recursion. Provide emptry string.</param>
         private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
         {
             foreach (var kvp in nestedDict.Value)
