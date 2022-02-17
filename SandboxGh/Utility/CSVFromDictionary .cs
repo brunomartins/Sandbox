@@ -30,9 +30,7 @@ namespace SandboxGh.Utility
             string fileName = String.Empty;
             if (!DA.GetData(0, ref ghDict)|!DA.GetData(1, ref path)|!DA.GetData(2, ref fileName))return;
             string dictionaryPath = $"{path}\\{fileName}.csv";
-            string csv = String.Empty;
-            string csvBase = String.Empty;
-            csv = RecursiveDictionary(ghDict, csv, csvBase);
+            string csv = RecursiveDictionary(ghDict, String.Empty, String.Empty);
             File.WriteAllText(dictionaryPath, csv);
         }
 
