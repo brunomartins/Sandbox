@@ -28,9 +28,7 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             string path = String.Empty;
             string fileName = String.Empty;
-            if (!DA.GetData(0, ref ghDict)) return;
-            if (!DA.GetData(1, ref path)) return;
-            if (!DA.GetData(2, ref fileName)) return;
+            if (!DA.GetData(0, ref ghDict)|!DA.GetData(1, ref path)|!DA.GetData(2, ref fileName))return;
             string dictionaryPath = $"{path}\\{fileName}.csv";
             string csv = String.Empty;
             string csvBase = String.Empty;
