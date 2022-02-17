@@ -2,14 +2,13 @@
 using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
+using SandboxCore.Utilities;
 using SandboxCore.Utilities.Github;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using SandboxCore.Utilities;
 
 namespace SandboxGh.Attributes
 {
@@ -109,16 +108,17 @@ namespace SandboxGh.Attributes
             return releaseVersion;
         }
 
-        private bool IsSandboxUpdated(string releaseVersion)
+        private bool IsSandboxUpdated
         {
-            var installedVersion = Package.GetSandboxVersion(Package.DynamoDir());
-
-            if (releaseVersion.Contains("alpha"))
+            get
             {
-                releaseVersion = Regex.Replace(releaseVersion, "[a-zA-Z -]", "");
+                var releaseVersion = _releaseVersion;
+                if (releaseVersion.Contains("alpha"))
+                {
+                    releaseVersion = Regex.Replace(releaseVersion, "[a-zA-Z -]", "");
+                }
+                return _localVersion == releaseVersion;
             }
-
-            return installedVersion == releaseVersion;
         }
 
         private void GoToDocumentation(object sender, EventArgs e) => Helper.SandboxDocumentation();
@@ -132,11 +132,13 @@ namespace SandboxGh.Attributes
 
         private void ChecksForUpdates(object sender, EventArgs e)
         {
-            StringBuilder message = new StringBuilder();
-            message.AppendLine($"Your actual version: {_localVersion}");
-            message.AppendLine($"Last release: {_releaseVersion}");
-            message.AppendLine("Alpha version meaning new features in development.");
-            MessageBox.Show(message.ToString());
+            string message = (IsSandboxUpdated)
+                ? $"Your are update to the version {_localVersion}"
+                : $"Your actual version: {_localVersion}\n" +
+                  $"Last release: {_releaseVersion}\n" +
+                  "Alpha version meaning new features in development.";
+
+            MessageBox.Show(message);
         }
     }
 }

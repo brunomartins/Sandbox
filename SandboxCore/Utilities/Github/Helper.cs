@@ -8,7 +8,7 @@ namespace SandboxCore.Utilities.Github
 {
     public static class Helper
     {
-        private static GitHubClient _gitHubClient = new GitHubClient(new ProductHeaderValue("MyGit"));
+        private static readonly GitHubClient _gitHubClient = new GitHubClient(new ProductHeaderValue("SandboxClient"));
         private static string _assetUrl;
         private static string _releaseTagName;
         public delegate Task<string> DelEvent();
@@ -62,6 +62,9 @@ namespace SandboxCore.Utilities.Github
             });
         }
 
+        /// <summary>
+        /// The directory to the Sandbox documentation.
+        /// </summary>
         public static void SandboxDocumentation() => Process.Start(@"https://mirco-bianchini.gitbook.io/sandbox/");
     }
 }
