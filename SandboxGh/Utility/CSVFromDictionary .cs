@@ -8,7 +8,7 @@ namespace SandboxGh.Utility
     public class CSVFromDictionary : SandboxComponent
     {
         public CSVFromDictionary()
-            : base("Turns a dictionary into a csv file as well as returning the csv string.", "Utilities")
+            : base("Turns a dictionary into a csv file.", "Utilities")
         {
         }
 
@@ -21,7 +21,6 @@ namespace SandboxGh.Utility
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("CSV", "C", "Resulting csv string.", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -37,7 +36,6 @@ namespace SandboxGh.Utility
             string csvBase = String.Empty;
             csv = RecursiveDictionary(ghDict, csv, csvBase);
             File.WriteAllText(filePath, csv);
-            DA.SetData(0, csv);
         }
 
         private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
