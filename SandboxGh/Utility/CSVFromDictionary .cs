@@ -35,13 +35,9 @@ namespace SandboxGh.Utility
             if (!DA.GetData(0, ref ghDict)) return;
             if (!DA.GetData(1, ref path)) return;
             if (!DA.GetData(2, ref fileName)) return;
-
             string filePath = path + @"\" + fileName + ".csv";
-
             string csv = String.Empty;
             string csvBase = String.Empty;
-
-
             csv = RecursiveDictionary(ghDict, csv, csvBase);
             File.WriteAllText(filePath, csv);
             DA.SetData(0, csv);
@@ -49,7 +45,6 @@ namespace SandboxGh.Utility
 
         private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
         {
-
             foreach (var kvp in nestedDict.Value)
             {
                 if (kvp.Value is GH_Dict)
