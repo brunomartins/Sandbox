@@ -32,7 +32,7 @@ namespace SandboxGh.Utility
             if (!DA.GetData(0, ref ghDict) && ghDict.Value == null) return;
             if (!DA.GetDataList(1, keys)) return;
 
-            Dictionary<string, IGH_Goo> dict = new Dictionary<string, IGH_Goo>(ghDict.Value);
+            Dictionary<string, object> dict = new Dictionary<string, object>(ghDict.Value);
             for (int i = 0; i < keys.Count; i++)
             {
                 if (!dict.ContainsKey(keys[i]))

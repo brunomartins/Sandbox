@@ -29,7 +29,7 @@ namespace SandboxGh.Utility
         {
             var ghDict = new GH_Dict();
             var keys = new List<string>();
-            var values = new List<IGH_Goo>();
+            var values = new List<object>();
             if (!DA.GetData(0, ref ghDict) && ghDict.Value == null) return;
             if (!DA.GetDataList(1, keys) || !DA.GetDataList(2, values)) return;
 
@@ -39,7 +39,7 @@ namespace SandboxGh.Utility
                 return;
             }
 
-            Dictionary<string, IGH_Goo> dict = new Dictionary<string, IGH_Goo>(ghDict.Value);
+            Dictionary<string, object> dict = new Dictionary<string, object>(ghDict.Value);
             for (int i = 0; i < keys.Count; i++)
             {
                 if (!dict.ContainsKey(keys[i]))
