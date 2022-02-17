@@ -54,13 +54,13 @@ namespace SandboxGh.Utility
             {
                 if (kvp.Value is GH_Dict)
                 {
-                    string newBase = baseVal + kvp.Key + ", ";
+                    string newBase = $"{baseVal}\"{kvp.Key.Replace("\"","\"\"")}\",";
                     var castVal = kvp.Value as GH_Dict;
                     csvEntry = RecursiveDictionary(castVal, csvEntry, newBase);
                 }
                 else
                 {
-                    csvEntry += $"{baseVal}{kvp.Key}, {kvp.Value.ToString()}\n";
+                    csvEntry += $"{baseVal}\"{kvp.Key}\",\"{kvp.Value.ToString().Replace("\"", "'")}\"\n";
                 }
             }
             return csvEntry;
