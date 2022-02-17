@@ -1,5 +1,7 @@
-﻿using Octokit;
+﻿using System;
+using Octokit;
 using System.Diagnostics;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SandboxCore.Utilities.Github
@@ -8,13 +10,37 @@ namespace SandboxCore.Utilities.Github
     {
         public delegate Task<string> DelEvent();
 
-        public static Task<string> GetReleaseVersion()
+        /// <summary>
+        /// Get the last release from GitHub.
+        /// </summary>
+        /// <returns>The last release.</returns>
+        public static Task<string> GetLastTagRelease()
         {
             return Task.Run(async () =>
             {
                 var client = new GitHubClient(new ProductHeaderValue("MyGit"));
-                var releases = await client.Repository.Release.GetAll("mottmacdonaldglobal", "Sandbox");
-                return releases[0].TagName;
+                var lastRelease = await client.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
+                return lastRelease.TagName;
+            });
+        }
+
+        /// <summary>
+        /// Gets the asset into the last release.
+        /// </summary>
+        /// <returns>The asset from the last release.</returns>
+        public static Task<string> GetLastAsset()
+        {
+            return Task.Run(async () =>
+            {
+                var gitClient = new GitHubClient(new ProductHeaderValue("MyGit"));
+                var lastRelease = await gitClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
+                var asset = lastRelease.Assets[0];
+                using (var client = new WebClient())
+                {
+                    client.DownloadFileAsync(new Uri(asset.BrowserDownloadUrl),
+                        @"C: \Users\BIA97506\OneDrive - Mott MacDonald\Desktop\SandboxRelease.zip");
+                }
+                return asset.Name;
             });
         }
 

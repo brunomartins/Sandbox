@@ -15,7 +15,7 @@
     <PackageDescription>🧰 A library helping to speed repeated and annoying tasks, the library collects tools for 🦗 and 🧨.</PackageDescription>
     <RootNamespace>SandboxCore</RootNamespace>
     <AssemblyName>SandboxCore</AssemblyName>
-	  <AssemblyInformationalVersion>$(AssemblyInformationalVersion)</AssemblyInformationalVersion>
+    <AssemblyInformationalVersion>$(AssemblyInformationalVersion)</AssemblyInformationalVersion>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="Geometry\LineHelper.cs" />
     <Compile Include="Geometry\PointHelper.cs" />
+    <Compile Include="Utilities\ColorAttributes.cs" />
     <Compile Include="Utilities\Github\Helper.cs" />
     <Compile Include="SpreadSheet\NpoiExtension.cs" />
     <Compile Include="PackageInfo.cs" />

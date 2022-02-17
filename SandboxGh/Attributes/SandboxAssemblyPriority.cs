@@ -6,6 +6,7 @@ using SandboxCore.Utilities.Github;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using SandboxCore.Utilities;
@@ -14,19 +15,20 @@ namespace SandboxGh.Attributes
 {
     public class SandboxAssemblyPriority : GH_AssemblyPriority
     {
-        private ToolStripMenuItem _sandboxVersion;
-        private ToolStripMenuItem _sandboxDocumentation;
+        private ToolStripMenuItem _checksForUpdates;
+        private ToolStripMenuItem _downloadLastUpdate;
+        private ToolStripMenuItem _documentations;
         private event Helper.DelEvent _gitEvents;
         private string _releaseVersion;
-        private bool _isUpdated;
+        private string _localVersion;
 
         public override GH_LoadingInstruction PriorityLoad()
         {
             Instances.ComponentServer.AddAlias("col", new Guid("03AD926B-5642-402E-88B2-14F752595928"));
             Instances.CanvasCreated += new Instances.CanvasCreatedEventHandler(this.RegisterNewMenuItems);
-            _gitEvents += new Helper.DelEvent(Helper.GetReleaseVersion);
+            _gitEvents += new Helper.DelEvent(Helper.GetLastTagRelease);
             _releaseVersion = GetReleaseVersion();
-            _isUpdated = IsSandboxUpdated(_releaseVersion);
+            _localVersion = Package.GetSandboxVersion(Package.DynamoDir());
             return GH_LoadingInstruction.Proceed;
         }
 
@@ -51,9 +53,6 @@ namespace SandboxGh.Attributes
             toolStripMenuItem.Name = "SandboxMenu";
             toolStripMenuItem.Size = new Size(125, 29);
             toolStripMenuItem.Text = "Sandbox";
-            toolStripMenuItem.BackColor = (_isUpdated)
-                ? Control.DefaultBackColor
-                : Color.FromArgb((int)byte.MaxValue, 231, 47, 135);
             docEditor.MainMenuStrip.ResumeLayout(false);
             docEditor.MainMenuStrip.PerformLayout();
             GH_DocumentEditor.AggregateShortcutMenuItems += new GH_DocumentEditor.AggregateShortcutMenuItemsEventHandler(this.GH_DocumentEditor_AggregateShortcutMenuItems);
@@ -63,8 +62,9 @@ namespace SandboxGh.Attributes
             object sender,
             GH_MenuShortcutEventArgs e)
         {
-            e.AppendItem(this._sandboxVersion);
-            e.AppendItem(this._sandboxDocumentation);
+            e.AppendItem(this._checksForUpdates);
+            e.AppendItem(this._downloadLastUpdate);
+            e.AppendItem(this._documentations);
         }
 
         private List<ToolStripMenuItem> SandboxMenuItems
@@ -73,19 +73,24 @@ namespace SandboxGh.Attributes
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
 
-                this._sandboxVersion = new ToolStripMenuItem();
-                this._sandboxVersion.Size = new Size(265, 30);
-                this._sandboxVersion.Text = (_isUpdated)
-                    ? "Sandbox is updated to the last version!"
-                    : $"New version is available: {_releaseVersion}";
+                this._checksForUpdates = new ToolStripMenuItem();
+                this._checksForUpdates.Size = new Size(265, 30);
+                this._checksForUpdates.Text = "Checks for updates";
+                this._checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
 
-                this._sandboxDocumentation = new ToolStripMenuItem();
-                this._sandboxDocumentation.Size = new Size(265, 30);
-                this._sandboxDocumentation.Text = "Sandbox Documentation";
-                this._sandboxDocumentation.Click += new EventHandler(this.GoToDocumentation);
+                this._downloadLastUpdate = new ToolStripMenuItem();
+                this._downloadLastUpdate.Size = new Size(265, 30);
+                this._downloadLastUpdate.Text = "Download updates";
+                this._downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
 
-                SandboxMenuItems.Add(this._sandboxVersion);
-                SandboxMenuItems.Add(this._sandboxDocumentation);
+                this._documentations = new ToolStripMenuItem();
+                this._documentations.Size = new Size(265, 30);
+                this._documentations.Text = "Sandbox Documentation";
+                this._documentations.Click += new EventHandler(this.GoToDocumentation);
+
+                SandboxMenuItems.Add(this._checksForUpdates);
+                SandboxMenuItems.Add(this._downloadLastUpdate);
+                SandboxMenuItems.Add(this._documentations);
 
                 return SandboxMenuItems;
             }
@@ -94,7 +99,7 @@ namespace SandboxGh.Attributes
         private string GetReleaseVersion()
         {
             var releaseVersion = _gitEvents.Invoke().Result;
-            _gitEvents -= new Helper.DelEvent(Helper.GetReleaseVersion);
+            _gitEvents -= new Helper.DelEvent(Helper.GetLastTagRelease);
 
             if (releaseVersion.Contains("alpha"))
             {
@@ -117,5 +122,21 @@ namespace SandboxGh.Attributes
         }
 
         private void GoToDocumentation(object sender, EventArgs e) => Helper.SandboxDocumentation();
+
+        private void DownloadRelease(object sender, EventArgs e)
+        {
+            _gitEvents += new Helper.DelEvent(Helper.GetLastAsset);
+            _ = _gitEvents.Invoke().Result;
+            _gitEvents -= new Helper.DelEvent(Helper.GetLastAsset);
+        }
+
+        private void ChecksForUpdates(object sender, EventArgs e)
+        {
+            StringBuilder message = new StringBuilder();
+            message.AppendLine($"Your actual version: {_localVersion}");
+            message.AppendLine($"Last release: {_releaseVersion}");
+            message.AppendLine("Alpha version meaning new features in development.");
+            MessageBox.Show(message.ToString());
+        }
     }
 }
