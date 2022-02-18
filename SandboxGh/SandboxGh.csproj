@@ -63,7 +63,8 @@
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
         <DebugSymbols>true</DebugSymbols>
-        <PlatformTarget>x64</PlatformTarget> 
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile></DocumentationFile> 
     </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -83,7 +84,7 @@
 		  <_FilesToCopy Include="$(ProjectDir)ExampleFiles\**\*" />
 	  </ItemGroup>
 	  <Message Text="GhFile to copy: @(_FilesToCopy)" Importance="high" />
-	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library/SandboxGh" />
+	  <Copy SourceFiles="@(_FilesToCopy)" DestinationFolder="$(SolutionDir)library\SandboxGh" />
 	  <Message Text="Files copied" Importance="high" />
   </Target>
 </Project>
