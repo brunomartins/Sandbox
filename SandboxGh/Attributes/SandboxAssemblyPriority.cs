@@ -72,17 +72,17 @@ namespace SandboxGh.Attributes
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
 
-                this._checksForUpdates = new ToolStripMenuItem();
+                this._checksForUpdates = new ToolStripMenuItem(Resources.UpdatesIcon);
                 this._checksForUpdates.Size = new Size(265, 30);
                 this._checksForUpdates.Text = "Checks for updates";
                 this._checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
 
-                this._downloadLastUpdate = new ToolStripMenuItem();
+                this._downloadLastUpdate = new ToolStripMenuItem(Resources.DownloadIcon);
                 this._downloadLastUpdate.Size = new Size(265, 30);
                 this._downloadLastUpdate.Text = "Download updates";
                 this._downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
 
-                this._documentations = new ToolStripMenuItem();
+                this._documentations = new ToolStripMenuItem(Resources.DoumentationIcon);
                 this._documentations.Size = new Size(265, 30);
                 this._documentations.Text = "Sandbox Documentation";
                 this._documentations.Click += new EventHandler(this.GoToDocumentation);
@@ -99,12 +99,6 @@ namespace SandboxGh.Attributes
         {
             var releaseVersion = _gitEvents.Invoke().Result;
             _gitEvents -= new Helper.DelEvent(Helper.GetLastTagRelease);
-
-            if (releaseVersion.Contains("alpha"))
-            {
-                releaseVersion = Regex.Replace(releaseVersion, "[a-zA-Z -]", "");
-            }
-
             return releaseVersion;
         }
 
@@ -128,6 +122,8 @@ namespace SandboxGh.Attributes
             _gitEvents += new Helper.DelEvent(Helper.GetLastAsset);
             _ = _gitEvents.Invoke().Result;
             _gitEvents -= new Helper.DelEvent(Helper.GetLastAsset);
+
+            MessageBox.Show($"You can find the package on your desktop.");
         }
 
         private void ChecksForUpdates(object sender, EventArgs e)

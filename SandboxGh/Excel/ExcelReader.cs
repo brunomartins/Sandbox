@@ -45,7 +45,7 @@ namespace SandboxGh.Excel
 
             for (int i = 0; i < sheets.Count; i++)
             {
-                object sheetValue = (sheets[i] is GH_Number val) ? (object)val.QC_Int() : sheets[i].ToString();
+                object sheetValue = (sheets[i] is GH_Integer val) ? (object)val.QC_Int() : sheets[i].ToString();
                 var cellRange = (cellRanges.Count < sheets.Count) ? cellRanges[0] : cellRanges[i];
                 var result = SpreadSheetReader.Excel(path, sheetValue, cellRange);
 

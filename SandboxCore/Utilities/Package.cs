@@ -35,7 +35,7 @@ namespace SandboxCore.Utilities
         /// <returns>The sandbox version.</returns>
         public static string GetSandboxVersion(string path)
         {
-            if (!File.Exists(path)) return string.Empty;
+            if (!File.Exists(path)) return $"The Sandbox package wasn't found.\n Checks you installed the library correctly.";
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(path);
 
             return versionInfo.ProductVersion;
