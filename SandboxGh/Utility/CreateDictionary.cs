@@ -10,7 +10,7 @@ namespace SandboxGh.Utility
 {
     public class CreateDictionary : SandboxComponent
     {
-        private Dictionary<string, IGH_Goo> _dict;
+        private Dictionary<string, object> _dict;
         public CreateDictionary()
           : base("Create a new dictionary", "Utilities")
         {
@@ -35,7 +35,7 @@ namespace SandboxGh.Utility
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var keys = new List<string>();
-            var values = new List<IGH_Goo>();
+            var values = new List<object>();
 
             if (!DA.GetDataList(0, keys)) return;
             if (!DA.GetDataList(1, values)) return;
@@ -46,7 +46,7 @@ namespace SandboxGh.Utility
                 return;
             }
 
-            _dict = new Dictionary<string, IGH_Goo>();
+            _dict = new Dictionary<string, object>();
             for (int i = 0; i < keys.Count; i++)
             {
                 if (!_dict.ContainsKey(keys[i]))

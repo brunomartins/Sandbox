@@ -35,7 +35,7 @@ namespace SandboxGh.Utility
             DA.GetData(1, ref pattern);
             if (string.IsNullOrEmpty(pattern)) DA.SetData(0, ghDict.Value); ;
 
-            Dictionary<string, IGH_Goo> filteredDict = ghDict.Value.Where(kvp =>
+            Dictionary<string, object> filteredDict = ghDict.Value.Where(kvp =>
                     LikeOperator.LikeString(kvp.Key, pattern, CompareMethod.Binary))
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 

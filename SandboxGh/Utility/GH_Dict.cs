@@ -4,11 +4,11 @@ using Grasshopper.Kernel.Types;
 
 namespace SandboxGh.Utility
 {
-    public sealed class GH_Dict : GH_Goo<ReadOnlyDictionary<string, IGH_Goo>>
+    public sealed class GH_Dict : GH_Goo<ReadOnlyDictionary<string, object>>
     {
         public GH_Dict()
         {
-            Value = new ReadOnlyDictionary<string, IGH_Goo>(new Dictionary<string, IGH_Goo>());
+            Value = new ReadOnlyDictionary<string, object>(new Dictionary<string, object>());
         }
 
         public override string TypeName => "Dictionary";
@@ -17,14 +17,14 @@ namespace SandboxGh.Utility
 
         public override bool IsValid => Value.Count > 0;
 
-        public GH_Dict(IDictionary<string, IGH_Goo> dict)
+        public GH_Dict(IDictionary<string, object> dict)
         {
-            Value = new ReadOnlyDictionary<string, IGH_Goo>(dict);
+            Value = new ReadOnlyDictionary<string, object>(dict);
         }
 
         public GH_Dict(GH_Dict other)
         {
-            Value = new ReadOnlyDictionary<string, IGH_Goo>(other.Value);
+            Value = new ReadOnlyDictionary<string, object>(other.Value);
         }
 
         public override IGH_Goo Duplicate() =>
@@ -38,9 +38,9 @@ namespace SandboxGh.Utility
         {
             if (source == null) { return false; }
 
-            if (source is IDictionary<string, IGH_Goo> d)
+            if (source is IDictionary<string, object> d)
             {
-                Value = new ReadOnlyDictionary<string, IGH_Goo>(d);
+                Value = new ReadOnlyDictionary<string, object>(d);
                 return true;
             }
 
