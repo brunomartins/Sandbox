@@ -51,6 +51,7 @@ namespace SandboxGh.Utility
                 }
                 catch (Exception e)
                 {
+                    //ToDo: Clear the message if a failed run happens
                     AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, e.Message);
                 }
             }
