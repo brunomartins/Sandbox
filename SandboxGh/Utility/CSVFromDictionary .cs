@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Grasshopper.Kernel;
 using SandboxGh.Attributes;
@@ -26,35 +27,13 @@ namespace SandboxGh.Utility
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var ghDict = new GH_Dict();
-            string path = String.Empty;
-            string fileName = String.Empty;
+            string path = string.Empty;
+            string fileName = string.Empty;
+            string csv = string.Empty;
             if (!DA.GetData(0, ref ghDict)|!DA.GetData(1, ref path)|!DA.GetData(2, ref fileName))return;
             string dictionaryPath = $"{path}\\{fileName}.csv";
-            string csv = RecursiveDictionary(ghDict, String.Empty, String.Empty);
+            SandboxCore.Utility.DictionaryHelper.ToCsv(new Dictionary<string, object>(), ref csv);
             File.WriteAllText(dictionaryPath, csv);
-        }
-
-        /// <summary>
-        ///  This function recursively iterates over a GH_Dict object to convert it to a csv formatted string.
-        /// </summary>
-        /// <param name="nestedDict">The GH_Dict object to iterate over.</param>
-        /// <param name="csvEntry">The csv string that is concatenated on to. Provide an empty string or an existing csv string to be extended.</param>
-        /// <param name="baseVal">Value used to maintain parent key information during recursion. Provide emptry string.</param>
-        private string RecursiveDictionary(GH_Dict nestedDict, string csvEntry, string baseVal)
-        {
-            foreach (var kvp in nestedDict.Value)
-            {
-                if (kvp.Value is GH_Dict dataValue)
-                {
-                    string newBase = $"{baseVal}\"{kvp.Key.Replace("\"","\"\"")}\",";
-                    csvEntry = RecursiveDictionary(dataValue, csvEntry, newBase);
-                }
-                else
-                {
-                    csvEntry += $"{baseVal}\"{kvp.Key.Replace("\"", "\"\"")}\",\"{kvp.Value.ToString().Replace("\"", "'")}\"\n";
-                }
-            }
-            return csvEntry;
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.CSVFromDictIcon;

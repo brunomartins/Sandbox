@@ -118,6 +118,7 @@
     <Compile Include="SpreadSheet\DataSheet.cs" />
     <Compile Include="SpreadSheet\SpreadSheetReader.cs" />
     <Compile Include="SpreadSheet\SpreadSheetWriter.cs" />
+    <Compile Include="Utility\DictionaryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
