@@ -28,6 +28,7 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             if (!DA.GetData(0, ref ghDict)) return;
             var jsonDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value.ToString());
+            
             //NOTE ---- THIS WORKS FOR A SINGLE LAYER OF DICTIONARY. IF THERE IS ANY NESTING IT DOES NOT.
             DA.SetData(0, JsonConvert.SerializeObject(jsonDict, Formatting.Indented));
         }
