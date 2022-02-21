@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Grasshopper.Kernel;
+using SandboxCore.Utility;
 using SandboxGh.Attributes;
 
 namespace SandboxGh.Utility
@@ -29,11 +30,24 @@ namespace SandboxGh.Utility
             var ghDict = new GH_Dict();
             string path = string.Empty;
             string fileName = string.Empty;
-            string csv = string.Empty;
             if (!DA.GetData(0, ref ghDict)|!DA.GetData(1, ref path)|!DA.GetData(2, ref fileName))return;
+
             string dictionaryPath = $"{path}\\{fileName}.csv";
-            SandboxCore.Utility.DictionaryHelper.ToCsv(new Dictionary<string, object>(), ref csv);
-            File.WriteAllText(dictionaryPath, csv);
+            string csv = string.Empty;
+            var dictToCSV = new Dictionary<string, object>();
+
+            GH_Dict.ToDictionary(ghDict, ref dictToCSV);
+            DictionaryHelper.ToCsv(dictToCSV, ref csv);
+
+            try
+            {
+                File.WriteAllText(dictionaryPath, csv);
+                Message = "CSV Created";
+            }
+            catch (Exception e)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, e.Message);
+            }
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.CSVFromDictIcon;
