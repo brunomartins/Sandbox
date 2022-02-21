@@ -14,6 +14,7 @@ namespace SandboxCore.Utility
         {
             foreach (var kvp in dict)
             {
+                //ToDo: stringify collections
                 if (kvp.Value is Dictionary<string, object> dataValue)
                 {
                     string newBase = $"{baseVal}\"{kvp.Key.Replace("\"", "\"\"")}\",";

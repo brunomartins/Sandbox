@@ -16,6 +16,7 @@ namespace SandboxGh.Utility
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            //ToDo: Add bool for printing.
             pManager.AddParameter(new DictParam(), "Dict", "D", "Dictionary to convert to csv", GH_ParamAccess.item);
             pManager.AddTextParameter("Path", "P", "The directory where the csv will be created.", GH_ParamAccess.item);
             pManager.AddTextParameter("FileName", "FN", "The file name to create.", GH_ParamAccess.item);
@@ -41,6 +42,7 @@ namespace SandboxGh.Utility
 
             try
             {
+                //ToDo: Check if file exist, print a new version.
                 File.WriteAllText(dictionaryPath, csv);
                 Message = "CSV Created";
             }
