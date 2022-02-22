@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Grasshopper.Kernel.Types;
+﻿using Grasshopper.Kernel.Types;
+using System;
+using System.Collections.Generic;
 
 namespace SandboxGh.Utility
 {
-    public sealed class GH_Dict : GH_Goo<ReadOnlyDictionary<string, object>>
+    public sealed class GH_Dict : GH_Goo<Dictionary<string, object>>, IDisposable
     {
-        public GH_Dict()
+        public GH_Dict() : base()
         {
-            Value = new ReadOnlyDictionary<string, object>(new Dictionary<string, object>());
         }
 
         public override string TypeName => "Dictionary";
@@ -17,14 +16,14 @@ namespace SandboxGh.Utility
 
         public override bool IsValid => Value.Count > 0;
 
-        public GH_Dict(IDictionary<string, object> dict)
+        public GH_Dict(Dictionary<string, object> dict)
         {
-            Value = new ReadOnlyDictionary<string, object>(dict);
+            Value = dict;
         }
 
         public GH_Dict(GH_Dict other)
         {
-            Value = new ReadOnlyDictionary<string, object>(other.Value);
+            Value = other.Value;
         }
 
         public override IGH_Goo Duplicate() =>
@@ -40,7 +39,7 @@ namespace SandboxGh.Utility
 
             if (source is IDictionary<string, object> d)
             {
-                Value = new ReadOnlyDictionary<string, object>(d);
+                Value = new Dictionary<string, object>(d);
                 return true;
             }
 
@@ -66,6 +65,35 @@ namespace SandboxGh.Utility
             return base.CastTo(ref target);
         }
 
+        /// <summary>
+        /// Convert the object to a normal dictionary.
+        /// </summary>
+        /// <param name="ghDict">The GH_Dict object.</param>
+        /// <param name="dictResult">The Dictionary expected.</param>
+        public static void ToDictionary(GH_Dict ghDict, ref Dictionary<string, object> dictResult)
+        {
+            foreach (KeyValuePair<string, object> kvp in ghDict.Value)
+            {
+                if (kvp.Value is GH_Dict nestedDict)
+                {
+                    Dictionary<string, object> temp = new Dictionary<string, object>();
+                    ToDictionary(nestedDict, ref temp);
+                    dictResult.Add(kvp.Key, temp);
+                }
+                else
+                {
+                    // Note: if we want the full serialization of the object we to remove the ToString().
+                    dictResult.Add(kvp.Key, kvp.Value.ToString());
+                }
+            }
+
+        }
+
+        public void Dispose()
+        {
+            Value = null;
+            m_value = null;
+        }
     }
 
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using Newtonsoft.Json;
 using SandboxGh.Attributes;
+using System;
+using System.Collections.Generic;
 
 namespace SandboxGh.Utility
 {
@@ -27,10 +27,11 @@ namespace SandboxGh.Utility
         {
             var ghDict = new GH_Dict();
             if (!DA.GetData(0, ref ghDict)) return;
-            var jsonDict = ghDict.Value.ToDictionary(x => x.Key, x => x.Value.ToString());
-            
-            //NOTE ---- THIS WORKS FOR A SINGLE LAYER OF DICTIONARY. IF THERE IS ANY NESTING IT DOES NOT.
-            DA.SetData(0, JsonConvert.SerializeObject(jsonDict, Formatting.Indented));
+
+            var dictToJson = new Dictionary<string, object>();
+            GH_Dict.ToDictionary(ghDict, ref dictToJson);
+            string json = JsonConvert.SerializeObject(dictToJson, Formatting.Indented);
+            DA.SetData(0, json);
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.JSONFromDictIcon;

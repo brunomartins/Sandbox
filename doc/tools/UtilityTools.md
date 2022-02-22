@@ -23,8 +23,10 @@ This will help to transport more data easily.
   1. is able to search for keys and delete the key-value pair from the dictionary.
 * ValueTypeDict
   1. returns the type of all the values in a dictionary. 
-* SortByKeyDict
-  1. sorts the dictionary keys by ascending or descending order
+* JSONFromDict
+  1. returns a json serialised object from the dictionary.
+* CSVFromDict
+  1. returns a csv string as well as saves a file based on the provided dictionary, with one line per value in the dictionary. 
 
 ### Tags 
 Grasshopper, Dictionary
