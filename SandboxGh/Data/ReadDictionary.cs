@@ -2,7 +2,7 @@
 using Grasshopper.Kernel;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class ReadDictionary : SandboxComponent
     {

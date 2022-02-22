@@ -1,10 +1,10 @@
-﻿using Grasshopper.GUI;
+﻿using System.Windows.Forms;
+using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using SandboxGh.Attributes;
-using System.Windows.Forms;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     internal class CreateDictionaryButton : ButtonAttribute
     {

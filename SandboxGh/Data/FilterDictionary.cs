@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class FilterDictionary : SandboxComponent
     {

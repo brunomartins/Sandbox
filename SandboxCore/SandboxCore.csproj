@@ -125,7 +125,7 @@
     <Compile Include="SpreadSheet\SpreadSheetReader.cs" />
     <Compile Include="SpreadSheet\SpreadSheetWriter.cs" />
     <Compile Include="Utilities\Package.cs" />
-    <Compile Include="Utility\DictionaryHelper.cs" />
+    <Compile Include="Data\DictionaryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
