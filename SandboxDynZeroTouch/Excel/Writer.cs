@@ -48,16 +48,17 @@ namespace Sandbox.Excel
         /// <param name="dict">Dictionary to convert to CSV.</param>
         /// <param name="path">The directory where the CSV will be created.</param>
         /// <param name="fileName">The file name to create.</param>
+        /// <param name="create">If true the csv will be created.</param>
         /// <returns>If the file is created will return the path.</returns>
         /// <search>csv, write</search>
-        public static string CsvFromDictionary(Dictionary<string, object> dict, string path, string fileName)
+        public static string CsvFromDictionary(Dictionary<string, object> dict, string path, string fileName, bool create)
         {
             string dictionaryPath = $"{path}\\{fileName}.csv";
             string csv = string.Empty;
 
             DictionaryHelper.ToCsv(dict, ref csv);
-            //ToDo: Add bool for printing.
-            //ToDo: If the file exist create a new version.
+            if (!create) return string.Empty;
+
             try
             {
                 File.WriteAllText(dictionaryPath, csv);
