@@ -1,15 +1,15 @@
-# What is Sandbox?
 ![GitHub all releases](https://img.shields.io/github/downloads/mottmacdonaldglobal/Sandbox/total?color=green)
 ![GitHub Release](https://img.shields.io/github/release/mottmacdonaldglobal/Sandbox?color=orange)
 ![Target Framework](https://img.shields.io/badge/Target%20Framework-..NETFramework4.8-blue.svg)
 
 ![](./media/Sandbox_Banner.png "Sandbox")
 
-## A library of tools for Grasshopper and Dynamo.
-Having our own library means:
-* We can implement all the functions we need to make everyone's everyday job easier and more integrated with our workflows.
-* You don't need to install multiple libraries creating problems of usabilities across teams.
-* We maintain and improve it.
+## What is Sandbox?
+* Sandbox is a product.
+* Sandbox is a tool box of custom nodes for Grasshopper and Dynamo.
+* Sandbox is an environment where you can develop your nodes.
+
+## 💡 [Our vision](./doc/guides/OurVision.md)
 
 ## 📚 Guides
 * [Installation](./doc/guides/Installation.md)
