@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Grasshopper.Kernel;
+using Grasshopper.Kernel.Special;
+using SandboxGh.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Special;
-using Grasshopper.Kernel.Types;
-using SandboxGh.Attributes;
 
 namespace SandboxGh.Utility
 {
@@ -18,7 +17,7 @@ namespace SandboxGh.Utility
 
         public override void CreateAttributes()
         {
-            m_attributes = new ButtonAttribute(this);
+            m_attributes = new CreateDictionaryButton(this, "ValueList");
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)

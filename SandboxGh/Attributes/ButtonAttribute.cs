@@ -1,58 +1,102 @@
-﻿using System.Drawing;
-using Grasshopper.GUI;
+﻿using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Attributes;
-using SandboxGh.Utility;
+using System.Drawing;
+using System.Windows.Forms;
+using Grasshopper.Kernel.Undo;
+using Grasshopper.Kernel.Undo.Actions;
 
 namespace SandboxGh.Attributes
 {
-    internal class ButtonAttribute : GH_ComponentAttributes
+    internal abstract class ButtonAttribute : GH_ComponentAttributes
     {
-        public ButtonAttribute(IGH_Component component) : base(component)
-        {
-        }
+        internal bool _mouseOver;
+        internal bool _mouseDown;
+        internal RectangleF _buttonArea;
+        internal string _buttonText;
+        internal RectangleF _textArea;
 
-        private Rectangle ButtonBounds { get; set; }
+        public ButtonAttribute(IGH_Component component, string buttonText) : base(component)
+        {
+            _mouseOver = false;
+            _mouseDown = false;
+            _buttonText = buttonText;
+        }
 
         protected override void Layout()
         {
+            Bounds = RectangleF.Empty;
             base.Layout();
-
-            var rec0 = GH_Convert.ToRectangle(Bounds);
-            rec0.Height += 22;
-
-            var rec1 = rec0;
-            rec1.Y = rec1.Bottom - 22;
-            rec1.Height = 22;
-            rec1.Inflate(-2, -2);
-
-            base.Bounds = rec0;
-            ButtonBounds = rec1;
+            RectangleF bounds = Bounds;
+            double left = (double)bounds.Left;
+            bounds = Bounds;
+            double bottom = (double)bounds.Bottom;
+            bounds = Bounds;
+            double width = (double)bounds.Width;
+            _textArea = _buttonArea = new RectangleF((float)left, (float)bottom, (float)width, 20f);
+            Bounds = RectangleF.Union(Bounds, _buttonArea);
         }
 
         protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
         {
-            if (channel == GH_CanvasChannel.Objects)
-            {
-                graphics.DrawRectangle(ColorAttributes.SandboxPen, Rectangle.Round(Bounds));
-            }
             base.Render(canvas, graphics, channel);
-            var button = GH_Capsule.CreateTextCapsule(ButtonBounds, ButtonBounds, GH_Palette.Black, "ValueList", 2, 0);
-            button.Render(graphics, Selected, Owner.Locked, false);
-            button.Dispose();
+            if (channel != GH_CanvasChannel.Objects)
+                return;
+            GH_PaletteStyle impliedStyle = GH_CapsuleRenderEngine.GetImpliedStyle(GH_Palette.Grey, Selected, Owner.Locked, true);
+            GH_Capsule textCapsule = GH_Capsule.CreateTextCapsule(_buttonArea, _textArea, GH_Palette.Black, _buttonText, 1, 9);
+            textCapsule.RenderEngine.RenderBackground(graphics, canvas.Viewport.Zoom, impliedStyle);
+            if (!_mouseDown)
+            {
+                textCapsule.RenderEngine.RenderHighlight(graphics);
+            }
+            textCapsule.RenderEngine.RenderOutlines(graphics, canvas.Viewport.Zoom, impliedStyle);
+
+            if (_mouseOver)
+            {
+                textCapsule.RenderEngine.RenderBackground_Alternative(graphics, Color.FromArgb(50, Color.HotPink), false);
+            }
+            textCapsule.RenderEngine.RenderText(graphics, Color.White);
+            textCapsule.Dispose();
         }
 
-        public override GH_ObjectResponse RespondToMouseDown(GH_Canvas sender, GH_CanvasMouseEvent e)
+        public override GH_ObjectResponse RespondToMouseUp(GH_Canvas sender, GH_CanvasMouseEvent e)
         {
-            if (e.Button != System.Windows.Forms.MouseButtons.Left) return base.RespondToMouseDown(sender, e);
-            if (!(Owner is CreateDictionary component)) return GH_ObjectResponse.Handled;
-            RectangleF rec = ButtonBounds;
-            if (!rec.Contains(e.CanvasLocation)) return base.RespondToMouseDown(sender, e);
-            component.CreateValueList(sender, e);
-            component.ExpireSolution(true);
+            if (!_buttonArea.Contains(e.CanvasLocation))
+            {
+                _mouseOver = false;
+            }
 
-            return GH_ObjectResponse.Handled;
+            if (_mouseDown) return base.RespondToMouseUp(sender, e);
+
+            _mouseDown = false;
+            sender.Invalidate();
+            return GH_ObjectResponse.Release;
+        }
+
+        public override GH_ObjectResponse RespondToMouseMove(GH_Canvas sender, GH_CanvasMouseEvent e)
+        {
+            Point point = GH_Convert.ToPoint(e.CanvasLocation);
+            if (e.Button != MouseButtons.None) return base.RespondToMouseMove(sender, e);
+
+            if (_buttonArea.Contains((PointF)point))
+            {
+                if (_mouseOver) return GH_ObjectResponse.Capture;
+                _mouseOver = true;
+                sender.Invalidate();
+                return GH_ObjectResponse.Capture;
+            }
+
+            if (!_mouseOver) return GH_ObjectResponse.Release;
+            _mouseOver = false;
+            sender.Invalidate();
+            return GH_ObjectResponse.Release;
+        }
+
+        internal void BasicResponseIntegration()
+        {
+            _mouseDown = true;
+            Owner.RecordUndoEvent("Recorded event", (IGH_UndoAction)new GH_GenericObjectAction((IGH_DocumentObject)Owner));
         }
     }
 }

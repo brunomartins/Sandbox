@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using SandboxCore.Utility;
 using SandboxGh.Attributes;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace SandboxGh.Utility
 {
     public class CSVFromDictionary : SandboxComponent
     {
+        private string _filePath;
+        private string _csv;
+
         public CSVFromDictionary()
             : base("Turns a dictionary into a csv file.", "Utilities")
         {
+            m_attributes = new CSVFromDictionaryButton(this, "Create");
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Write", "W", "If True the file is written.", GH_ParamAccess.item);
             pManager.AddParameter(new DictParam(), "Dict", "D", "Dictionary to convert to csv", GH_ParamAccess.item);
             pManager.AddTextParameter("Path", "P", "The directory where the csv will be created.", GH_ParamAccess.item);
             pManager.AddTextParameter("FileName", "FN", "The file name to create.", GH_ParamAccess.item);
@@ -29,30 +32,34 @@ namespace SandboxGh.Utility
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             var ghDict = new GH_Dict();
-            bool runNode = false;
             string path = string.Empty;
             string fileName = string.Empty;
-            if (!DA.GetData(0, ref runNode)|!DA.GetData(1, ref ghDict)|!DA.GetData(2, ref path)|!DA.GetData(3, ref fileName))return;
+            if (!DA.GetData(0, ref ghDict) | !DA.GetData(1, ref path) | !DA.GetData(2, ref fileName)) return;
 
-            string dictionaryPath = $"{path}\\{fileName}.csv";
-            string csv = string.Empty;
+            _filePath = $"{path}\\{fileName}.csv";
+            _csv = string.Empty;
             var dictToCSV = new Dictionary<string, object>();
 
             GH_Dict.ToDictionary(ghDict, ref dictToCSV);
-            DictionaryHelper.ToCsv(dictToCSV, ref csv);
+            DictionaryHelper.ToCsv(dictToCSV, ref _csv);
+        }
 
-            if (runNode)
+
+        /// <summary>
+        /// Creates a csv file at the specified directory.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        internal void WriteCSV(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    //ToDo: Check if file exist, print a new version.
-                    File.WriteAllText(dictionaryPath, csv);
-                    Message = "CSV Created";
-                }
-                catch (Exception e)
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, e.Message);
-                }
+                File.WriteAllText(_filePath, _csv);
+                Message = "CSV Created";
+            }
+            catch (Exception ex)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, ex.Message);
             }
         }
 
