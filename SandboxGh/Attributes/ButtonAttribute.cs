@@ -41,11 +41,15 @@ namespace SandboxGh.Attributes
         protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
         {
             base.Render(canvas, graphics, channel);
-            if (channel != GH_CanvasChannel.Objects)
-                return;
+            if (channel != GH_CanvasChannel.Objects) return;
+
             GH_PaletteStyle impliedStyle = GH_CapsuleRenderEngine.GetImpliedStyle(GH_Palette.Grey, Selected, Owner.Locked, true);
             GH_Capsule textCapsule = GH_Capsule.CreateTextCapsule(_buttonArea, _textArea, GH_Palette.Black, _buttonText, 1, 9);
             textCapsule.RenderEngine.RenderBackground(graphics, canvas.Viewport.Zoom, impliedStyle);
+            
+            graphics.DrawRectangle(ColorAttributes.SandboxPen, Rectangle.Round(Bounds));
+            base.Render(canvas, graphics, channel);
+
             if (!_mouseDown)
             {
                 textCapsule.RenderEngine.RenderHighlight(graphics);
