@@ -51,7 +51,7 @@ namespace SandboxGh.Utility
             {
                 var branch = (IList<GH_Dict>)mergedTree.get_Branch(i);
                 var path = mergedTree.get_Path(i);
-                Dictionary<string, IGH_Goo> tempMergedDict = new Dictionary<string, IGH_Goo>();
+                Dictionary<string, object> tempMergedDict = new Dictionary<string, object>();
 
                 foreach (var kvp in branch.SelectMany(ghGoo => ghGoo.Value))
                 {

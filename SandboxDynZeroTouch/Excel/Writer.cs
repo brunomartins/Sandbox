@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using SandboxCore;
 using SandboxCore.SpreadSheet;
+using SandboxCore.Utility;
+using System.IO;
 
 namespace Sandbox.Excel
 {
@@ -27,7 +30,7 @@ namespace Sandbox.Excel
         }
 
         /// <summary>
-        /// Create a sheet with the data required.
+        /// Creates a sheet with the data required.
         /// </summary>
         /// <param name="sheetName">The name of sheet, where the data will be stored.</param>
         /// <param name="headers">The headers, matching the number of columns.</param>
@@ -37,6 +40,34 @@ namespace Sandbox.Excel
         public static DataSheet DataSheet(string sheetName, string[] headers, object[][] data)
         {
             return new DataSheet(sheetName, headers, data);
+        }
+
+        /// <summary>
+        /// Creates a CSV file from a dictionary.
+        /// </summary>
+        /// <param name="dict">Dictionary to convert to CSV.</param>
+        /// <param name="path">The directory where the CSV will be created.</param>
+        /// <param name="fileName">The file name to create.</param>
+        /// <param name="create">If true the csv will be created.</param>
+        /// <returns>If the file is created will return the path.</returns>
+        /// <search>csv, write</search>
+        public static string CsvFromDictionary(Dictionary<string, object> dict, string path, string fileName, bool create)
+        {
+            string dictionaryPath = $"{path}\\{fileName}.csv";
+            string csv = string.Empty;
+
+            DictionaryHelper.ToCsv(dict, ref csv);
+            if (!create) return string.Empty;
+
+            try
+            {
+                File.WriteAllText(dictionaryPath, csv);
+                return dictionaryPath;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
         }
     }
 }

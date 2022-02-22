@@ -73,6 +73,16 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CSVFromDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("CSVFromDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CSVReaderIcon {
             get {
                 object obj = ResourceManager.GetObject("CSVReaderIcon", resourceCulture);
@@ -183,6 +193,16 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap JSONFromDictIcon {
+            get {
+                object obj = ResourceManager.GetObject("JSONFromDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MergeDictIcon {
             get {
                 object obj = ResourceManager.GetObject("MergeDictIcon", resourceCulture);
@@ -243,9 +263,9 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UpdatesIcon {
+        internal static System.Drawing.Bitmap SortByKeyDictIcon {
             get {
-                object obj = ResourceManager.GetObject("UpdatesIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("SortByKeyDictIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
