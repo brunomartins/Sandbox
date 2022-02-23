@@ -2,11 +2,13 @@
 using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
+using Grasshopper.Plugin;
 using SandboxCore.Utilities;
 using SandboxCore.Utilities.Github;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace SandboxGh.Attributes
         private ToolStripMenuItem _checksForUpdates;
         private ToolStripMenuItem _downloadLastUpdate;
         private ToolStripMenuItem _documentations;
+        private ToolStripMenuItem _exampleFile;
         private event Helper.DelEvent _gitEvents;
         private string _releaseVersion;
         private string _localVersion;
@@ -27,7 +30,7 @@ namespace SandboxGh.Attributes
             Instances.CanvasCreated += new Instances.CanvasCreatedEventHandler(this.RegisterNewMenuItems);
             _gitEvents += new Helper.DelEvent(Helper.GetLastTagRelease);
             _releaseVersion = GetReleaseVersion();
-            _localVersion = Package.GetSandboxVersion(Package.DynamoDir());
+            _localVersion = Package.GetSandboxVersion(Package.SandboxGhAssemblyDir);
             return GH_LoadingInstruction.Proceed;
         }
 
@@ -61,9 +64,10 @@ namespace SandboxGh.Attributes
             object sender,
             GH_MenuShortcutEventArgs e)
         {
-            e.AppendItem(this._checksForUpdates);
-            e.AppendItem(this._downloadLastUpdate);
-            e.AppendItem(this._documentations);
+            e.AppendItem(_checksForUpdates);
+            e.AppendItem(_downloadLastUpdate);
+            e.AppendItem(_documentations);
+            e.AppendItem(_exampleFile);
         }
 
         private List<ToolStripMenuItem> SandboxMenuItems
@@ -72,24 +76,30 @@ namespace SandboxGh.Attributes
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
 
-                this._checksForUpdates = new ToolStripMenuItem(Resources.UpdatesIcon);
-                this._checksForUpdates.Size = new Size(265, 30);
-                this._checksForUpdates.Text = "Checks for updates";
-                this._checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
+                _checksForUpdates = new ToolStripMenuItem(Resources.UpdatesIcon);
+                _checksForUpdates.Size = new Size(265, 30);
+                _checksForUpdates.Text = "Checks for updates";
+                _checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
 
-                this._downloadLastUpdate = new ToolStripMenuItem(Resources.DownloadIcon);
-                this._downloadLastUpdate.Size = new Size(265, 30);
-                this._downloadLastUpdate.Text = "Download updates";
-                this._downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
+                _downloadLastUpdate = new ToolStripMenuItem(Resources.DownloadIcon);
+                _downloadLastUpdate.Size = new Size(265, 30);
+                _downloadLastUpdate.Text = "Download updates";
+                _downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
 
-                this._documentations = new ToolStripMenuItem(Resources.DoumentationIcon);
-                this._documentations.Size = new Size(265, 30);
-                this._documentations.Text = "Sandbox Documentation";
-                this._documentations.Click += new EventHandler(this.GoToDocumentation);
+                _documentations = new ToolStripMenuItem(Resources.DoumentationIcon);
+                _documentations.Size = new Size(265, 30);
+                _documentations.Text = "Sandbox Documentation";
+                _documentations.Click += new EventHandler(this.GoToDocumentation);
 
-                SandboxMenuItems.Add(this._checksForUpdates);
-                SandboxMenuItems.Add(this._downloadLastUpdate);
-                SandboxMenuItems.Add(this._documentations);
+                _exampleFile = new ToolStripMenuItem(Resources.ExampleFileIcon);
+                _exampleFile.Size = new Size(265, 30);
+                _exampleFile.Text = "Example file";
+                _exampleFile.Click += new EventHandler(this.OpenExampleFile);
+
+                SandboxMenuItems.Add(_checksForUpdates);
+                SandboxMenuItems.Add(_downloadLastUpdate);
+                SandboxMenuItems.Add(_documentations);
+                SandboxMenuItems.Add(_exampleFile);
 
                 return SandboxMenuItems;
             }
@@ -113,6 +123,17 @@ namespace SandboxGh.Attributes
                 }
                 return _localVersion == releaseVersion;
             }
+        }
+
+        private void OpenExampleFile(object sender, EventArgs e)
+        {
+            string path = Package.GhExampleFileDir;
+            if (!File.Exists(path))
+            {
+                MessageBox.Show($"Strange! The file should be stored here \n {path}");
+            }
+            var Gh = new GH_RhinoScriptInterface();
+            Gh.OpenDocument(path);
         }
 
         private void GoToDocumentation(object sender, EventArgs e) => Helper.SandboxDocumentation();

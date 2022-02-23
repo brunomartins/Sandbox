@@ -12,22 +12,34 @@ namespace SandboxCore.Utilities
         /// <returns>The directory.</returns>
         public static string DynamoDir()
         {
-            var dynamoDir = @"\Dynamo\Dynamo Core";
-            var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), dynamoDir);
+            // ToDo: we are searching only for Revit, but it could be expanded also for Core.
+            var dynamoCoreDir = @"\Dynamo\Dynamo Core";
+            var dynamoRevitDir = @"\Dynamo\Dynamo Revit";
+            var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), dynamoCoreDir);
             var file = Directory.GetFiles(path, "SandboxCore.dll", SearchOption.AllDirectories);
 
             return file.Length == 0 ? string.Empty : file[0];
         }
 
         /// <summary>
-        /// Gets the SandboxCore.dll directory for Grasshopper.
+        /// Gets the SandboxGh directory.
         /// </summary>
         /// <returns>The directory.</returns>
-        public static string GrasshopperDir()
+        public static string SandboxGhDir()
         {
-            var fileDir = @"\Grasshopper\Libraries\SandboxGh\SandboxCore.dll";
+            var fileDir = @"\Grasshopper\Libraries\SandboxGh\";
             return string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), fileDir);
         }
+
+        /// <summary>
+        /// Gets the SandboxCore.dll directory.
+        /// </summary>
+        public static string SandboxGhAssemblyDir => $"{SandboxGhDir()}SandboxCore.dll";
+
+        /// <summary>
+        /// Gets the ExampleFile.gh directory.
+        /// </summary>
+        public static string GhExampleFileDir => $"{SandboxGhDir()}ExampleFile.gh";
 
         /// <summary>
         /// Gets the installed product version of Sandbox.

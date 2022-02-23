@@ -153,6 +153,16 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ExampleFileIcon {
+            get {
+                object obj = ResourceManager.GetObject("ExampleFileIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ExcelReaderIcon {
             get {
                 object obj = ResourceManager.GetObject("ExcelReaderIcon", resourceCulture);
@@ -269,19 +279,17 @@ namespace SandboxGh {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UpdatesIcon
-        {
-            get
-            {
+        internal static System.Drawing.Bitmap UpdatesIcon {
+            get {
                 object obj = ResourceManager.GetObject("UpdatesIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
