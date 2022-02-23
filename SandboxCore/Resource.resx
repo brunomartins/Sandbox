@@ -118,64 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CreateDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\CreateDictIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DoumentationIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\DoumentationIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CSVFromDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\csvfromdicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DownloadIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\DownloadIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CSVReaderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\CSVReaderIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ExampleFileIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ExampleFileIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DataSheetIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\DataSheetIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DeleteKeyDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\deletekeydicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DictParameterIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\DictParameterIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EditValueDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\EditValueDictIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExcelReaderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ExcelReaderIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExcelWriterIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ExcelWriterIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FilterDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\FilterDictIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GhExcelIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\GhExcelIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="JSONFromDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\jsonfromdicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MergeDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\MergeDictIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OrderLinesByProximity" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\OrderLinesByProximity.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ReadDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ReadDictIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RemoveCollinearPoints" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\RemoveCollinearPoints.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SandboxIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\SandboxIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SheetIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\SheetIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SortByKeyDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\sortbykeydicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ValueTypeDictIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\valuetypedicticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UpdatesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\UpdatesIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

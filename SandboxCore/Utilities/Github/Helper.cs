@@ -10,8 +10,10 @@ namespace SandboxCore.Utilities.Github
     {
         private static readonly GitHubClient _gitHubClient = new GitHubClient(new ProductHeaderValue("SandboxClient"));
         private static string _assetUrl;
-        private static string _releaseTagName;
+        private static string _releaseVersion;
+        private static string _localVersion;
         public delegate Task<string> DelEvent();
+        private static string _task;
 
         /// <summary>
         /// Get the last release from GitHub.
@@ -26,8 +28,8 @@ namespace SandboxCore.Utilities.Github
                     var lastRelease = await _gitHubClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
                     var asset = lastRelease.Assets[0];
                     _assetUrl = asset.BrowserDownloadUrl;
-                    _releaseTagName = lastRelease.TagName;
-                    return _releaseTagName;
+                    _releaseVersion = lastRelease.TagName;
+                    return _releaseVersion;
                 }
                 catch (Exception e)
                 {
@@ -43,7 +45,7 @@ namespace SandboxCore.Utilities.Github
         public static Task<string> GetLastAsset()
         {
             var desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            var fileName = $@"{desktopDir}\Sandbox_{_releaseTagName}.zip";
+            var fileName = $@"{desktopDir}\Sandbox_{_releaseVersion}.zip";
 
             return Task.Run(() =>
             {
@@ -53,7 +55,7 @@ namespace SandboxCore.Utilities.Github
                     {
                         client.DownloadFileAsync(new Uri(_assetUrl), fileName);
                     }
-                    return $"Release {_releaseTagName} downloaded on the desktop!";
+                    return $"Release {_releaseVersion} downloaded on the desktop!";
                 }
                 catch (Exception e)
                 {

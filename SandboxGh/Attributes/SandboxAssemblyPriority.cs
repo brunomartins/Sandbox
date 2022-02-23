@@ -29,7 +29,10 @@ namespace SandboxGh.Attributes
             Instances.ComponentServer.AddAlias("col", new Guid("03AD926B-5642-402E-88B2-14F752595928"));
             Instances.CanvasCreated += new Instances.CanvasCreatedEventHandler(this.RegisterNewMenuItems);
             _gitEvents += new Helper.DelEvent(Helper.GetLastTagRelease);
-            _releaseVersion = GetReleaseVersion();
+            _releaseVersion = _gitEvents.Invoke().Result;
+            _gitEvents -= new Helper.DelEvent(Helper.GetLastTagRelease);
+
+
             _localVersion = Package.GetSandboxVersion(Package.SandboxGhAssemblyDir);
             return GH_LoadingInstruction.Proceed;
         }
@@ -76,22 +79,22 @@ namespace SandboxGh.Attributes
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
 
-                _checksForUpdates = new ToolStripMenuItem(Resources.UpdatesIcon);
+                _checksForUpdates = new ToolStripMenuItem(SandboxCore.Resource.UpdatesIcon);
                 _checksForUpdates.Size = new Size(265, 30);
                 _checksForUpdates.Text = "Checks for updates";
                 _checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
 
-                _downloadLastUpdate = new ToolStripMenuItem(Resources.DownloadIcon);
+                _downloadLastUpdate = new ToolStripMenuItem(SandboxCore.Resource.DownloadIcon);
                 _downloadLastUpdate.Size = new Size(265, 30);
                 _downloadLastUpdate.Text = "Download updates";
                 _downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
 
-                _documentations = new ToolStripMenuItem(Resources.DoumentationIcon);
+                _documentations = new ToolStripMenuItem(SandboxCore.Resource.DoumentationIcon);
                 _documentations.Size = new Size(265, 30);
                 _documentations.Text = "Sandbox Documentation";
                 _documentations.Click += new EventHandler(this.GoToDocumentation);
 
-                _exampleFile = new ToolStripMenuItem(Resources.ExampleFileIcon);
+                _exampleFile = new ToolStripMenuItem(SandboxCore.Resource.ExampleFileIcon);
                 _exampleFile.Size = new Size(265, 30);
                 _exampleFile.Text = "Example file";
                 _exampleFile.Click += new EventHandler(this.OpenExampleFile);
@@ -103,13 +106,6 @@ namespace SandboxGh.Attributes
 
                 return SandboxMenuItems;
             }
-        }
-
-        private string GetReleaseVersion()
-        {
-            var releaseVersion = _gitEvents.Invoke().Result;
-            _gitEvents -= new Helper.DelEvent(Helper.GetLastTagRelease);
-            return releaseVersion;
         }
 
         private bool IsSandboxUpdated
