@@ -20,20 +20,15 @@ namespace SandboxGh.Attributes
         private ToolStripMenuItem _downloadLastUpdate;
         private ToolStripMenuItem _documentations;
         private ToolStripMenuItem _exampleFile;
-        private event Helper.DelEvent _gitEvents;
-        private string _releaseVersion;
-        private string _localVersion;
+        private ReleaseHelper _releaseHelper;
 
         public override GH_LoadingInstruction PriorityLoad()
         {
             Instances.ComponentServer.AddAlias("col", new Guid("03AD926B-5642-402E-88B2-14F752595928"));
             Instances.CanvasCreated += new Instances.CanvasCreatedEventHandler(this.RegisterNewMenuItems);
-            _gitEvents += new Helper.DelEvent(Helper.GetLastTagRelease);
-            _releaseVersion = _gitEvents.Invoke().Result;
-            _gitEvents -= new Helper.DelEvent(Helper.GetLastTagRelease);
 
-
-            _localVersion = Package.GetSandboxVersion(Package.SandboxGhAssemblyDir);
+            _releaseHelper = new ReleaseHelper(Package.SandboxGhAssemblyDir);
+ 
             return GH_LoadingInstruction.Proceed;
         }
 
@@ -82,22 +77,22 @@ namespace SandboxGh.Attributes
                 _checksForUpdates = new ToolStripMenuItem(SandboxCore.Resource.UpdatesIcon);
                 _checksForUpdates.Size = new Size(265, 30);
                 _checksForUpdates.Text = "Checks for updates";
-                _checksForUpdates.Click += new EventHandler(this.ChecksForUpdates);
+                _checksForUpdates.Click += new EventHandler(_releaseHelper.ChecksForUpdates);
 
                 _downloadLastUpdate = new ToolStripMenuItem(SandboxCore.Resource.DownloadIcon);
                 _downloadLastUpdate.Size = new Size(265, 30);
                 _downloadLastUpdate.Text = "Download updates";
-                _downloadLastUpdate.Click += new EventHandler(this.DownloadRelease);
+                _downloadLastUpdate.Click += new EventHandler(_releaseHelper.DownloadRelease);
 
                 _documentations = new ToolStripMenuItem(SandboxCore.Resource.DoumentationIcon);
                 _documentations.Size = new Size(265, 30);
                 _documentations.Text = "Sandbox Documentation";
-                _documentations.Click += new EventHandler(this.GoToDocumentation);
+                _documentations.Click += new EventHandler(_releaseHelper.SandboxDocumentation);
 
                 _exampleFile = new ToolStripMenuItem(SandboxCore.Resource.ExampleFileIcon);
                 _exampleFile.Size = new Size(265, 30);
                 _exampleFile.Text = "Example file";
-                _exampleFile.Click += new EventHandler(this.OpenExampleFile);
+                _exampleFile.Click += new EventHandler(OpenExampleFile);
 
                 SandboxMenuItems.Add(_checksForUpdates);
                 SandboxMenuItems.Add(_downloadLastUpdate);
@@ -107,20 +102,6 @@ namespace SandboxGh.Attributes
                 return SandboxMenuItems;
             }
         }
-
-        private bool IsSandboxUpdated
-        {
-            get
-            {
-                var releaseVersion = _releaseVersion;
-                if (releaseVersion.Contains("alpha"))
-                {
-                    releaseVersion = Regex.Replace(releaseVersion, "[a-zA-Z -]", "");
-                }
-                return _localVersion == releaseVersion;
-            }
-        }
-
         private void OpenExampleFile(object sender, EventArgs e)
         {
             string path = Package.GhExampleFileDir;
@@ -130,28 +111,6 @@ namespace SandboxGh.Attributes
             }
             var Gh = new GH_RhinoScriptInterface();
             Gh.OpenDocument(path);
-        }
-
-        private void GoToDocumentation(object sender, EventArgs e) => Helper.SandboxDocumentation();
-
-        private void DownloadRelease(object sender, EventArgs e)
-        {
-            _gitEvents += new Helper.DelEvent(Helper.GetLastAsset);
-            _ = _gitEvents.Invoke().Result;
-            _gitEvents -= new Helper.DelEvent(Helper.GetLastAsset);
-
-            MessageBox.Show($"You can find the package on your desktop.");
-        }
-
-        private void ChecksForUpdates(object sender, EventArgs e)
-        {
-            string message = (IsSandboxUpdated)
-                ? $"Your are update to the version {_localVersion}"
-                : $"Your actual version: {_localVersion}\n" +
-                  $"Last release: {_releaseVersion}\n" +
-                  "Alpha version meaning new features in development.";
-
-            MessageBox.Show(message);
         }
     }
 }

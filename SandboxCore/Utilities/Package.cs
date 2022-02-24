@@ -13,8 +13,8 @@ namespace SandboxCore.Utilities
         public static string DynamoDir()
         {
             // ToDo: we are searching only for Revit, but it could be expanded also for Core.
+            // var dynamoRevitDir = @"\Dynamo\Dynamo Revit";
             var dynamoCoreDir = @"\Dynamo\Dynamo Core";
-            var dynamoRevitDir = @"\Dynamo\Dynamo Revit";
             var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), dynamoCoreDir);
             var file = Directory.GetFiles(path, "SandboxCore.dll", SearchOption.AllDirectories);
 
@@ -40,6 +40,16 @@ namespace SandboxCore.Utilities
         /// Gets the ExampleFile.gh directory.
         /// </summary>
         public static string GhExampleFileDir => $"{SandboxGhDir()}ExampleFile.gh";
+
+        /// <summary>
+        /// Gets the ExampleFile.dyn directory.
+        /// </summary>
+        public static string DynExampleFileDir()
+        {
+            var path = Path.GetDirectoryName(DynamoDir());
+            var parent = Path.GetDirectoryName(path);
+            return $@"{parent}\extra\ExampleFile.dyn";
+        }
 
         /// <summary>
         /// Gets the installed product version of Sandbox.
