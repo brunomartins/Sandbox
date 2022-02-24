@@ -1,6 +1,10 @@
 # Table of contents
 
-* [What is Sandbox?](README.md)
+* [Home](README.md)
+
+## Our vision
+
+* [What is Sandbox?](doc/guides/OurVision.md)
 
 ## Guides
 
