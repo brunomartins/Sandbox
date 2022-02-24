@@ -32,7 +32,7 @@ namespace SandboxGh.Geometry
         {
             List<Point3d> pts = new List<Point3d>();
             if (!DA.GetDataList<Point3d>(0, pts)) return;
-            if (pts.Count == 0) DA.SetDataList(0, pts);
+            if (pts.Count == 0) return;
             double tol = DocumentTolerance();
             DA.GetData<double>(1, ref tol);
 
