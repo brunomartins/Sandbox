@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
+using SandboxWpf.View;
 
 namespace SandboxCore.Utilities.Github
 {
@@ -88,15 +89,22 @@ namespace SandboxCore.Utilities.Github
         /// <summary>
         /// Return the current status of the local and release version.
         /// </summary>
-        public void ChecksForUpdates(object sender, EventArgs e)
+        private string StatusOfTheVersion()
         {
-            string message = (IsSandboxUpdated)
-                ? $"Your are update to the version {_localVersion}"
-                : $"Your actual version: {_localVersion}\n" +
+            return (IsSandboxUpdated)
+                ? $"Your are update to the version: {_localVersion}"
+                : $"Your local version: {_localVersion}\n" +
                   $"Last release: {_releaseVersion}\n" +
                   "Alpha version meaning new features in development.";
+        }
 
-            MessageBox.Show(message);
+        /// <summary>
+        /// Fires the splash banner with the version information.
+        /// </summary>
+        public void CheckForUpdates(object sender, EventArgs e)
+        {
+            var splashAbout = new SplashAbout(StatusOfTheVersion());
+            splashAbout.Show();
         }
 
         /// <summary>

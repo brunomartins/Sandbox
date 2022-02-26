@@ -162,7 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\SandboxMenu.cs" />
-    <Compile Include="NodeExtension.cs" />
+    <Compile Include="SandboxExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

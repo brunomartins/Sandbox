@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDynExplicitNode", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDynExtensions", "SandboxDynExtensions\SandboxDynExtensions.csproj", "{6A13E7BC-89C1-46FA-8CA1-C0CF3F465FE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxWpf", "SandboxWpf\SandboxWpf.csproj", "{732C620B-3F9B-4824-AE2B-2E5730265817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6A13E7BC-89C1-46FA-8CA1-C0CF3F465FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A13E7BC-89C1-46FA-8CA1-C0CF3F465FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A13E7BC-89C1-46FA-8CA1-C0CF3F465FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

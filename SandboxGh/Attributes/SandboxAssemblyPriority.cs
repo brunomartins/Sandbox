@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SandboxGh.Attributes
@@ -28,7 +27,6 @@ namespace SandboxGh.Attributes
             Instances.CanvasCreated += new Instances.CanvasCreatedEventHandler(this.RegisterNewMenuItems);
 
             _releaseHelper = new ReleaseHelper(Package.SandboxGhAssemblyDir);
- 
             return GH_LoadingInstruction.Proceed;
         }
 
@@ -77,7 +75,7 @@ namespace SandboxGh.Attributes
                 _checksForUpdates = new ToolStripMenuItem(SandboxCore.Resource.UpdatesIcon);
                 _checksForUpdates.Size = new Size(265, 30);
                 _checksForUpdates.Text = "Checks for updates";
-                _checksForUpdates.Click += new EventHandler(_releaseHelper.ChecksForUpdates);
+                _checksForUpdates.Click += new EventHandler(_releaseHelper.CheckForUpdates);
 
                 _downloadLastUpdate = new ToolStripMenuItem(SandboxCore.Resource.DownloadIcon);
                 _downloadLastUpdate.Size = new Size(265, 30);
@@ -102,6 +100,7 @@ namespace SandboxGh.Attributes
                 return SandboxMenuItems;
             }
         }
+
         private void OpenExampleFile(object sender, EventArgs e)
         {
             string path = Package.GhExampleFileDir;

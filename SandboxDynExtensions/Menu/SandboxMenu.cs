@@ -28,10 +28,10 @@ namespace SandboxDynExtensions.Menu
             MenuItem mottMacMenu = new MenuItem { Header = "Sandbox" };
 
             var checksForUpdates = new MenuItem { Header = "Checks for updates" };
-            checksForUpdates.Click += new RoutedEventHandler(_releaseHelper.ChecksForUpdates);
+            checksForUpdates.Click += new RoutedEventHandler(_releaseHelper.CheckForUpdates);
 
             var downloadUpdates = new MenuItem { Header = "Download updates" };
-            downloadUpdates.Click += new RoutedEventHandler(_releaseHelper.ChecksForUpdates);
+            downloadUpdates.Click += new RoutedEventHandler(_releaseHelper.DownloadRelease);
 
             var documentation = new MenuItem { Header = "Sandbox Documentation" };
             documentation.Click += new RoutedEventHandler(_releaseHelper.SandboxDocumentation);

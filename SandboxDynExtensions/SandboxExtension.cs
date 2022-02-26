@@ -8,7 +8,7 @@ using SandboxPackage = SandboxCore.Utilities;
 namespace SandboxDynExtensions
 {
     [IsVisibleInDynamoLibrary(false)]
-    public class NodeExtension : IViewExtension
+    public class SandboxExtension : IViewExtension
     {
         private SandboxMenu _sandboxMenu;
 
