@@ -123,9 +123,39 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DoumentationIcon {
+            get {
+                object obj = ResourceManager.GetObject("DoumentationIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DownloadIcon {
+            get {
+                object obj = ResourceManager.GetObject("DownloadIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EditValueDictIcon {
             get {
                 object obj = ResourceManager.GetObject("EditValueDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExampleFileIcon {
+            get {
+                object obj = ResourceManager.GetObject("ExampleFileIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +276,16 @@ namespace SandboxGh {
         internal static System.Drawing.Bitmap SortByKeyDictIcon {
             get {
                 object obj = ResourceManager.GetObject("SortByKeyDictIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UpdatesIcon {
+            get {
+                object obj = ResourceManager.GetObject("UpdatesIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

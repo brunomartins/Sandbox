@@ -121,11 +121,6 @@
   <ItemGroup>
     <Compile Include="Geometry\LineHelper.cs" />
     <Compile Include="Geometry\PointHelper.cs" />
-    <Compile Include="Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\ColorAttributes.cs" />
     <Compile Include="Utilities\Github\ReleaseHelper.cs" />
     <Compile Include="SpreadSheet\NpoiExtension.cs" />
@@ -140,24 +135,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DoumentationIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DownloadIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ExampleFileIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UpdatesIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SandboxWpf\SandboxWpf.csproj">
