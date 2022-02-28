@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Autodesk.Revit.UI;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using Autodesk.Revit.UI;
 
 namespace SandboxRevit.Tab
 {
+    /// <summary>
+    /// Creates the tab with all the ribbons in Revit.
+    /// </summary>
     class SandboxUi
     {
-        private static readonly string _availabilityName = "SandboxRevit.Tab.CommandAvailability";
         // Retrieve assembly path
         private static readonly string _assemblyPath = Assembly.GetExecutingAssembly().Location;
 
@@ -53,19 +50,16 @@ namespace SandboxRevit.Tab
             pbHelp.ToolTip = "What is Sandbox";
             pbHelp.LongDescription = "Have a look what is Sandbox";
             //pbHelp.Image = new BitmapImage(new Uri("pack://application:,,,/BIMiconToolbar;component/Support/Help/Images/iconHelpSmall.png"));
-            pbHelp.AvailabilityClassName = _availabilityName;
 
             PushButton pbDocumentation = stackedSupport[1] as PushButton;
             pbDocumentation.ToolTip = "Documentation";
             pbDocumentation.LongDescription = "Check our online documentation";
             //pbDocumentation.Image = ;
-            pbDocumentation.AvailabilityClassName = _availabilityName;
 
             PushButton pbVersion = stackedSupport[2] as PushButton;
             pbVersion.ToolTip = "Display current version";
             pbVersion.LongDescription = "Retrieves current version";
             //pbVersion.Image = ;
-            pbVersion.AvailabilityClassName = _availabilityName;
             #endregion
         }
     }

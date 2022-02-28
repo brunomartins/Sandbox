@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System.Windows.Media.Imaging;
+﻿using Autodesk.Revit.UI;
 
 namespace SandboxRevit
 {
@@ -14,12 +6,13 @@ namespace SandboxRevit
     {
         public Result OnStartup(UIControlledApplication application)
         {
-            throw new NotImplementedException();
+            Tab.SandboxUi.Toolbar(application);
+            return Result.Succeeded;
         }
 
         public Result OnShutdown(UIControlledApplication application)
         {
-            throw new NotImplementedException();
+            return Result.Succeeded;
         }
     }
 }
