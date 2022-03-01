@@ -22,6 +22,6 @@ Inside the Sandbox folder: <br/>
 ### For 🧨 in Civil3D
 * Copy the SandboxDyn folder into the local folder:<br/>
 ``C:\Users\{USER}\AppData\Autodesk\C3D {VERSION}\Dynamo\{VERSION}\pakages``
-### For Revit
+### For 🏗️ Revit Add-in
 * Copy the SandboxAddin folder into the local folder:<br/>
 ``C:\Users\{USER}\AppData\Autodesk\Revit\Addins\{VERSION}``

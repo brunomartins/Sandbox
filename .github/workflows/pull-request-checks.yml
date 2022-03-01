@@ -15,7 +15,7 @@ jobs:
       uses: jesusvasquez333/verify-pr-label-action@v1.4.0
       with:
         github-token: '${{ secrets.GITHUB_TOKEN }}'
-        valid-labels: 'bug :bug:, enhancement :sparkles:, grasshopper :cricket:, dynamo :firecracker:, documentation :book:, refactor :hammer:'
+        valid-labels: 'revit :building_construction:, bug :bug:, enhancement :sparkles:, grasshopper :cricket:, dynamo :firecracker:, documentation :book:, refactor :hammer:'
         invalid-labels: 'help wanted :sos:, duplicate :busts_in_silhouette:, question :question:'
 
     - name: Checks name
