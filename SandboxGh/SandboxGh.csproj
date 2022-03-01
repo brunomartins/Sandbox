@@ -61,7 +61,7 @@
         <!--You can set this one-->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <!--Or replace OutputPath with OutDir-->
-        <OutputPath>C:\Users\BIA97506\_MYFOLDER\MM\Repos\Sandbox\library\SandboxGh</OutputPath>
+	    <OutputPath>$(SolutionDir)library/SandboxGh</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>false</Optimize>
         <DebugType>full</DebugType>
