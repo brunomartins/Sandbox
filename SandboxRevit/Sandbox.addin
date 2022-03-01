@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Assembly>SandboxRevit.dll</Assembly>
+		<AddInId>20930a82-b8da-47b9-b0ff-7f95a1776313</AddInId>
+		<FullClassName>SandboxRevit.App</FullClassName>
+		<Name>Sandbox</Name>
+		<VendorId>Mott Macdonald</VendorId>
+		<VendorDescription>https://github.com/mottmacdonaldglobal/Sandbox</VendorDescription>
+	</AddIn>
+</RevitAddIns>
