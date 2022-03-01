@@ -28,19 +28,19 @@ namespace SandboxRevit.Tab
                 "Version",
                 "Version",
                 _assemblyPath,
-                "SandboxRevit.Support.Version.Version");
+                "SandboxRevit.Support.Version");
 
             PushButtonData documentation = new PushButtonData(
                 "Documentation",
                 "Docs",
                 _assemblyPath,
-                "SandboxRevit.Support.Docs.Docs");
+                "SandboxRevit.Support.Docs");
 
             PushButtonData help = new PushButtonData(
                 "About",
                 "About",
                 _assemblyPath,
-                "SandboxRevit.Support.About.About");
+                "SandboxRevit.Support.About");
 
             // Stacked items for stacked buttons
             IList<RibbonItem> stackedSupport = panelSupport.AddStackedItems(help, documentation, version);
