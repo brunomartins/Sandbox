@@ -14,7 +14,7 @@ namespace SandboxGh.Data
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Server", "S", "The server to connect to.", GH_ParamAccess.item);
+            pManager.AddTextParameter("Server", "S", "The server to connect to. The default IP is localhost.", GH_ParamAccess.item, "localhost");
             pManager.AddTextParameter("Port", "P", "The port to connect to. The default port is 5432 for Azure PostgreSQL", GH_ParamAccess.item, "5432");
             pManager.AddTextParameter("Username", "U", "Username to connect with.", GH_ParamAccess.item);
             pManager.AddTextParameter("Password", "PW", "Password to connect with.", GH_ParamAccess.item);
@@ -30,14 +30,14 @@ namespace SandboxGh.Data
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string server = String.Empty;
-            string port = "5423";
+            string port = String.Empty;
             string uid = String.Empty;
             string pw = String.Empty;
             string db = String.Empty;
             if (!DA.GetData(0, ref server) | !DA.GetData(1, ref port) | !DA.GetData(2, ref uid) | !DA.GetData(3, ref pw) | !DA.GetData(4, ref db)) return;
         
         
-            ///SQLConnector.SQLConnect(server, port, uid, pw, db);
+            ///SQLConnector.PostgresConnect(server, port, uid, pw, db);
 
             DA.SetData(0, "Test output");
         }
