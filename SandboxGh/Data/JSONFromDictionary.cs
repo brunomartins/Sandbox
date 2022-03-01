@@ -1,10 +1,10 @@
-﻿using Grasshopper.Kernel;
+﻿using System;
+using System.Collections.Generic;
+using Grasshopper.Kernel;
 using Newtonsoft.Json;
 using SandboxGh.Attributes;
-using System;
-using System.Collections.Generic;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class JSONFromDictionary : SandboxComponent
     {

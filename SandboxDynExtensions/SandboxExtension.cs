@@ -2,22 +2,28 @@
 using Dynamo.Graph.Nodes;
 using Dynamo.Graph.Workspaces;
 using Dynamo.Wpf.Extensions;
+using SandboxDynExtensions.Menu;
+using SandboxPackage = SandboxCore.Utilities;
 
 namespace SandboxDynExtensions
 {
     [IsVisibleInDynamoLibrary(false)]
-    public class NodeExtension : IViewExtension
+    public class SandboxExtension : IViewExtension
     {
+        private SandboxMenu _sandboxMenu;
+
         public void Dispose()
         {
         }
 
         public void Startup(ViewStartupParams viewStartupParams)
         {
+            _sandboxMenu = new SandboxMenu(SandboxPackage.Package.DynamoDir());
         }
 
         public void Loaded(ViewLoadedParams viewLoadedParams)
         {
+            _sandboxMenu.AddMenuToDynamo(viewLoadedParams);
             viewLoadedParams.CurrentWorkspaceChanged += ViewLoadedParamsOnCurrentWorkspaceChanged;
             viewLoadedParams.CurrentWorkspaceModel.NodeAdded += ObjOnNodeAdded;
         }

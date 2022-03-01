@@ -7,7 +7,7 @@ using Grasshopper.Kernel;
 using SandboxCore;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class DictParam : GH_Param<GH_Dict>
     {

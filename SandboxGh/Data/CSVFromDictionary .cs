@@ -1,11 +1,11 @@
-﻿using Grasshopper.Kernel;
-using SandboxCore.Utility;
-using SandboxGh.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Grasshopper.Kernel;
+using SandboxCore.Data;
+using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class CSVFromDictionary : SandboxComponent
     {

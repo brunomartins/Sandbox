@@ -1,11 +1,11 @@
-﻿using Grasshopper.Kernel;
-using Grasshopper.Kernel.Special;
-using SandboxGh.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Grasshopper.Kernel;
+using Grasshopper.Kernel.Special;
+using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class CreateDictionary : SandboxComponent
     {

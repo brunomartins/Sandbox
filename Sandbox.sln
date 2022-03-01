@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxDynExtensions", "San
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxRevit", "SandboxRevit\SandboxRevit.csproj", "{5B2B9699-872B-4BD3-A1D2-293375AD13FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxWpf", "SandboxWpf\SandboxWpf.csproj", "{732C620B-3F9B-4824-AE2B-2E5730265817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5B2B9699-872B-4BD3-A1D2-293375AD13FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B2B9699-872B-4BD3-A1D2-293375AD13FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B2B9699-872B-4BD3-A1D2-293375AD13FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732C620B-3F9B-4824-AE2B-2E5730265817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

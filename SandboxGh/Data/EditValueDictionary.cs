@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class EditValueDictionary : SandboxComponent
     {

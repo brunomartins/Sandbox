@@ -1,8 +1,8 @@
-﻿using Grasshopper.Kernel.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Grasshopper.Kernel.Types;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public sealed class GH_Dict : GH_Goo<Dictionary<string, object>>, IDisposable
     {

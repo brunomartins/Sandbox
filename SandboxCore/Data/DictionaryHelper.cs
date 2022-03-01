@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SandboxCore.Utility
+namespace SandboxCore.Data
 {
     public static class DictionaryHelper
     {
@@ -14,15 +14,22 @@ namespace SandboxCore.Utility
         {
             foreach (var kvp in dict)
             {
-                //ToDo: stringify collections
+                string root = $"{baseVal}\"{kvp.Key.Replace("\"", "\"\"")}\",";
+
                 if (kvp.Value is Dictionary<string, object> dataValue)
                 {
-                    string newBase = $"{baseVal}\"{kvp.Key.Replace("\"", "\"\"")}\",";
-                    ToCsv(dataValue, ref csvEntry, newBase);
+                    ToCsv(dataValue, ref csvEntry, root);
                 }
                 else
                 {
-                    csvEntry += $"{baseVal}\"{kvp.Key.Replace("\"", "\"\"")}\",\"{kvp.Value.ToString().Replace("\"", "'")}\"\n";
+                    string value = kvp.Value.ToString().Replace("\"", "'");
+
+                    if (kvp.Value is ICollection<object> collection)
+                    {
+                        value = string.Join(",", collection);
+                    }
+
+                    csvEntry += $"{root}\"{value}\"\n";
                 }
             }
         }
