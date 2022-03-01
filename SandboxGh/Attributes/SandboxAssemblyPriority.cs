@@ -71,26 +71,31 @@ namespace SandboxGh.Attributes
             get
             {
                 List<ToolStripMenuItem> SandboxMenuItems = new List<ToolStripMenuItem>();
+                var menuSize = new Size(265, 30);
 
-                _checksForUpdates = new ToolStripMenuItem(Resources.UpdatesIcon);
-                _checksForUpdates.Size = new Size(265, 30);
-                _checksForUpdates.Text = "Checks for updates";
-                _checksForUpdates.Click += new EventHandler(_releaseHelper.CheckForUpdates);
+                _checksForUpdates = new ToolStripMenuItem("Checks for updates", Resources.UpdatesIcon,
+                    new EventHandler(_releaseHelper.CheckForUpdates))
+                {
+                    Size = menuSize,
+                };
 
-                _downloadLastUpdate = new ToolStripMenuItem(Resources.DownloadIcon);
-                _downloadLastUpdate.Size = new Size(265, 30);
-                _downloadLastUpdate.Text = "Download updates";
-                _downloadLastUpdate.Click += new EventHandler(_releaseHelper.DownloadRelease);
+                _downloadLastUpdate = new ToolStripMenuItem("Download updates", Resources.UpdatesIcon,
+                    new EventHandler(_releaseHelper.DownloadRelease))
+                {
+                    Size = menuSize,
+                };
 
-                _documentations = new ToolStripMenuItem(Resources.DoumentationIcon);
-                _documentations.Size = new Size(265, 30);
-                _documentations.Text = "Sandbox Documentation";
-                _documentations.Click += new EventHandler(_releaseHelper.SandboxDocumentation);
+                _documentations = new ToolStripMenuItem("Sandbox Documentation", Resources.DoumentationIcon,
+                    new EventHandler(_releaseHelper.SandboxDocumentation))
+                {
+                    Size = menuSize,
+                };
 
-                _exampleFile = new ToolStripMenuItem(Resources.ExampleFileIcon);
-                _exampleFile.Size = new Size(265, 30);
-                _exampleFile.Text = "Example file";
-                _exampleFile.Click += new EventHandler(OpenExampleFile);
+                _exampleFile = new ToolStripMenuItem("Example file", Resources.ExampleFileIcon,
+                    new EventHandler(OpenExampleFile))
+                {
+                    Size = menuSize,
+                };
 
                 SandboxMenuItems.Add(_checksForUpdates);
                 SandboxMenuItems.Add(_downloadLastUpdate);
