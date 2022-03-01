@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
 using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class MergeDictionary : SandboxComponent, IGH_VariableParameterComponent
     {

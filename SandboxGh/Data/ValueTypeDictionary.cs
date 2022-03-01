@@ -1,10 +1,9 @@
-﻿using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
-using SandboxGh.Attributes;
-using System;
+﻿using System;
 using System.Linq;
+using Grasshopper.Kernel;
+using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class ValueTypeDictionary : SandboxComponent
     {

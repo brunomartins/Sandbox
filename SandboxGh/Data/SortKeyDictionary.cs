@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Types;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using SandboxGh.Attributes;
 using GH_IO.Serialization;
+using Grasshopper.Kernel;
+using SandboxGh.Attributes;
 
-namespace SandboxGh.Utility
+namespace SandboxGh.Data
 {
     public class SortByKeyDictionary : SandboxComponent
     {

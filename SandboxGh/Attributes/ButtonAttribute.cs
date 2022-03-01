@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Grasshopper.Kernel.Undo;
 using Grasshopper.Kernel.Undo.Actions;
+using SandboxCore.Utilities;
 
 namespace SandboxGh.Attributes
 {
@@ -58,7 +59,7 @@ namespace SandboxGh.Attributes
 
             if (_mouseOver)
             {
-                textCapsule.RenderEngine.RenderBackground_Alternative(graphics, Color.FromArgb(50, Color.HotPink), false);
+                textCapsule.RenderEngine.RenderBackground_Alternative(graphics, Color.FromArgb(50, ColorAttributes.SandboxAqua), false);
             }
             textCapsule.RenderEngine.RenderText(graphics, Color.White);
             textCapsule.Dispose();
