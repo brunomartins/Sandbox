@@ -13,10 +13,25 @@ namespace SandboxCore.Utilities
         public static string DynamoDir()
         {
             // ToDo: we are searching only for Revit, but it could be expanded also for Core.
-            // var dynamoRevitDir = @"\Dynamo\Dynamo Revit";
-            var dynamoCoreDir = @"\Dynamo\Dynamo Core";
-            var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), dynamoCoreDir);
-            var file = Directory.GetFiles(path, "SandboxCore.dll", SearchOption.AllDirectories);
+            var dynamoRevitDir = @"\Dynamo\Dynamo Revit";
+            //var dynamoCoreDir = @"\Dynamo\Dynamo Core";
+            return GetDllDirectory(dynamoRevitDir, "SandboxCore.dll");
+        }
+
+        /// <summary>
+        /// Gets the SandboxRevit.dll directory for Revit.
+        /// </summary>
+        /// <returns>The directory.</returns>
+        public static string RevitDir()
+        {
+            var revitDir = @"\Autodesk\Revit\Addins";
+            return GetDllDirectory(revitDir, "SandboxRevit.dll");
+        }
+
+        private static string GetDllDirectory(string specificPath, string dllName)
+        {
+            var path = string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), specificPath);
+            var file = Directory.GetFiles(path, dllName, SearchOption.AllDirectories);
 
             return file.Length == 0 ? string.Empty : file[0];
         }
@@ -57,7 +72,7 @@ namespace SandboxCore.Utilities
         /// <returns>The sandbox version.</returns>
         public static string GetSandboxVersion(string path)
         {
-            if (!File.Exists(path)) return $"The Sandbox package wasn't found.\n Checks you installed the library correctly.";
+            if (!File.Exists(path)) return $"The Sandbox package wasn't found.\n Check you installed the library correctly.";
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(path);
 
             return versionInfo.ProductVersion;

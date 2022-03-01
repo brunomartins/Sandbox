@@ -1,6 +1,8 @@
-﻿using Autodesk.Revit.UI;
+﻿using System;
+using Autodesk.Revit.UI;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Windows.Media.Imaging;
 
 namespace SandboxRevit.Tab
 {
@@ -23,12 +25,11 @@ namespace SandboxRevit.Tab
             RibbonPanel panelSupport = app.CreateRibbonPanel(tabName, "Support");
 
             #region Support panel
-
-            PushButtonData version = new PushButtonData(
-                "Version",
-                "Version",
+            PushButtonData updates = new PushButtonData(
+                "Updates",
+                "Updates",
                 _assemblyPath,
-                "SandboxRevit.Support.Version");
+                "SandboxRevit.Support.Updates");
 
             PushButtonData documentation = new PushButtonData(
                 "Documentation",
@@ -36,30 +37,20 @@ namespace SandboxRevit.Tab
                 _assemblyPath,
                 "SandboxRevit.Support.Docs");
 
-            PushButtonData help = new PushButtonData(
-                "About",
-                "About",
-                _assemblyPath,
-                "SandboxRevit.Support.About");
 
             // Stacked items for stacked buttons
-            IList<RibbonItem> stackedSupport = panelSupport.AddStackedItems(help, documentation, version);
+            IList<RibbonItem> stackedSupport = panelSupport.AddStackedItems(documentation, updates);
 
             // Defining buttons
-            PushButton pbHelp = stackedSupport[0] as PushButton;
-            pbHelp.ToolTip = "What is Sandbox";
-            pbHelp.LongDescription = "Have a look what is Sandbox";
-            //pbHelp.Image = new BitmapImage(new Uri("pack://application:,,,/BIMiconToolbar;component/Support/Help/Images/iconHelpSmall.png"));
-
-            PushButton pbDocumentation = stackedSupport[1] as PushButton;
+            PushButton pbDocumentation = stackedSupport[0] as PushButton;
             pbDocumentation.ToolTip = "Documentation";
             pbDocumentation.LongDescription = "Check our online documentation";
-            //pbDocumentation.Image = ;
+            pbDocumentation.Image = new BitmapImage(new Uri("pack://application:,,,/SandboxRevit;component/Support/Images/DoumentationIcon.png"));
 
-            PushButton pbVersion = stackedSupport[2] as PushButton;
+            PushButton pbVersion = stackedSupport[1] as PushButton;
             pbVersion.ToolTip = "Display current version";
             pbVersion.LongDescription = "Retrieves current version";
-            //pbVersion.Image = ;
+            pbVersion.Image = new BitmapImage(new Uri("pack://application:,,,/SandboxRevit;component/Support/Images/UpdatesIcon.png"));
             #endregion
         }
     }

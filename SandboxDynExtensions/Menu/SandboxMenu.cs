@@ -34,7 +34,7 @@ namespace SandboxDynExtensions.Menu
             downloadUpdates.Click += new RoutedEventHandler(_releaseHelper.DownloadRelease);
 
             var documentation = new MenuItem { Header = "Sandbox Documentation" };
-            documentation.Click += new RoutedEventHandler(_releaseHelper.SandboxDocumentation);
+            documentation.Click += new RoutedEventHandler(ReleaseHelper.SandboxDocumentation);
 
             var exampleFile = new MenuItem { Header = "Example file" };
             exampleFile.Click += new RoutedEventHandler(OpenExampleFile);

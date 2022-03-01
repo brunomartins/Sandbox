@@ -14,34 +14,34 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <Choose>
-	  <When Condition="'$(AssemblyInformationalVersion)' == '' ">
-		  <PropertyGroup>
-			  <Version>0.0.0.0</Version>
-		  </PropertyGroup>
-	  </When>
-	  <When Condition="'$(AssemblyInformationalVersion)' != '' ">
-		  <PropertyGroup>
-			  <Version>$(AssemblyVersionNumber)</Version>
-		  </PropertyGroup>
-	  </When>
+    <When Condition="'$(AssemblyInformationalVersion)' == '' ">
+      <PropertyGroup>
+        <Version>0.0.0.0</Version>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(AssemblyInformationalVersion)' != '' ">
+      <PropertyGroup>
+        <Version>$(AssemblyVersionNumber)</Version>
+      </PropertyGroup>
+    </When>
   </Choose>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	  <DebugSymbols>true</DebugSymbols>
-	  <DebugType>full</DebugType>
-	  <Optimize>false</Optimize>
-	  <OutputPath>bin\Debug\</OutputPath>
-	  <DefineConstants>DEBUG;TRACE</DefineConstants>
-	  <ErrorReport>prompt</ErrorReport>
-	  <WarningLevel>4</WarningLevel>
-	  <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	  <DebugType>pdbonly</DebugType>
-	  <Optimize>true</Optimize>
-	  <OutputPath>bin\Release\</OutputPath>
-	  <DefineConstants>TRACE</DefineConstants>
-	  <ErrorReport>prompt</ErrorReport>
-	  <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -78,37 +78,46 @@
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Docs.cs" />
+    <Compile Include="Support\Updates.cs" />
     <Compile Include="Tab\SandboxUi.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Support\Images\DoumentationIcon.png" />
+    <Resource Include="Support\Images\UpdatesIcon.png" />
     <None Include="packages.config" />
     <Content Include="Sandbox.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SandboxCore\SandboxCore.csproj">
+      <Project>{9444f20f-8353-494f-8067-ac32ec0f967f}</Project>
+      <Name>SandboxCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\Packages\MSBuild.AssemblyVersion.1.3.0\build\MSBuild.AssemblyVersion.targets" Condition="Exists('..\Packages\MSBuild.AssemblyVersion.1.3.0\build\MSBuild.AssemblyVersion.targets')" />
   <Target Name="DisplayMessages">
-	  <Message Text="SANDBOXDYN REVIT ADDING ASSEMBLY VERSION IS: $(AssemblyVersionNumber)" />
+    <Message Text="SANDBOXDYN REVIT ADDING ASSEMBLY VERSION IS: $(AssemblyVersionNumber)" />
   </Target>
   <Target Name="AfterBuild">
-	  <PropertyGroup>
-		  <PackageName>SandboxAddin</PackageName>
-		  <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
-		  <RevitDir>$(AppData)\Autodesk\Revit\Addins\2021</RevitDir>
-	  </PropertyGroup>
-	  <ItemGroup>
-		  <Dlls Include="$(OutDir)*.dll" />
-		  <Pdbs Include="$(OutDir)*.pdb" />
-		  <Addin Include="$(OutDir)*.addin" />
-		  <SourcePackage Include="$(PackageFolder)\*" />
-	  </ItemGroup>
-	  <Copy SourceFiles="@(Dlls)" DestinationFolder="$(PackageFolder)" />
-	  <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(PackageFolder)" />
-	  <Copy SourceFiles="@(Addin)" DestinationFolder="$(PackageFolder)" />
-	  <!-- This copies the distributed package on dist folder to the Dynamo Packages folder. -->
-	  <Message Text="Copied build files @(SourcePackage) to $(RevitDir)" Importance="High" />
+    <PropertyGroup>
+      <PackageName>SandboxAddin</PackageName>
+      <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
+      <RevitDir>$(AppData)\Autodesk\Revit\Addins\2021</RevitDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <Dlls Include="$(OutDir)*.dll" />
+      <Pdbs Include="$(OutDir)*.pdb" />
+      <Addin Include="$(OutDir)*.addin" />
+      <SourcePackage Include="$(PackageFolder)\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Dlls)" DestinationFolder="$(PackageFolder)" />
+    <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(PackageFolder)" />
+    <Copy SourceFiles="@(Addin)" DestinationFolder="$(PackageFolder)" />
+    <!-- This copies the distributed package on dist folder to the Dynamo Packages folder. -->
+    <Message Text="Copied build files @(SourcePackage) to $(RevitDir)" Importance="High" />
     <Copy SourceFiles="@(SourcePackage)" DestinationFolder="$(RevitDir)\%(RecursiveDir)" Condition="Exists($(RevitDir))" />
   </Target>
 </Project>

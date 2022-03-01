@@ -74,28 +74,16 @@ namespace SandboxGh.Attributes
                 var menuSize = new Size(265, 30);
 
                 _checksForUpdates = new ToolStripMenuItem("Checks for updates", Resources.UpdatesIcon,
-                    new EventHandler(_releaseHelper.CheckForUpdates))
-                {
-                    Size = menuSize,
-                };
+                    new EventHandler(_releaseHelper.CheckForUpdates)) {Size = menuSize,};
 
-                _downloadLastUpdate = new ToolStripMenuItem("Download updates", Resources.UpdatesIcon,
-                    new EventHandler(_releaseHelper.DownloadRelease))
-                {
-                    Size = menuSize,
-                };
+                _downloadLastUpdate = new ToolStripMenuItem("Download updates", Resources.DownloadIcon,
+                    new EventHandler(_releaseHelper.DownloadRelease)) {Size = menuSize,};
 
                 _documentations = new ToolStripMenuItem("Sandbox Documentation", Resources.DoumentationIcon,
-                    new EventHandler(_releaseHelper.SandboxDocumentation))
-                {
-                    Size = menuSize,
-                };
+                    new EventHandler(ReleaseHelper.SandboxDocumentation)) {Size = menuSize,};
 
                 _exampleFile = new ToolStripMenuItem("Example file", Resources.ExampleFileIcon,
-                    new EventHandler(OpenExampleFile))
-                {
-                    Size = menuSize,
-                };
+                    new EventHandler(OpenExampleFile)) {Size = menuSize,};
 
                 SandboxMenuItems.Add(_checksForUpdates);
                 SandboxMenuItems.Add(_downloadLastUpdate);

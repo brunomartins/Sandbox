@@ -121,22 +121,27 @@
   <Target Name="AfterBuild">
 	  <PropertyGroup>
 		  <PackageName>SandboxDyn</PackageName>
-		  <PackageFolder>$(SolutionDir)library\$(PackageName)\</PackageFolder>
-		  <BinFolder>$(PackageFolder)bin\</BinFolder>
+		  <PackageFolderDyn>$(SolutionDir)library\$(PackageName)\</PackageFolderDyn>
+		  <PackageFolderRevit>$(SolutionDir)library\SandboxAddin\</PackageFolderRevit>
+		  <BinFolder>$(PackageFolderDyn)bin\</BinFolder>
 		  <DynamoDir>$(AppData)\Dynamo\Dynamo Core\2.12</DynamoDir>
+		  <RevitDir>$(AppData)\Autodesk\Revit\Addins\2021</RevitDir>
 	  </PropertyGroup>
 	  <ItemGroup>
 		  <Exes Include="$(OutDir)*.exe" />
 		  <Pdbs Include="$(OutDir)*.pdb" />
 		  <Configs Include="$(OutDir)*.config" />
-		  <SourcePackage Include="$(PackageFolder)**\*" />
+		  <SourcePackageDyn Include="$(PackageFolderDyn)**\*" />
+		  <SourcePackageRevit Include="$(PackageFolderRevit)\*" />
 	  </ItemGroup>
 	  <Copy SourceFiles="@(Exes)" DestinationFolder="$(BinFolder)" />
 	  <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(BinFolder)" />
 	  <Copy SourceFiles="@(Configs)" DestinationFolder="$(BinFolder)" />
-	  <MakeDir Directories="$(ExtraFolder)" Condition="!Exists($(ExtraFolder))" />
-	  <MakeDir Directories="$(DyfFolder)" Condition="!Exists($(DyfFolder))" />
+	  <Copy SourceFiles="@(Exes)" DestinationFolder="$(PackageFolderRevit)" />
+	  <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(PackageFolderRevit)" />
+	  <Copy SourceFiles="@(Configs)" DestinationFolder="$(PackageFolderRevit)" />
 	  <!-- This copies the distributed package on dist folder to the Dynamo Packages folder. -->
-	  <Copy SourceFiles="@(SourcePackage)" DestinationFolder="$(DynamoDir)\packages\$(PackageName)\%(RecursiveDir)" Condition="Exists($(DynamoDir))" />
+	  <Copy SourceFiles="@(SourcePackageDyn)" DestinationFolder="$(DynamoDir)\packages\$(PackageName)\%(RecursiveDir)" Condition="Exists($(DynamoDir))" />
+	  <Copy SourceFiles="@(SourcePackageRevit)" DestinationFolder="$(RevitDir)\%(RecursiveDir)" Condition="Exists($(RevitDir))" />
   </Target>
 </Project>
