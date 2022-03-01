@@ -28,20 +28,17 @@ namespace SandboxCore.Utilities.Github
         /// <returns>The last release.</returns>
         public void GetLastTagRelease()
         {
-            Task.Run(async () =>
+            var release = Task.Run(async () => await _gitHubClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox"));
+            try
             {
-                try
-                {
-                    var lastRelease = await _gitHubClient.Repository.Release.GetLatest("mottmacdonaldglobal", "Sandbox");
-                    var asset = lastRelease.Assets[0];
-                    _assetUrl = asset.BrowserDownloadUrl;
-                    _releaseVersion = lastRelease.TagName;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            });
+                _releaseVersion = release.Result.TagName;
+                var asset = release.Result.Assets[0];
+                _assetUrl = asset.BrowserDownloadUrl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -110,6 +107,6 @@ namespace SandboxCore.Utilities.Github
         /// <summary>
         /// Opens the documentation webpage of Sandbox.
         /// </summary>
-        public void SandboxDocumentation(object sender, EventArgs e) => Process.Start(@"https://mirco-bianchini.gitbook.io/sandbox/");
+        public static void SandboxDocumentation(object sender, EventArgs e) => Process.Start(@"https://mirco-bianchini.gitbook.io/sandbox/");
     }
 }
