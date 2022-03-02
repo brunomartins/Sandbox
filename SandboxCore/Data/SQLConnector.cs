@@ -23,10 +23,12 @@ namespace SandboxCore.Data
         {
             var connectionString = $"Host={server};Port={port};Username={username};Password={password};Database={database}";
 
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-            connection.Open();
-            var result = Tuple.Create(connection.State.ToString(), connectionString);
-            return result;
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                var result = Tuple.Create(connection.State.ToString(), connectionString);
+                return result;
+            }
         }
 
     }
