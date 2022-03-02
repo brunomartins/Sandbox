@@ -5,15 +5,14 @@
 ![](./media/Sandbox_Banner.png "Sandbox")
 
 ## What is Sandbox?
-* Sandbox is a product.
-* Sandbox is a tool box of custom nodes for Grasshopper and Dynamo.
-* Sandbox is an environment where you can develop your nodes.
+Sandbox is a centrilized tool box of custom nodes for Grasshopper, Dynamo and Revit add-in.
 
 ## 💡 [Our vision](./doc/guides/OurVision.md)
 
 ## 📚 Guides
 * [Installation](./doc/guides/Installation.md)
 * [Contribute](./doc/guides/Contributing.md)
+* [Project structure](./doc/guides/ProjectStructure.md)
 
 ## 🧰 Tools 
 * [Excel tools](./doc/tools/ExcelTools.md)
@@ -21,4 +20,4 @@
 * [Geometry](./doc/tools/GeometryTools.md)
 
 ### Tags 
-Grasshopper, Dynamo, Library, Tools
+Grasshopper, Dynamo, Revit, Library, Tools
