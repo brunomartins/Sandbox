@@ -42,7 +42,7 @@ namespace SandboxGh.Data
             DA.SetData(0, "Test output");
         }
 
-        protected override System.Drawing.Bitmap Icon => Resources.ValueTypeDictIcon;
+        protected override System.Drawing.Bitmap Icon => Resources.PostgreSQLConnectorIcon;
 
         public override Guid ComponentGuid => new Guid("2DD78996-31C9-44A8-A884-BB4AAC9741B7");
     }
