@@ -4,6 +4,9 @@
 		<name>SandboxDynZeroTouch</name>
 	</assembly>
 	<namespaces>
+		<namespace name="Sandbox.Data">
+			<category>Sandbox.Data</category>
+		</namespace>
 		<namespace name="Sandbox.Excel">
 			<category>Sandbox.Excel</category>
 		</namespace>

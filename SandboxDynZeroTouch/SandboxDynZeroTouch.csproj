@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PostgreSQL.cs" />
     <Compile Include="Excel\Reader.cs" />
     <Compile Include="Excel\Writer.cs" />
     <Compile Include="Geometry\Lines.cs" />
