@@ -1,26 +1,33 @@
-## Why we developed Sandbox?
-Many teams across all the organization have developed custom tools for Grasshopper and Dynamo in the past years, none of them are collected / shared and re-used across the business, most of the time these tools are used internally / silently in the teams.<br/>
+## Why develop Sandbox?
+Right across Mott MacDonald, many teams and individuals are creating and developing custom tools and workflows for Grasshopper and Dynamo!
+This is amazing - however - we often notice the tools are not being collected, shared and re-used across the business!
+Many times these tools are used once only, or remain silent on the creators hard drive.
+
+We believe that Sandbox is a springboard to create an internal community of developers and users, who can leverage a mindset of automation and computational thinking, plus accelerate their own learning and growth with computational design. <br/>
+
 **Sandbox wants to increase re-usability.** <br/>
-If we only promote sharing but not unification – we don’t have the opportunity to meaningfully reduce overheads and limit spending and duplication.
+So whilst we want to promote sharing, we also believe unification is important – otherwise we won’t have the opportunity to meaningfully reduce overheads, control spending and duplication. Sandbox enables and increases re-useability and continuous improvement of custom tools and workflows.
 
-## Why Sandbox is a product?
-**Sandbox is a tech development, and as such need to be maintained and evaluated.**<br/>
-1. The first through implementations, new features and bug fixings.
-2. The second via analytic, to **evaluate efficient but also how much the tools effect the works.**
-We always look to how much time we save, but we are only seeing one part of the puzzle, be more efficient is one way to be more effective but it is not the only way.
-Setting the goal to be more effecting on the overall jobs, is where we can really prioritize what to do, when and how with our tools and automatons.
+## Why is Sandbox a product?
+**Sandbox is a tech development, and as such it needs to be maintained and continually evaluated.**<br/>
+In the first instance, Sandbox will be grown via implementations, usage, feature requests, bug fixing, and maintenance. 
+Following this, some powerful benefits of the platform can be realised:  Analytical data can be extracted and used to evaluate the effectiveness, usablity, and potential to scale various parts of the platform.
 
-## What are the benefits Sandbox can bring?
+So of course everyone wants to be more efficient and save time, but time is only one piece of the puzzle! Sandbox also brings other values. 
+It gives us a great opportunity to prioritise developments and choose the best direction for building our own tools and automations. 
+
+## What benefits can Sandbox bring?
 ![image](https://user-images.githubusercontent.com/57708659/155073012-2847bcbc-cbf0-4570-99e9-baebd043b04d.png)
 
-## How we can achieve this?
-- Building a community of developers around the library
-- Improving knowledge sharing of the library and workflows
-- Sharing and teaching different ways of thinking and looking to tools
-- Keeping improving discoverability and usability of the library
+## Think about: 
+- Building a community of developers, gathered around a centralised and managed library
+- Continuously improving the discoverability and usability of the library
+- Improving knowledge sharing, both of the library and also the workflows
+- Sharing and teaching different ways of thinking!  Computational mindsets and ways of thinking around tools
 
 ## Sandbox can't be built overnight
-* **Changes doesn't happen only via the adoptions of tools**, but having people pushing the correct utilization and inspiring other teams to embrace the digitalisation process.
-* **Sandbox grows not only by people developing the nodes, but by people bringing ideas** and solutions that can be developed to help them day by day works.
-The two roles: the workflow coder and the user are two essential parts. While the coder takes the responsibility of encoding, the user is the one who compose the workflows in something meaningful.
-* **Sandbox is the ramp** to create an internal community to leverage the good mindset about automation / computational and acceleration their adoption and learning.
+* **Changes don't happen simply via adoptions of tools within Sandbox**, but by having people push the correct utilisation, and inspiring other teams to embrace the digitalisation process.
+* **You don't need to know how to code to be involved!** Sandbox grows not only from developing content, but by people bringing ideas and solutions that can be developed to help with their daily work.  So whilst you need a coder responsible for the implementation, you also really need users to have the ideas, and turn the workflows into 
+something meaningful.
+
+* **Sandbox is a ramp:** to create an internal community and leverage the right mindset about automation & computational design, accelerate adoption, sharing and learning.
