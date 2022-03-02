@@ -233,9 +233,29 @@ namespace SandboxGh {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PostgreSQLCommandIcon {
+            get {
+                object obj = ResourceManager.GetObject("PostgreSQLCommandIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PostgreSQLConnectorIcon {
             get {
                 object obj = ResourceManager.GetObject("PostgreSQLConnectorIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PostgreSQLQueryIcon {
+            get {
+                object obj = ResourceManager.GetObject("PostgreSQLQueryIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

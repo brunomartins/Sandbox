@@ -1,16 +1,18 @@
 ﻿using Npgsql;
+using System;
 
 namespace SandboxCore.Data
 {
     public static class SQLConnector
     {
-        public static string PostgresConnect(string server, string port, string uid, string pw, string db)
+        public static Tuple<string, string> PostgresConnect(string server, string port, string uid, string pw, string db)
         {
             var cs = $"Host={server};Port={port};Username={uid};Password={pw};Database={db}";
-            
+     
             var con = new NpgsqlConnection(cs);
             con.Open();
-            return con.State.ToString();
+            var result = Tuple.Create(con.State.ToString(), cs);
+            return result;
         }
     }
 }

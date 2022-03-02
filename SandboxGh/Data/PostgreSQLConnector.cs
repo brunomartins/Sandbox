@@ -24,7 +24,9 @@ namespace SandboxGh.Data
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Connection Success", "CS", "Notifies a successful connection.", GH_ParamAccess.item);
+            pManager.AddTextParameter("Connection Status", "S", "Notifies of the connection state. An open connection means the database is ready to query or receive commands!", GH_ParamAccess.item);
+            pManager.AddTextParameter("Query String", "QS", "Provides a string to use in query operations.", GH_ParamAccess.item);
+
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -37,10 +39,12 @@ namespace SandboxGh.Data
             if (!DA.GetData(0, ref server) | !DA.GetData(1, ref port) | !DA.GetData(2, ref uid) | !DA.GetData(3, ref pw) | !DA.GetData(4, ref db)) return;
         
         
-            string state = SQLConnector.PostgresConnect(server, port, uid, pw, db);
-
+            var serverResults = SQLConnector.PostgresConnect(server, port, uid, pw, db);
+            string state = serverResults.Item1;
+            string cs = serverResults.Item2;
 
             DA.SetData(0, state);
+            DA.SetData(1, cs);
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.PostgreSQLConnectorIcon;
