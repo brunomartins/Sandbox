@@ -37,9 +37,10 @@ namespace SandboxGh.Data
             if (!DA.GetData(0, ref server) | !DA.GetData(1, ref port) | !DA.GetData(2, ref uid) | !DA.GetData(3, ref pw) | !DA.GetData(4, ref db)) return;
         
         
-            ///SQLConnector.PostgresConnect(server, port, uid, pw, db);
+            string state = SQLConnector.PostgresConnect(server, port, uid, pw, db);
 
-            DA.SetData(0, "Test output");
+
+            DA.SetData(0, state);
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.PostgreSQLConnectorIcon;
