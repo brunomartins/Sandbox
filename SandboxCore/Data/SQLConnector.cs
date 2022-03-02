@@ -1,7 +1,6 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace SandboxCore.Data
 {
@@ -23,14 +22,22 @@ namespace SandboxCore.Data
         {
             var connectionString = $"Host={server};Port={port};Username={username};Password={password};Database={database}";
 
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            using (var connection = new NpgsqlConnection(connectionString))
             {
-                connection.Open();
-                var result = Tuple.Create(connection.State.ToString(), connectionString);
-                return result;
+                var connectionResult = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await connection.OpenAsync();
+                        return connection.State.ToString();
+                    }
+                    catch (Exception e)
+                    {
+                        return e.Message;
+                    }
+                });
+                return Tuple.Create(connectionResult.Result, connectionString);
             }
         }
-
     }
- 
-}
+ }
