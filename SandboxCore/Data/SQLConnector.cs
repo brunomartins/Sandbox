@@ -16,27 +16,7 @@ namespace SandboxCore.Data
             var result = Tuple.Create(con.State.ToString(), cs);
             return result;
         }
-        /*
-         * 
-         * 
-         * QUERY METHOD - WIP
-        public static ICollection PostgresQuery(string cs, string query)
-        {
-            var con = new NpgsqlConnection(cs);
-            con.Open();
 
-            NpgsqlCommand cmd = new NpgsqlCommand(query, con);
-            NpgsqlDataReader rdr = cmd.ExecuteReader();
-
-            string[] output = new string[] { };
-            while (rdr.Read())
-            {
-                output.Add(rdr.GetValue.ToString())
-
-            }
-
-        }
-        */
     }
  
 }
