@@ -5,7 +5,7 @@
 ![](./media/Sandbox_Banner.png "Sandbox")
 
 ## What is Sandbox?
-Sandbox is centrilized tool box of custom nodes for Grasshopper, Dynamo and Revit add-in.
+Sandbox is a centrilized tool box of custom nodes for Grasshopper, Dynamo and Revit add-in.
 
 ## 💡 [Our vision](./doc/guides/OurVision.md)
 
