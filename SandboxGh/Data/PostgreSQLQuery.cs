@@ -25,17 +25,11 @@ namespace SandboxGh.Data
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            string server = String.Empty;
-            string port = String.Empty;
-            string uid = String.Empty;
-            string pw = String.Empty;
-            string db = String.Empty;
-            if (!DA.GetData(0, ref server) | !DA.GetData(1, ref port) | !DA.GetData(2, ref uid) | !DA.GetData(3, ref pw) | !DA.GetData(4, ref db)) return;
-            var serverResults = SQLConnector.PostgreSQL(server, port, uid, pw, db);
-            string state = serverResults.Item1;
-            string cs = serverResults.Item2;
-
-            DA.SetData(0, state);
+            string connectionString = String.Empty;
+            string query = String.Empty;
+            if (!DA.GetData(0, ref connectionString) | !DA.GetData(1, ref query)) return;
+ 
+           /// DA.SetData(0, state);
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.PostgreSQLQueryIcon;
