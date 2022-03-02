@@ -12,6 +12,7 @@ Sandbox is a centrilized tool box of custom nodes for Grasshopper, Dynamo and Re
 ## 📚 Guides
 * [Installation](./doc/guides/Installation.md)
 * [Contribute](./doc/guides/Contributing.md)
+* [Project structure](./doc/guides/ProjectStructure.md)
 
 ## 🧰 Tools 
 * [Excel tools](./doc/tools/ExcelTools.md)
