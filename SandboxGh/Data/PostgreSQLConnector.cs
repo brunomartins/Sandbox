@@ -25,7 +25,7 @@ namespace SandboxGh.Data
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddTextParameter("Connection Status", "S", "Notifies of the connection state. An open connection means the database is ready to query or receive commands!", GH_ParamAccess.item);
-            pManager.AddTextParameter("Query String", "QS", "Provides a string to use in query operations.", GH_ParamAccess.item);
+            pManager.AddTextParameter("Connection String", "CS", "Provides a string to use in query operations.", GH_ParamAccess.item);
 
         }
 
